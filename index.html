@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>faks · Study Scripts</title>
+<meta name="description" content="Study scripts for university courses: theory and worked tutorial exercises.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div id="site-nav" data-root=""></div>
+<main class="wrap">
+  <header class="hub-hero">
+    <div class="eyebrow">Study scripts</div>
+    <h1>faks<span class="dim">.</span></h1>
+    <p>Course notes built for exams. Each script follows the lectures in order and puts every tutorial exercise, fully worked, right after the theory it practises.</p>
+  </header>
+  <div class="list-h">Subjects</div>
+  <div class="cards" id="subjects"></div>
+  <footer class="site">Pick a subject from the menu above or below.</footer>
+</main>
+<script src="assets/catalog.js"></script>
+<script src="assets/nav.js"></script>
+<script>
+(function () {
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  var host = document.getElementById('subjects');
+  host.innerHTML = window.FAKS_CATALOG.map(function (sub) {
+    var n = sub.scripts.length;
+    var ex = sub.scripts.reduce(function (a, s) { return a + (s.exercises || 0); }, 0);
+    return '<a class="card" href="' + sub.id + '/">' +
+      '<span class="k">' + n + ' script' + (n === 1 ? '' : 's') + (ex ? ' · ' + ex + ' worked exercises' : '') + '</span>' +
+      '<h2>' + esc(sub.name) + '</h2>' +
+      '<p>' + esc(sub.source) + '</p>' +
+      '<div class="tags">' + sub.scripts.map(function (s) { return '<span>' + esc(s.chapters) + '</span>'; }).join('') + '</div>' +
+      '<span class="go">Open subject →</span></a>';
+  }).join('');
+})();
+</script>
+</body>
+</html>
