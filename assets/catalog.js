@@ -15,5 +15,19 @@ window.FAKS_CATALOG = [
         exercises: 22
       }
     ]
+  },
+  {
+    id: 'corporate-finance',
+    name: 'Corporate Finance',
+    source: 'Lecture slides & tutorial sheets',
+    scripts: [
+      {
+        href: 'l01-04.html',
+        chapters: 'Lectures 1–4',
+        title: 'Financial Management, Markets & Financial Statements',
+        topics: ['Shareholder wealth', 'Agency problem', 'Capital allocation', 'Interest-rate build-up', 'Yield curve', 'Balance sheet', 'Income statement', 'Net cash flow', 'Tax shield', 'Ratio analysis', 'DuPont'],
+        exercises: 19
+      }
+    ]
   }
 ];
