@@ -147,7 +147,7 @@ figcaption b{color:var(--fg)}
 .tw{overflow-x:auto;margin-top:1.2em;max-width:100%}
 table{border-collapse:collapse;font-family:var(--f-display);font-size:14.5px;font-variant-numeric:tabular-nums;min-width:100%}
 th,td{padding:8px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-2);font-weight:700;background:var(--bg)}
+th{font-size:13px;letter-spacing:.02em;color:var(--fg-2);font-weight:700;background:var(--bg)}
 td.r,th.r{text-align:right}
 tr.sub td{color:var(--fg-2);font-size:13.5px}
 tr.sub td:first-child{padding-left:28px}
@@ -207,7 +207,7 @@ body.practice .task:not(.open) .sol{display:none}
 .presets button:hover{border-color:var(--fg-2)}
 .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-top:12px}
 .readout div{background:var(--bg);border-radius:8px;padding:8px 10px;font-family:var(--f-display)}
-.readout span{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-2);font-weight:700}
+.readout span{display:block;font-size:12px;color:var(--fg-2);font-weight:700}
 .readout b{font-family:var(--f-mono);font-size:16px;font-variant-numeric:tabular-nums}
 .state{display:inline-block;margin-top:10px;font-family:var(--f-display);font-size:13px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--focus-tint);color:var(--acc)}
 .state.warn{background:var(--trap-tint);color:var(--shift)}
@@ -235,7 +235,6 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-fa
   <ol id="toc">
     <li><a href="#top">Overview</a></li>
     <li class="grp g3">Ch 3 · The Goods Market</li>
-    <li><a href="#s3-0">The demand–production–income loop</a></li>
     <li><a href="#s3-1">3.1 Composition of GDP</a></li>
     <li><a href="#s3-2">3.2 The demand for goods</a></li>
     <li><a href="#s3-3">3.3 Equilibrium output</a></li>
@@ -243,14 +242,12 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-fa
     <li><a href="#s3-3c">Comparative statics</a></li>
     <li><a href="#s3-4">3.4 Investment = Saving</a></li>
     <li><a href="#s3-5">3.5 Is government omnipotent?</a></li>
-    <li><a href="#s3-sum">Chapter 3 recap</a></li>
     <li class="grp g4">Ch 4 · Financial Markets I</li>
     <li><a href="#s4-1">4.1 The demand for money</a></li>
     <li><a href="#s4-2">4.2 Interest rate I: no banks</a></li>
     <li><a href="#s4-2b">Bonds, prices and yields</a></li>
     <li><a href="#s4-3">4.3 Interest rate II: with banks</a></li>
     <li><a href="#s4-4">4.4 The liquidity trap</a></li>
-    <li><a href="#s4-sum">Chapter 4 recap</a></li>
     <li class="grp">Exam kit</li>
     <li><a href="#kit">Formula sheet &amp; traps</a></li>
   </ol>
@@ -260,7 +257,7 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-fa
 <header class="hero">
   <div class="eyebrow">Macroeconomics · Blanchard, 8th edition · Lectures + Tutorials</div>
   <h1><span class="a">The Goods Market</span> &amp; <span class="b">Financial Markets&nbsp;I</span></h1>
-  <p class="lede">A complete study script for Chapters 3 and 4. The theory follows the order of the lecture slides, and every tutorial exercise appears right after the idea it practises, with full worked solutions and graphs drawn to scale.</p>
+  <p class="lede">Everything from the Chapter 3 and 4 slides, condensed for fast learning. All 22 tutorial exercises sit right after the theory they use, fully worked, with graphs drawn to scale.</p>
   <div class="toolbar">
     <button class="btn" id="practice" type="button" aria-pressed="false">Practice mode: off</button>
     <div class="legend">
@@ -272,13 +269,13 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-fa
   </div>
   <p style="margin-top:10px;font-family:var(--f-display);font-size:13.5px;color:var(--fg-2)">Practice mode hides every solution behind a “Show solution” button, so you can attempt the exercises first.</p>
   <div class="map">
-    <div class="m3"><b>Chapter 3</b>Prices fixed, short run. <em>Demand</em> determines output <span class="mono">Y</span>. Tool: the ZZ–45° diagram (Keynesian cross) and the multiplier.</div>
-    <div class="m4"><b>Chapter 4</b>Money vs bonds. Money demand and the central bank’s supply determine the <em>interest rate</em> <span class="mono">i</span>. Tool: the money-market diagram.</div>
-    <div class="m5"><b>Next: Chapter 5</b>Both markets together: the goods market gives the IS curve, the central bank’s interest rate gives the LM curve.</div>
+    <div class="m3"><b>Chapter 3</b>Short run, prices fixed. <em>Demand</em> determines output <span class="mono">Y</span>. Tools: the ZZ–45° diagram and the multiplier.</div>
+    <div class="m4"><b>Chapter 4</b>Money vs bonds. Money demand and the central bank’s supply determine the <em>interest rate</em> <span class="mono">i</span>.</div>
+    <div class="m5"><b>Fast route</b>Do Ex 4, 7 (Ch 3) and Ex 5, 8, Appendix 2 (Ch 4) in practice mode, then the <a href="#kit">exam kit</a>. Next: <a href="ch05-06.html">Chapters 5–6</a>.</div>
   </div>
   <details class="mtoc"><summary>Contents</summary><ol>
-    <li><a href="#s3-0">Ch 3 · The loop</a></li><li><a href="#s3-1">3.1 GDP</a></li><li><a href="#s3-2">3.2 Demand</a></li><li><a href="#s3-3">3.3 Equilibrium</a></li><li><a href="#s3-3b">Multiplier</a></li><li><a href="#s3-3c">Comparative statics</a></li><li><a href="#s3-4">3.4 I = S</a></li><li><a href="#s3-5">3.5 Warning</a></li><li><a href="#s3-sum">Ch 3 recap</a></li>
-    <li><a href="#s4-1">4.1 Money demand</a></li><li><a href="#s4-2">4.2 Interest rate I</a></li><li><a href="#s4-2b">Bonds</a></li><li><a href="#s4-3">4.3 Interest rate II</a></li><li><a href="#s4-4">4.4 Liquidity trap</a></li><li><a href="#s4-sum">Ch 4 recap</a></li><li><a href="#kit">Exam kit</a></li>
+    <li><a href="#s3-1">3.1 GDP</a></li><li><a href="#s3-2">3.2 Demand</a></li><li><a href="#s3-3">3.3 Equilibrium</a></li><li><a href="#s3-3b">Multiplier</a></li><li><a href="#s3-3c">Comparative statics</a></li><li><a href="#s3-4">3.4 I = S</a></li><li><a href="#s3-5">3.5 Warning</a></li>
+    <li><a href="#s4-1">4.1 Money demand</a></li><li><a href="#s4-2">4.2 Interest rate I</a></li><li><a href="#s4-2b">Bonds</a></li><li><a href="#s4-3">4.3 Interest rate II</a></li><li><a href="#s4-4">4.4 Liquidity trap</a></li><li><a href="#kit">Exam kit</a></li>
   </ol></details>
 </header>
 
@@ -287,226 +284,164 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-fa
 <div class="opener o3" id="ch3">
   <div class="numeral">3</div>
   <div><div class="ot">Chapter three</div><h2>The Goods Market</h2></div>
-  <div class="outline"><span>3.1 Composition of GDP</span><span>3.2 Demand for goods</span><span>3.3 Equilibrium output</span><span>3.4 Investment = Saving</span><span>3.5 A warning</span></div>
 </div>
-
-<section class="sec prose" id="s3-0">
-  <h3><span class="sn">3.0</span>The demand–production–income loop</h3>
-  <p>When economists study year-to-year movements in economic activity, they look at how three things interact:</p>
-  <ul>
-    <li>changes in the <strong>demand</strong> for goods lead to changes in <strong>production</strong>;</li>
-    <li>changes in production lead to changes in <strong>income</strong>;</li>
-    <li>changes in income lead to changes in the demand for goods.</li>
-  </ul>
-  <p>Chapter 3 turns this circle into a model. In the short run, prices are taken as given and firms produce whatever is demanded, so <em>demand determines output</em>. The whole chapter answers one question: <strong>what level of output is consistent with the demand it generates?</strong></p>
-</section>
 
 <section class="sec" id="s3-1">
   <h3><span class="sn">3.1</span>The composition of GDP</h3>
   <div class="prose">
-  <p>Before modelling demand, split GDP into the groups of people who buy it.</p>
+  <p><strong>The loop behind the chapter:</strong> demand → production → income → demand. In the short run, prices are given and firms produce whatever is demanded. The question: <strong>what output is consistent with the demand it generates?</strong></p>
   <div class="def"><span class="bl">Key terms</span>
     <dl>
-      <dt>Consumption (C)</dt><dd>Goods and services bought by consumers, from food to cars to haircuts. By far the largest component.</dd>
-      <dt>Investment (I)</dt><dd>Also called <em>fixed investment</em>: <strong>nonresidential</strong> (firms buy new plants and machines) plus <strong>residential</strong> (people buy new houses or apartments).</dd>
-      <dt>Government spending (G)</dt><dd>Purchases of goods and services by federal, state and local governments. It <strong>excludes government transfers</strong> (pensions, unemployment benefits) because those are not purchases.</dd>
-      <dt>Exports (X)</dt><dd>Purchases of domestic goods and services by foreigners.</dd>
-      <dt>Imports (IM)</dt><dd>Purchases of foreign goods and services by domestic consumers, firms and government.</dd>
-      <dt>Net exports</dt><dd>The trade balance, <span class="mono">X − IM</span>. Exports &gt; imports ⇔ <strong>trade surplus</strong>; imports &gt; exports ⇔ <strong>trade deficit</strong>.</dd>
-      <dt>Inventory investment</dt><dd>Production minus sales. Positive when firms produce more than they sell and the unsold goods are added to inventories.</dd>
+      <dt>Consumption (C)</dt><dd>Goods and services bought by consumers. By far the largest component.</dd>
+      <dt>Investment (I)</dt><dd><em>Fixed investment</em>: <strong>nonresidential</strong> (plants, machines) + <strong>residential</strong> (new houses).</dd>
+      <dt>Government (G)</dt><dd>Government purchases of goods and services. <strong>Excludes transfers</strong> (pensions, benefits), which are not purchases.</dd>
+      <dt>Exports (X)</dt><dd>Foreigners’ purchases of domestic goods.</dd>
+      <dt>Imports (IM)</dt><dd>Domestic purchases of foreign goods.</dd>
+      <dt>Net exports</dt><dd>Trade balance, <span class="mono">X − IM</span>: <strong>surplus</strong> if positive, <strong>deficit</strong> if negative.</dd>
+      <dt>Inventory investment</dt><dd>Production minus sales.</dd>
     </dl>
   </div>
-  <p>Put together:</p>
   \[ Y = C + I + G + (X - IM) + \text{inventory investment} \]
   </div>
-  <div class="tw" style="max-width:760px"><table>
-    <caption style="caption-side:top;text-align:left;font-size:13.5px;color:var(--fg-2);padding-bottom:8px">Table 3.1 · The composition of U.S. GDP, 2018 (source: Survey of Current Business, Feb 2019)</caption>
-    <thead><tr><th></th><th class="r">$ billions</th><th class="r">% of GDP</th><th style="width:34%">Share</th></tr></thead>
+  <div class="tw" style="max-width:620px"><table>
+    <caption style="caption-side:top;text-align:left;font-size:13.5px;color:var(--fg-2);padding-bottom:8px">Table 3.1 · U.S. GDP, 2018 (Survey of Current Business, Feb 2019)</caption>
+    <thead><tr><th></th><th class="r">$ billions</th><th class="r">% of GDP</th></tr></thead>
     <tbody>
-      <tr><td><b>GDP (Y)</b></td><td class="r">20,500</td><td class="r">100.0</td><td></td></tr>
-      <tr><td>1 · Consumption (C)</td><td class="r">13,951</td><td class="r">68.0</td><td><span class="bar" style="width:68%"></span></td></tr>
-      <tr><td>2 · Investment (I)</td><td class="r">3,595</td><td class="r">17.5</td><td><span class="bar" style="width:17.5%"></span></td></tr>
-      <tr class="sub"><td>Nonresidential</td><td class="r">2,800</td><td class="r">13.6</td><td></td></tr>
-      <tr class="sub"><td>Residential</td><td class="r">795</td><td class="r">3.8</td><td></td></tr>
-      <tr><td>3 · Government spending (G)</td><td class="r">3,522</td><td class="r">17.2</td><td><span class="bar" style="width:17.2%"></span></td></tr>
-      <tr><td>4 · Net exports</td><td class="r">−625</td><td class="r">−3.0</td><td><span class="bar neg" style="width:3%"></span></td></tr>
-      <tr class="sub"><td>Exports (X)</td><td class="r">2,550</td><td class="r">12.4</td><td></td></tr>
-      <tr class="sub"><td>Imports (IM)</td><td class="r">−3,156</td><td class="r">−15.4</td><td></td></tr>
-      <tr><td>5 · Inventory investment</td><td class="r">56</td><td class="r">0.2</td><td><span class="bar" style="width:.6%"></span></td></tr>
+      <tr><td><b>GDP (Y)</b></td><td class="r">20,500</td><td class="r">100.0</td></tr>
+      <tr><td>Consumption (C)</td><td class="r">13,951</td><td class="r">68.0</td></tr>
+      <tr><td>Investment (I)</td><td class="r">3,595</td><td class="r">17.5</td></tr>
+      <tr class="sub"><td>Nonresidential</td><td class="r">2,800</td><td class="r">13.6</td></tr>
+      <tr class="sub"><td>Residential</td><td class="r">795</td><td class="r">3.8</td></tr>
+      <tr><td>Government (G)</td><td class="r">3,522</td><td class="r">17.2</td></tr>
+      <tr><td>Net exports</td><td class="r">−625</td><td class="r">−3.0</td></tr>
+      <tr class="sub"><td>Exports (X)</td><td class="r">2,550</td><td class="r">12.4</td></tr>
+      <tr class="sub"><td>Imports (IM)</td><td class="r">−3,156</td><td class="r">−15.4</td></tr>
+      <tr><td>Inventory investment</td><td class="r">56</td><td class="r">0.2</td></tr>
     </tbody></table></div>
-  <div class="prose" style="margin-top:1.2em">
-  <div class="trap"><span class="bl">Exam trap</span>Imports are <em>subtracted</em> because C, I and G already include spending on foreign goods, which is not domestic production. And “investment” in macroeconomics means buying <em>new capital goods</em>. Buying shares is <em>financial</em> investment (see the semantic traps in 4.1).</div>
+  <div class="prose" style="margin-top:1em">
+  <div class="trap"><span class="bl">Exam trap</span>Imports are <em>subtracted</em> because C, I and G include spending on foreign goods. “Investment” means buying <em>new capital goods</em>; buying shares is <em>financial</em> investment.</div>
   </div>
 </section>
 
 <section class="sec" id="s3-2">
   <h3><span class="sn">3.2</span>The demand for goods</h3>
   <div class="prose">
-  <p>Total demand for goods, <span class="mono">Z</span>, is defined as</p>
-  \[ Z \equiv C + I + G + X - IM \]
-  <p>The sign <span class="mono">≡</span> marks an <strong>identity</strong>: true by definition. To keep things simple, the chapter assumes that all firms produce the same good, that firms are willing to supply any amount at a given price, and that the economy is <strong>closed</strong> (<span class="mono">X = IM = 0</span>):</p>
+  <p>Assume all firms produce one good, supply any amount at a given price, and the economy is <strong>closed</strong> (X = IM = 0). The sign ≡ marks an <strong>identity</strong> (true by definition):</p>
   \[ Z \equiv C + I + G \]
-
-  <h5>Consumption (C)</h5>
-  <p>Consumption depends mainly on <strong>disposable income</strong> <span class="mono">Y<sub>D</sub></span>, the income left after consumers have received transfers and paid taxes:</p>
-  \[ C = C(\underset{(+)}{Y_D}) \tag{3.1} \]
-  <p><span class="mono">C(Y<sub>D</sub>)</span> is the <strong>consumption function</strong>. It is a <strong>behavioural equation</strong> because it describes how consumers behave. Assume it is linear, with two parameters:</p>
-  \[ C = c_0 + c_1 Y_D \tag{3.2} \]
-  <div class="def"><span class="bl">The two parameters</span>
-    <dl>
-      <dt>c<sub>1</sub></dt><dd>The <strong>(marginal) propensity to consume</strong>, MPC. Of each extra unit of disposable income, consumers spend <span class="mono">c<sub>1</sub></span>. It is the <em>slope</em> of the consumption function, with <span class="mono">0 &lt; c<sub>1</sub> &lt; 1</span>.</dd>
-      <dt>c<sub>0</sub></dt><dd>What people would consume if disposable income were <strong>zero</strong>: the intercept, or <em>autonomous consumption</em>. A change in <span class="mono">c<sub>0</sub></span> means consumption changes <em>at a given income</em>, for example because confidence collapses. A lower <span class="mono">c<sub>0</sub></span> shifts the whole line down (Figure 3.1).</dd>
-    </dl>
-  </div>
-  <p>Disposable income is income minus net taxes, where <span class="mono">T</span> = taxes paid <em>minus</em> government transfers received:</p>
-  \[ Y_D \equiv Y - T \quad\Rightarrow\quad C = c_0 + c_1 (Y - T) \tag{3.3} \]
-
-  <h5>The saving function (previewing 3.4)</h5>
-  <p>What households do not consume, they save. <strong>Private saving</strong> is <span class="mono">S ≡ Y<sub>D</sub> − C</span>, so with the linear consumption function:</p>
-  \[ S = Y_D - (c_0 + c_1 Y_D) = -c_0 + (1 - c_1)\,Y_D \]
-  <p><span class="mono">1 − c<sub>1</sub></span> is the <strong>propensity to save</strong> (MPS), so <span class="mono">MPC + MPS = 1</span>. At <span class="mono">Y<sub>D</sub> = 0</span> saving equals <span class="mono">−c<sub>0</sub></span>, which is <em>dissaving</em>. Saving is exactly zero at the <strong>break-even income</strong> <span class="mono">Y<sub>D</sub> = c<sub>0</sub>/(1 − c<sub>1</sub>)</span>, where the consumption line crosses the 45° line.</p>
-  <div class="trap"><span class="bl">Exam trap</span>The MPC is the <em>slope</em> <span class="mono">ΔC/ΔY<sub>D</sub></span>, not the ratio <span class="mono">C/Y<sub>D</sub></span>. The ratio is the <em>average</em> propensity to consume. Because <span class="mono">c<sub>0</sub> &gt; 0</span>, the average propensity falls as income rises, while the MPC stays constant.</div>
+  <p><strong>Consumption</strong> depends on <strong>disposable income</strong>, income after taxes and transfers. This <strong>consumption function</strong> is a <strong>behavioural equation</strong>:</p>
+  \[ C = C(\underset{(+)}{Y_D}) \quad\text{(3.1)} \qquad C = c_0 + c_1 Y_D \quad\text{(3.2)} \qquad Y_D \equiv Y - T \quad\text{(3.3)} \]
+  <div class="def"><dl>
+    <dt>c<sub>1</sub></dt><dd><strong>Propensity to consume</strong> (MPC): the <em>slope</em>, between 0 and 1.</dd>
+    <dt>c<sub>0</sub></dt><dd>Consumption at zero disposable income: the intercept, or <em>autonomous consumption</em>. A fall (e.g. confidence collapses) shifts the whole line down (Fig 3.1).</dd>
+    <dt>T</dt><dd>Taxes paid <em>minus</em> transfers received.</dd>
+  </dl></div>
+  <p><strong>Saving:</strong> \(S \equiv Y_D - C = -c_0 + (1 - c_1)Y_D\). <span class="mono">1 − c<sub>1</sub></span> is the <strong>propensity to save</strong> (MPS), so MPC + MPS = 1. At Y<sub>D</sub> = 0, S = −c<sub>0</sub> (<em>dissaving</em>). S = 0 at the <strong>break-even income</strong> \(Y_D = c_0/(1-c_1)\), where C crosses the 45° line.</p>
+  <div class="trap"><span class="bl">Exam trap</span>MPC is the <em>slope</em> ΔC/ΔY<sub>D</sub>, not C/Y<sub>D</sub> (the <em>average</em> propensity, which falls as income rises because c<sub>0</sub> &gt; 0).</div>
   </div>
 
   <article class="task" id="t3-1">
     <header class="task-h"><span class="tag">TUT 3 · EX 1</span><h4>Consumption, disposable income and saving</h4></header>
-    <div class="q">Consumption function <span class="mono">C = 200 + 0.5Y<sub>D</sub></span>, with <span class="mono">T = 200</span>.
+    <div class="q"><span class="mono">C = 200 + 0.5Y<sub>D</sub></span>, <span class="mono">T = 200</span>.
       <ol>
-        <li>What is consumption when <span class="mono">Y<sub>D</sub> = 0</span>? How do individuals “finance” consumption when <span class="mono">Y<sub>D</sub> = 0</span>?</li>
-        <li>Calculate consumption when <span class="mono">Y = 1200</span>. If <span class="mono">Y</span> rises to 1300, what happens to <span class="mono">Y<sub>D</sub></span> and to <span class="mono">C</span>? What is the marginal propensity to consume?</li>
-        <li>Write the saving function. What is saving when <span class="mono">Y<sub>D</sub> = 0</span>? Explain how and when this occurs. What is the marginal propensity to save?</li>
+        <li>C when Y<sub>D</sub> = 0? How do individuals “finance” it?</li>
+        <li>C when Y = 1200? If Y rises to 1300, what happens to Y<sub>D</sub> and C? What is the MPC?</li>
+        <li>Write the saving function. Saving when Y<sub>D</sub> = 0? How and when does this occur? What is the MPS?</li>
       </ol></div>
     <button class="btn reveal" type="button">Show solution</button>
     <div class="sol"><span class="bl">Solution</span>
-      <div class="part"><b>a</b><div>
-        <p>\( C = 200 + 0.5\cdot 0 = 200 \). <span class="ans">C = 200</span></p>
-        <p>This is <strong>autonomous consumption</strong> <span class="mono">c<sub>0</sub></span>. With no disposable income, people still need to eat and pay rent, so they <strong>dissave</strong>: they draw down accumulated savings (wealth), sell assets, or borrow.</p></div></div>
+      <div class="part"><b>a</b><div><p><span class="ans">C = 200</span>: autonomous consumption. People <strong>dissave</strong>: they draw down savings, sell assets or borrow.</p></div></div>
       <div class="part"><b>b</b><div>
-        <p>\[ \begin{aligned} Y=1200:&\quad Y_D = 1200-200 = 1000, & C &= 200 + 0.5(1000) = 700\\ Y=1300:&\quad Y_D = 1300-200 = 1100, & C &= 200 + 0.5(1100) = 750 \end{aligned} \]</p>
-        <p>Because T is fixed, <span class="mono">ΔY<sub>D</sub> = ΔY = +100</span> and <span class="mono">ΔC = +50</span>.</p>
-        <p>\( MPC = \dfrac{\Delta C}{\Delta Y_D} = \dfrac{50}{100} = 0.5 = c_1 \) <span class="ans">MPC = 0.5</span></p></div></div>
+        <p>Y = 1200: Y<sub>D</sub> = 1000, C = 700. Y = 1300: Y<sub>D</sub> = 1100, C = 750. So ΔY<sub>D</sub> = +100, ΔC = +50. <span class="ans">MPC = 50/100 = 0.5</span></p></div></div>
       <div class="part"><b>c</b><div>
-        <p>\( S = Y_D - C = Y_D - 200 - 0.5Y_D = -200 + 0.5\,Y_D \)</p>
-        <p>At <span class="mono">Y<sub>D</sub> = 0</span>: <span class="ans">S = −200</span>, which is dissaving. It occurs whenever disposable income is very low or zero, for example during unemployment, for students, or for retirees living off their wealth. Here saving is negative for every <span class="mono">Y<sub>D</sub> &lt; 400</span>, because the break-even income is \(c_0/(1-c_1) = 200/0.5 = 400\).</p>
-        <p><span class="ans">MPS = 1 − 0.5 = 0.5</span></p></div></div>
+        <p>\(S = Y_D - C = -200 + 0.5Y_D\). At Y<sub>D</sub> = 0: <span class="ans">S = −200</span>, dissaving, e.g. during unemployment, for students, or for retirees living off wealth. S &lt; 0 for all Y<sub>D</sub> &lt; 400 (break-even = 200/0.5). <span class="ans">MPS = 0.5</span></p></div></div>
     </div>
   </article>
 
   <article class="task" id="t3-2">
     <header class="task-h"><span class="tag">TUT 3 · EX 2</span><h4>Drawing the consumption function</h4></header>
-    <div class="q"><span class="mono">C = 400 + 0.75Y<sub>D</sub></span>, <span class="mono">Y<sub>D</sub> = Y − T</span>, <span class="mono">T = 400</span>, <span class="mono">Y = 2000</span>.
+    <div class="q"><span class="mono">C = 400 + 0.75Y<sub>D</sub></span>, <span class="mono">T = 400</span>, <span class="mono">Y = 2000</span>.
       <ol>
-        <li>Draw the consumption function (C vertical, Y<sub>D</sub> horizontal). What does the vertical intercept represent? What is the slope? Given Y = 2000, what is consumption?</li>
-        <li>With Y unchanged, show and explain the effect of a fall in the MPC to 0.5. Calculate the new consumption.</li>
+        <li>Draw C against Y<sub>D</sub>. What is the intercept? The slope? What is C at Y = 2000?</li>
+        <li>With Y unchanged, show and explain the effect of the MPC falling to 0.5. New C?</li>
       </ol></div>
     <button class="btn reveal" type="button">Show solution</button>
     <div class="sol"><span class="bl">Solution</span>
       <div class="part"><b>a</b><div>
-        <p>The <strong>intercept</strong> is <span class="mono">c<sub>0</sub> = 400</span>: autonomous consumption, what households consume even with zero disposable income. The <strong>slope</strong> is <span class="mono">c<sub>1</sub> = 0.75</span>: each extra unit of disposable income raises consumption by 0.75, and the other 0.25 is saved.</p>
-        <p>\( Y_D = 2000 - 400 = 1600,\qquad C = 400 + 0.75(1600) = 400 + 1200 = 1600 \) <span class="ans">C = 1600</span></p>
-        <p>At this income C = Y<sub>D</sub>, so saving is zero. Point A lies on the 45° line because 1600 is exactly the break-even income \(400/0.25\).</p></div></div>
+        <p>Intercept c<sub>0</sub> = 400 (autonomous consumption). Slope c<sub>1</sub> = 0.75 (0.25 of each extra unit is saved). Y<sub>D</sub> = 1600, so <span class="ans">C = 1600</span>. Saving is zero here: 1600 is the break-even income (400/0.25).</p></div></div>
       <div class="part"><b>b</b><div>
-        <p>A lower MPC <strong>rotates the line clockwise around the unchanged intercept</strong> (400): it becomes flatter. At the same disposable income:</p>
-        <p>\( C' = 400 + 0.5(1600) = 1200,\qquad \Delta C = -400 \) <span class="ans">C falls from 1600 to 1200</span></p>
-        <p>Households now save 400 out of the same income instead of 0.</p></div></div>
+        <p>The line <strong>rotates clockwise around the intercept</strong> and flattens. \(C' = 400 + 0.5(1600)\) <span class="ans">C = 1200 (−400)</span>. Households now save 400 instead of 0.</p></div></div>
       <figure><div class="scroll" id="fig-cons"></div>
-        <figcaption><b>Figure for Ex 2 (cf. Blanchard Fig. 3.1).</b> Consumption rises with disposable income, but less than one for one. A lower c<sub>1</sub> pivots the line down around c<sub>0</sub>; a lower c<sub>0</sub> would instead shift the whole line down in parallel.</figcaption></figure>
+        <figcaption><b>Ex 2 (cf. Fig 3.1).</b> Lower c<sub>1</sub> pivots the line around c<sub>0</sub>; lower c<sub>0</sub> would shift it down in parallel.</figcaption></figure>
     </div>
   </article>
 
-  <div class="prose">
-  <h5>Endogenous vs exogenous variables</h5>
-  <div class="def"><span class="bl">Key terms</span>
-    <dl>
-      <dt>Endogenous</dt><dd>Explained <em>within</em> the model; depends on other variables (here C, Y, Z).</dd>
-      <dt>Exogenous</dt><dd>Not explained by the model, taken as given (here I, G, T).</dd>
-    </dl></div>
-  <p>Investment is treated as exogenous for now; the bar marks this:</p>
-  \[ I = \bar I \tag{3.4} \]
-  <p><span class="mono">T</span> and <span class="mono">G</span> describe <strong>fiscal policy</strong>, the government’s choice of taxes and spending. They are exogenous because governments do not behave with the regularity of consumers or firms, so the book treats them as variables the government chooses rather than explaining them.</p>
+  <div class="prose" style="margin-top:1.4em">
+  <p><strong>Endogenous</strong> variables are explained within the model (C, Y, Z). <strong>Exogenous</strong> ones are taken as given (I, G, T). Investment for now: \(I = \bar I\) (3.4). <strong>T and G are fiscal policy</strong>: exogenous because governments don’t behave with the regularity of consumers or firms.</p>
   </div>
 </section>
 
 <section class="sec" id="s3-3">
   <h3><span class="sn">3.3</span>The determination of equilibrium output</h3>
   <div class="prose">
-  <p>Substitute (3.3) and (3.4) into the closed-economy demand identity:</p>
-  \[ Z = c_0 + c_1(Y - T) + \bar I + G \tag{3.5} \]
-  <p><strong>Equilibrium in the goods market</strong> requires production to equal demand:</p>
-  \[ Y = Z \tag{3.6} \]
-  <p>This is an <strong>equilibrium condition</strong>: it only holds when firms produce exactly what is demanded and inventories do not change unexpectedly. Combining the two:</p>
+  \[ Z = c_0 + c_1(Y - T) + \bar I + G \quad\text{(3.5)} \qquad Y = Z \quad\text{(3.6)} \]
   \[ Y = c_0 + c_1(Y - T) + \bar I + G \tag{3.7} \]
-  <p>In words: production (Y) equals demand, which depends on income (Y), which is itself equal to production. Y appears on both sides, which is the loop in algebraic form. Macroeconomists always use <strong>three tools</strong>: <em>algebra</em> to make sure the logic is correct, <em>graphs</em> to build intuition, and <em>words</em> to explain the results.</p>
-
-  <h5>Tool 1 · Algebra</h5>
-  \[ \begin{aligned} Y &= c_0 + c_1 Y - c_1 T + \bar I + G \\ (1 - c_1)\,Y &= c_0 + \bar I + G - c_1 T \\ Y &= \underbrace{\frac{1}{1 - c_1}}_{\text{multiplier}}\;\underbrace{\big[c_0 + \bar I + G - c_1 T\big]}_{\text{autonomous spending}} \end{aligned} \tag{3.8} \]
-  <div class="def"><span class="bl">Reading equation 3.8</span>
-    <dl>
-      <dt>Autonomous spending</dt><dd>\([c_0 + \bar I + G - c_1T]\): the part of demand that does not depend on output. It is positive: with a balanced budget (<span class="mono">T = G</span>) and <span class="mono">0 &lt; c<sub>1</sub> &lt; 1</span>, \(G - c_1T = (1-c_1)G &gt; 0\).</dd>
-      <dt>Multiplier</dt><dd>\(1/(1-c_1)\), which is larger the closer <span class="mono">c<sub>1</sub></span> is to 1. With <span class="mono">c<sub>1</sub> = 0.6</span> the multiplier is <span class="mono">1/0.4 = 2.5</span>, so a $1 billion rise in <span class="mono">c<sub>0</sub></span> raises output by $2.5 billion.</dd>
-    </dl></div>
-
-  <h5>Tool 2 · The graph (Keynesian cross)</h5>
-  <ol>
-    <li>Plot <strong>production</strong> as a function of income. Production equals income, so this is the <strong>45° line</strong> (slope 1).</li>
-    <li>Plot <strong>demand</strong> as a function of income, the <strong>ZZ</strong> line:
-    \[ Z = (c_0 + \bar I + G - c_1T) + c_1 Y \tag{3.9} \]
-    Its intercept is autonomous spending and its slope is <span class="mono">c<sub>1</sub> &lt; 1</span>, so ZZ is flatter than the 45° line.</li>
-    <li>In equilibrium production equals demand: the economy sits where ZZ crosses the 45° line (point A in Blanchard Fig. 3.2).</li>
-  </ol>
-  <p>Away from the intersection, <strong>inventories</strong> do the signalling. If demand exceeds production, firms sell from stock (inventories fall unexpectedly) and raise output. If production exceeds demand, unsold goods pile up and firms cut output. This adjustment pushes the economy toward the equilibrium.</p>
+  <p>Y = Z is an <strong>equilibrium condition</strong>: it holds only when firms produce exactly what is demanded and inventories don’t change unexpectedly. Macroeconomists use <strong>three tools</strong>: algebra (logic), graphs (intuition), words (explanation).</p>
+  <p><strong>Tool 1 · Algebra.</strong> Solve for Y:</p>
+  \[ Y = \underbrace{\frac{1}{1 - c_1}}_{\text{multiplier}}\;\underbrace{\big[c_0 + \bar I + G - c_1 T\big]}_{\text{autonomous spending}} \tag{3.8} \]
+  <ul>
+    <li><strong>Autonomous spending</strong>: demand that doesn’t depend on output. It is positive: with T = G, \(G - c_1T = (1-c_1)G &gt; 0\).</li>
+    <li><strong>Multiplier</strong>: larger the closer c<sub>1</sub> is to 1. With c<sub>1</sub> = 0.6 it is 2.5, so a $1bn rise in c<sub>0</sub> raises output by $2.5bn.</li>
+  </ul>
+  <p><strong>Tool 2 · The graph (Keynesian cross).</strong> <strong>Production</strong> = income is the <strong>45° line</strong>. <strong>Demand</strong> is the <strong>ZZ</strong> line, flatter because c<sub>1</sub> &lt; 1. Equilibrium is where they cross (Fig 3.2):</p>
+  \[ Z = (c_0 + \bar I + G - c_1T) + c_1 Y \tag{3.9} \]
+  <p>Off equilibrium, <strong>inventories</strong> signal: demand &gt; production → stocks fall unexpectedly → firms raise output. Production &gt; demand → stocks pile up → firms cut output.</p>
   </div>
 
   <article class="task" id="t3-3">
     <header class="task-h"><span class="tag">TUT 3 · EX 3</span><h4>Building ZZ and finding equilibrium by table</h4></header>
-    <div class="q"><span class="mono">Z = C + I + G</span>, <span class="mono">C = 400 + 0.5Y<sub>D</sub></span>, <span class="mono">T = 400</span>, <span class="mono">I = 200</span>, <span class="mono">G = 600</span>.
+    <div class="q"><span class="mono">C = 400 + 0.5Y<sub>D</sub></span>, <span class="mono">T = 400</span>, <span class="mono">I = 200</span>, <span class="mono">G = 600</span>.
       <ol>
-        <li>What are the MPC and the MPS?</li>
-        <li>Write Z as a function of Y and autonomous spending. What is Z when Y = 0, and what does it represent? What happens to Z if Y rises by 1?</li>
-        <li>Calculate Z for Y = 1600, 1800, 2000, 2200, 2400. Is the economy in equilibrium at any of them?</li>
-        <li>At Y = 1600 and at Y = 2400, compare income and demand. How will firms respond?</li>
+        <li>MPC and MPS?</li>
+        <li>Write Z as a function of Y and autonomous spending. Z at Y = 0, and what is it? What if Y rises by 1?</li>
+        <li>Z for Y = 1600, 1800, 2000, 2200, 2400. Equilibrium at any of them?</li>
+        <li>At Y = 1600 and Y = 2400, compare income and demand. How do firms respond?</li>
       </ol></div>
     <button class="btn reveal" type="button">Show solution</button>
     <div class="sol"><span class="bl">Solution</span>
-      <div class="part"><b>a</b><div><p><span class="ans">MPC = c<sub>1</sub> = 0.5</span> <span class="ans">MPS = 1 − 0.5 = 0.5</span></p></div></div>
+      <div class="part"><b>a</b><div><p><span class="ans">MPC = 0.5</span> <span class="ans">MPS = 0.5</span></p></div></div>
       <div class="part"><b>b</b><div>
-        <p>\[ Z = 400 + 0.5(Y - 400) + 200 + 600 = \underbrace{(400 - 200 + 200 + 600)}_{1000} + 0.5Y \]</p>
-        <p><span class="ans">Z = 1000 + 0.5Y</span>. At Y = 0, <span class="mono">Z = 1000</span>: this is <strong>autonomous spending</strong> \(c_0 - c_1T + I + G\), demand that exists independently of income. If Y rises by 1, Z rises by <span class="mono">c<sub>1</sub> = 0.5</span> (the slope of ZZ).</p></div></div>
+        <p>\(Z = 400 + 0.5(Y - 400) + 200 + 600\) <span class="ans">Z = 1000 + 0.5Y</span>. At Y = 0, Z = 1000 is <strong>autonomous spending</strong>. Y + 1 → Z + 0.5 (the slope).</p></div></div>
       <div class="part"><b>c</b><div>
-        <div class="tw"><table><thead><tr><th class="r">Income Y</th><th class="r">Demand Z = 1000 + 0.5Y</th><th class="r">Z − Y</th><th>Situation</th></tr></thead><tbody>
+        <div class="tw"><table><thead><tr><th class="r">Y</th><th class="r">Z</th><th class="r">Z − Y</th><th>Situation</th></tr></thead><tbody>
           <tr><td class="r">1600</td><td class="r">1800</td><td class="r">+200</td><td>Demand &gt; production</td></tr>
           <tr><td class="r">1800</td><td class="r">1900</td><td class="r">+100</td><td>Demand &gt; production</td></tr>
           <tr><td class="r"><b>2000</b></td><td class="r"><b>2000</b></td><td class="r"><b>0</b></td><td><b>Equilibrium</b></td></tr>
           <tr><td class="r">2200</td><td class="r">2100</td><td class="r">−100</td><td>Production &gt; demand</td></tr>
           <tr><td class="r">2400</td><td class="r">2200</td><td class="r">−200</td><td>Production &gt; demand</td></tr></tbody></table></div>
-        <p>Only at <span class="ans">Y = 2000</span> does production equal demand. Check with (3.8): \(Y = \frac{1}{1-0.5}\cdot 1000 = 2000\).</p></div></div>
+        <p><span class="ans">Y = 2000</span>. Check: \(\frac{1}{0.5}\cdot 1000 = 2000\).</p></div></div>
       <div class="part"><b>d</b><div>
-        <p><strong>Y = 1600:</strong> demand (1800) exceeds production by 200. Firms meet the extra demand from stock, so inventories fall unexpectedly by 200. Firms respond by <strong>increasing production</strong>, and Y moves up toward 2000.</p>
-        <p><strong>Y = 2400:</strong> production exceeds demand (2200) by 200. Unsold goods pile up as an unplanned inventory increase of 200. Firms respond by <strong>cutting production</strong>, and Y moves down toward 2000.</p></div></div>
+        <p><strong>1600:</strong> demand exceeds production by 200, inventories fall by 200 → firms <strong>raise production</strong>. <strong>2400:</strong> production exceeds demand by 200, inventories rise by 200 → firms <strong>cut production</strong>. Both move toward 2000.</p></div></div>
       <figure><div class="scroll" id="fig-cross"></div>
-        <figcaption><b>Ex 3 on the ZZ–Y diagram (cf. Fig. 3.2).</b> The vertical gaps show the inventory signal that pushes output toward the equilibrium at 2000.</figcaption></figure>
+        <figcaption><b>Ex 3 (cf. Fig 3.2).</b> The vertical gaps are the inventory signal.</figcaption></figure>
     </div>
   </article>
 
   <article class="task" id="t3-6">
     <header class="task-h"><span class="tag">TUT 3 · EX 6</span><h4>Reading the Keynesian cross</h4></header>
-    <div class="q">Use the graph below.
+    <div class="q">Use the graph.
       <ol>
-        <li>What does the distance OA represent? What would have to happen for it to decrease?</li>
-        <li>What do the distances OY<sub>1</sub>, Y<sub>1</sub>E and Y<sub>1</sub>F represent? Is the economy in equilibrium when output equals Y<sub>1</sub>?</li>
+        <li>What does OA represent? What would make it decrease?</li>
+        <li>What do OY<sub>1</sub>, Y<sub>1</sub>E and Y<sub>1</sub>F represent? Is the economy in equilibrium at Y<sub>1</sub>?</li>
       </ol>
       <figure style="margin-top:12px"><div class="scroll" id="fig-t6"></div>
-        <figcaption>Graph from the tutorial sheet, redrawn. The red line is ZZ; the other line is the 45° production line.</figcaption></figure></div>
+        <figcaption>Graph from the sheet, redrawn. Red = ZZ; the other line is 45°.</figcaption></figure></div>
     <button class="btn reveal" type="button">Show solution</button>
     <div class="sol"><span class="bl">Solution</span>
       <div class="part"><b>a</b><div>
-        <p><strong>OA = autonomous spending</strong> \(c_0 + \bar I + G - c_1T\): the vertical intercept of ZZ, the demand that exists even when income is zero.</p>
-        <p>OA falls (ZZ shifts down in parallel) if <span class="mono">c<sub>0</sub></span> falls (lower consumer confidence), if <span class="mono">I</span> falls (lower business confidence), if <span class="mono">G</span> falls, or if <span class="mono">T</span> rises. Strictly, a higher <span class="mono">c<sub>1</sub></span> also lowers OA when T &gt; 0, because the term −c<sub>1</sub>T grows, but it mainly changes the slope.</p></div></div>
+        <p><strong>OA = autonomous spending</strong>, the intercept of ZZ. It falls (parallel shift down) if c<sub>0</sub>, I or G falls, or T rises. Strictly, higher c<sub>1</sub> also lowers it when T &gt; 0 (−c<sub>1</sub>T grows), but c<sub>1</sub> mainly changes the slope.</p></div></div>
       <div class="part"><b>b</b><div>
-        <p><strong>OY<sub>1</sub></strong>: the level of output (production = income) measured on the horizontal axis.</p>
-        <p><strong>Y<sub>1</sub>F</strong>: production at Y<sub>1</sub>, read off the 45° line. It equals OY<sub>1</sub>, because along the 45° line the vertical distance equals the horizontal one.</p>
-        <p><strong>Y<sub>1</sub>E</strong>: demand at income Y<sub>1</sub>, the height of ZZ.</p>
-        <p><strong>Not an equilibrium.</strong> Y<sub>1</sub>F &gt; Y<sub>1</sub>E, so production exceeds demand by <strong>EF</strong>, an unplanned increase in inventories. Firms cut production and output falls toward the intersection. (At Y<sub>2</sub> it is the reverse: demand Y<sub>2</sub>C exceeds production Y<sub>2</sub>B, inventories fall by BC, and output rises.)</p></div></div>
+        <p><strong>OY<sub>1</sub></strong>: output. <strong>Y<sub>1</sub>F</strong>: production, on the 45° line, so equal to OY<sub>1</sub>. <strong>Y<sub>1</sub>E</strong>: demand, the height of ZZ.</p>
+        <p><strong>Not an equilibrium.</strong> Production exceeds demand by <strong>EF</strong>, an unplanned inventory rise, so output falls. (At Y<sub>2</sub> the reverse: demand Y<sub>2</sub>C exceeds production Y<sub>2</sub>B, inventories fall by BC, output rises.)</p></div></div>
     </div>
   </article>
 </section>
@@ -514,46 +449,36 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-fa
 <section class="sec" id="s3-3b">
   <h3><span class="sn">3.3</span>The multiplier at work</h3>
   <div class="prose">
-  <p>Suppose <span class="mono">c<sub>0</sub></span> rises by $1 billion. ZZ shifts up by $1 billion in parallel, and the equilibrium moves from A to A′. Output rises by <em>more</em> than $1 billion. Blanchard’s Figure 3.3 traces the rounds:</p>
-  <ul>
-    <li><strong>AB</strong>: first-round increase in <em>production</em>. Demand is up by $1bn, so firms produce $1bn more.</li>
-    <li><strong>BC</strong>: first-round increase in <em>income</em>. Producing more means paying out $1bn more income.</li>
-    <li><strong>CD</strong>: second-round increase in <em>demand</em>. Consumers spend <span class="mono">c<sub>1</sub> × $1bn</span> of that new income.</li>
-    <li><strong>DE</strong>: second-round increase in production and income, and so on.</li>
-  </ul>
-  <p>After <span class="mono">n + 1</span> rounds the total increase in production is a <strong>geometric series</strong>:</p>
+  <p>c<sub>0</sub> rises by $1bn: ZZ shifts up by $1bn and equilibrium moves from A to A′. Rounds (Fig 3.3): <strong>AB</strong> production +$1bn → <strong>BC</strong> income +$1bn → <strong>CD</strong> demand + c<sub>1</sub> × $1bn → <strong>DE</strong> production and income, and so on. A <strong>geometric series</strong>:</p>
   \[ 1 + c_1 + c_1^2 + \dots + c_1^{\,n} = \frac{1 - c_1^{\,n+1}}{1 - c_1} \;\xrightarrow{\;n\to\infty\;}\; \frac{1}{1 - c_1} \]
-  <p><strong>Tool 3 · Words.</strong> Production depends on demand, which depends on income, which is itself equal to production. An increase in demand raises production and income, which in turn raises demand further. The final increase in output is larger than the initial shift in demand, by a factor equal to the multiplier. The multiplier depends on the propensity to consume, which can be estimated with <strong>econometrics</strong>, the set of statistical methods used in economics.</p>
-  <p><strong>Dynamics of adjustment.</strong> The movement of output over time is called the <em>dynamics of adjustment</em>. How long it takes depends on how and when firms revise their production schedules. If they react quickly to inventory changes, adjustment is fast; if they revise only every quarter, it takes several quarters.</p>
+  <p><strong>Tool 3 · Words.</strong> Production depends on demand, which depends on income, which equals production. So higher demand raises production and income, which raises demand further. The multiplier depends on the propensity to consume, estimated with <strong>econometrics</strong>.</p>
+  <p><strong>Dynamics of adjustment:</strong> the movement of output over time. Its speed depends on how often firms revise production: quickly if they react to inventories at once, several quarters if they revise quarterly.</p>
   </div>
 
   <article class="task" id="t3-4">
     <header class="task-h"><span class="tag">TUT 3 · EX 4</span><h4>Equilibrium output and a confidence shock</h4></header>
-    <div class="q"><span class="mono">Z = C + I + G</span>, <span class="mono">C = 300 + 0.5Y<sub>D</sub></span>, <span class="mono">T = 400</span>, <span class="mono">I = 200</span>, <span class="mono">G = 1000</span>.
+    <div class="q"><span class="mono">C = 300 + 0.5Y<sub>D</sub></span>, <span class="mono">T = 400</span>, <span class="mono">I = 200</span>, <span class="mono">G = 1000</span>.
       <ol>
-        <li>Calculate equilibrium output (specify Z, set Z = Y, solve). Show it on the ZZ–Y diagram.</li>
-        <li>Consumer confidence rises: <span class="mono">c<sub>0</sub></span> goes from 300 to 400. New equilibrium output? Change in income? The multiplier?</li>
-        <li>Show the effect on ZZ and Y graphically, marking the initial and final equilibria.</li>
-        <li>Derive the goods-market equilibrium condition in general form for a closed economy.</li>
-        <li>Using (d), explain why output rises by more than the initial rise in consumption. Would the multiplier be larger or smaller with an MPC of 0.8 instead of 0.5?</li>
+        <li>Find equilibrium output (Z, then Z = Y). Show it on the ZZ–Y diagram.</li>
+        <li>c<sub>0</sub> rises from 300 to 400. New Y? Change in income? Multiplier?</li>
+        <li>Show the effect graphically.</li>
+        <li>Derive the general equilibrium condition for a closed economy.</li>
+        <li>Using (d), why does output rise by more than consumption did at first? Multiplier with MPC 0.8 instead of 0.5?</li>
       </ol></div>
     <button class="btn reveal" type="button">Show solution</button>
     <div class="sol"><span class="bl">Solution</span>
       <div class="part"><b>a</b><div>
-        <p>\[ \begin{aligned} Z &= 300 + 0.5(Y - 400) + 200 + 1000 = 1300 + 0.5Y \\ Y = Z:\quad Y &= 1300 + 0.5Y \;\Rightarrow\; 0.5Y = 1300 \;\Rightarrow\; Y = 2600 \end{aligned} \]</p>
-        <p><span class="ans">Y* = 2600</span>. Check: \(Y_D = 2200,\ C = 300 + 1100 = 1400,\ Z = 1400 + 200 + 1000 = 2600\) ✓</p></div></div>
+        <p>\(Z = 1300 + 0.5Y\); \(0.5Y = 1300\) <span class="ans">Y = 2600</span>. Check: Y<sub>D</sub> = 2200, C = 1400, Z = 1400 + 200 + 1000 = 2600 ✓</p></div></div>
       <div class="part"><b>b</b><div>
-        <p>\[ Z' = 400 + 0.5(Y-400) + 200 + 1000 = 1400 + 0.5Y \;\Rightarrow\; Y' = \frac{1400}{0.5} = 2800 \]</p>
-        <p><span class="ans">Y′ = 2800</span> <span class="ans">ΔY = +200</span> <span class="ans">multiplier = 1/(1 − 0.5) = 2</span>. Indeed \(\Delta Y = 2 \times \Delta c_0 = 2 \times 100\).</p></div></div>
+        <p>\(Z' = 1400 + 0.5Y\) <span class="ans">Y′ = 2800</span> <span class="ans">ΔY = +200</span> <span class="ans">multiplier = 2</span> (ΔY = 2 × 100).</p></div></div>
       <div class="part"><b>c</b><div>
-        <p>ZZ shifts <strong>up in parallel by 100</strong> (intercept 1300 → 1400, slope still 0.5). The equilibrium moves along the 45° line from E (2600) to E′ (2800).</p>
-        <figure><div class="scroll" id="fig-t4"></div><figcaption><b>Ex 4 (a)–(c).</b> Full-scale ZZ–Y diagram.</figcaption></figure>
-        <figure><div class="scroll" id="fig-mult"></div><figcaption><b>Zoom on the same shift (cf. Fig. 3.3).</b> The staircase A → B → C → D → E … converges to A′. Vertical steps are new demand; horizontal steps are the matching rise in production and income. Axes start at 2500.</figcaption></figure></div></div>
+        <p>ZZ shifts <strong>up in parallel by 100</strong>, slope unchanged. E (2600) → E′ (2800).</p>
+        <figure><div class="scroll" id="fig-t4"></div><figcaption><b>Ex 4 (a)–(c).</b></figcaption></figure>
+        <figure><div class="scroll" id="fig-mult"></div><figcaption><b>Zoom (cf. Fig 3.3).</b> The staircase A → B → C → D → E … converges to A′. Axes start at 2500.</figcaption></figure></div></div>
       <div class="part"><b>d</b><div>
-        <p>Start from \(Y = Z = C + I + G\) and substitute the behavioural equations:</p>
         <p>\[ Y = c_0 + c_1(Y-T) + \bar I + G \;\Longrightarrow\; Y = \frac{1}{1-c_1}\,\big[c_0 + \bar I + G - c_1T\big] \]</p></div></div>
       <div class="part"><b>e</b><div>
-        <p>The 100 of extra consumption is only the first round. It becomes 100 of extra production and income, of which consumers spend half (50), which becomes 50 of new income, of which they spend 25, and so on:</p>
+        <p>The 100 is only round one. It becomes income, half is re-spent (50), then 25, and so on:</p>
         <div class="rounds" aria-label="Multiplier rounds">
           <div class="r"><span>Round 1 (Δc₀)</span><div class="track"><div class="fill" style="width:50%"></div></div><span>100</span></div>
           <div class="r"><span>Round 2 (× 0.5)</span><div class="track"><div class="fill" style="width:25%"></div></div><span>50</span></div>
@@ -562,74 +487,64 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-fa
           <div class="r"><span>Round 5</span><div class="track"><div class="fill" style="width:3.125%"></div></div><span>6.25</span></div>
           <div class="r tot"><span>Total (limit)</span><div class="track"><div class="fill" style="width:100%"></div></div><span>200</span></div>
         </div>
-        <p>\(100\,(1 + 0.5 + 0.5^2 + \dots) = 100 \cdot \frac{1}{1-0.5} = 200\).</p>
-        <p>With <span class="mono">c<sub>1</sub> = 0.8</span> each round passes on 80% instead of 50%, so the multiplier is <strong>larger</strong>: \(1/(1-0.8) = 5\) instead of 2.</p></div></div>
+        <p>With c<sub>1</sub> = 0.8 each round passes on 80%: multiplier <strong>larger</strong>, 5 instead of 2.</p></div></div>
     </div>
   </article>
 
   <article class="task" id="t3-5">
     <header class="task-h"><span class="tag">TUT 3 · EX 5</span><h4>Ex 4 again with an MPC of 0.8</h4></header>
-    <div class="q">Same economy as Ex 4 (<span class="mono">c<sub>0</sub> = 300</span>, <span class="mono">T = 400</span>, <span class="mono">I = 200</span>, <span class="mono">G = 1000</span>), but <span class="mono">c<sub>1</sub> = 0.8</span>.
+    <div class="q">Same economy as Ex 4, but c<sub>1</sub> = 0.8.
       <ol>
-        <li>Calculate equilibrium output.</li>
-        <li><span class="mono">c<sub>0</sub></span> rises from 300 to 400: new equilibrium output, change in income, multiplier?</li>
-        <li>What happened to the slope of ZZ as a result of the higher MPC? Explain.</li>
-        <li>What happened to output and to the size of the multiplier as a result of the higher c<sub>1</sub>? Explain.</li>
-        <li>Illustrate the effect of the higher c<sub>1</sub> on equilibrium output in the ZZ–Y diagram.</li>
+        <li>Equilibrium output?</li>
+        <li>c<sub>0</sub> rises from 300 to 400: new Y, change in income, multiplier?</li>
+        <li>What happened to the slope of ZZ? Explain.</li>
+        <li>What happened to output and the multiplier? Explain.</li>
+        <li>Illustrate in the ZZ–Y diagram.</li>
       </ol></div>
     <button class="btn reveal" type="button">Show solution</button>
     <div class="sol"><span class="bl">Solution</span>
-      <div class="part"><b>a</b><div>
-        <p>\[ Z = 300 + 0.8(Y - 400) + 200 + 1000 = 1180 + 0.8Y \;\Rightarrow\; 0.2Y = 1180 \;\Rightarrow\; Y = 5900 \]</p>
-        <p><span class="ans">Y* = 5900</span>. Check: \(Y_D = 5500,\ C = 300 + 4400 = 4700,\ Z = 4700 + 1200 = 5900\) ✓</p></div></div>
-      <div class="part"><b>b</b><div>
-        <p>\[ Z' = 1280 + 0.8Y \;\Rightarrow\; Y' = 1280/0.2 = 6400 \]</p>
-        <p><span class="ans">Y′ = 6400</span> <span class="ans">ΔY = +500</span> <span class="ans">multiplier = 1/(1 − 0.8) = 5</span></p></div></div>
-      <div class="part"><b>c</b><div>
-        <p>The slope of ZZ equals c<sub>1</sub>, so ZZ becomes <strong>steeper</strong> (0.5 → 0.8): each extra unit of income now generates 0.8 of extra demand instead of 0.5.</p>
-        <p>The intercept also changes slightly, from 1300 to 1180, because autonomous spending contains −c<sub>1</sub>T and \(0.8 \times 400 = 320\) is larger than \(0.5 \times 400 = 200\). Many students miss this.</p></div></div>
-      <div class="part"><b>d</b><div>
-        <p>Output rises from <strong>2600 to 5900</strong> and the multiplier from <strong>2 to 5</strong>. With a higher propensity to consume, more of each round of income is re-spent, so the demand loop amplifies everything more strongly. The same 100 rise in c<sub>0</sub> now raises output by 500 instead of 200.</p></div></div>
+      <div class="part"><b>a</b><div><p>\(Z = 1180 + 0.8Y\); \(0.2Y = 1180\) <span class="ans">Y = 5900</span>. Check: Y<sub>D</sub> = 5500, C = 4700, Z = 5900 ✓</p></div></div>
+      <div class="part"><b>b</b><div><p>\(Z' = 1280 + 0.8Y\) <span class="ans">Y′ = 6400</span> <span class="ans">ΔY = +500</span> <span class="ans">multiplier = 5</span></p></div></div>
+      <div class="part"><b>c</b><div><p>Slope = c<sub>1</sub>, so ZZ is <strong>steeper</strong> (0.5 → 0.8). The intercept also falls, 1300 → 1180, because of −c<sub>1</sub>T (320 vs 200). Many students miss this.</p></div></div>
+      <div class="part"><b>d</b><div><p>Output rises <strong>2600 → 5900</strong>, multiplier <strong>2 → 5</strong>: more of each round is re-spent. The same 100 rise in c<sub>0</sub> now adds 500 instead of 200.</p></div></div>
       <div class="part"><b>e</b><div>
-        <figure><div class="scroll" id="fig-c1"></div><figcaption><b>Ex 5 (e).</b> Higher c<sub>1</sub>: ZZ rotates to a steeper line (with a slightly lower intercept) and crosses the 45° line much further to the right.</figcaption></figure></div></div>
+        <figure><div class="scroll" id="fig-c1"></div><figcaption><b>Ex 5 (e).</b> ZZ rotates steeper, with a slightly lower intercept, and crosses 45° much further right.</figcaption></figure></div></div>
     </div>
   </article>
 </section>
 
 <section class="sec" id="s3-3c">
   <h3><span class="sn">3.3</span>Comparative statics: what moves what</h3>
-  <div class="prose"><p>Every shock in this model does one of two things. It <strong>shifts</strong> ZZ by changing autonomous spending (c<sub>0</sub>, I, G, T), or it <strong>rotates</strong> ZZ by changing the slope c<sub>1</sub>, which also changes the multiplier.</p></div>
+  <div class="prose"><p>A shock either <strong>shifts</strong> ZZ (c<sub>0</sub>, I, G, T change autonomous spending) or <strong>rotates</strong> it (c<sub>1</sub> changes the slope and the multiplier).</p></div>
 
   <article class="task" id="t3-8">
     <header class="task-h"><span class="tag">TUT 3 · EX 8</span><h4>Five events, four effects</h4></header>
-    <div class="q">For each event, explain the effect on (1) autonomous spending, (2) equilibrium output, (3) the slope of ZZ and (4) the multiplier.
+    <div class="q">Effect on (1) autonomous spending, (2) equilibrium output, (3) the slope of ZZ, (4) the multiplier:
       <ol>
-        <li>Lower business confidence reduces nonresidential investment.</li>
-        <li>Higher consumer confidence increases residential investment.</li>
-        <li>Parliament passes a budget that cuts government spending.</li>
-        <li>The marginal propensity to consume rises.</li>
-        <li>The marginal propensity to save rises.</li>
+        <li>Lower business confidence cuts nonresidential investment.</li>
+        <li>Higher consumer confidence raises residential investment.</li>
+        <li>A budget cuts government spending.</li>
+        <li>The MPC rises.</li>
+        <li>The MPS rises.</li>
       </ol></div>
     <button class="btn reveal" type="button">Show solution</button>
     <div class="sol"><span class="bl">Solution</span>
       <div class="tw"><table>
-        <thead><tr><th>Event</th><th>Autonomous spending</th><th>Equilibrium Y</th><th>Slope of ZZ</th><th>Multiplier</th></tr></thead>
+        <thead><tr><th>Event</th><th>Autonomous</th><th>Y</th><th>Slope</th><th>Multiplier</th></tr></thead>
         <tbody>
-          <tr><td>a · I<sub>nonres</sub> ↓</td><td class="down">↓ by ΔI</td><td class="down">↓ by ΔI/(1−c₁)</td><td class="same">unchanged</td><td class="same">unchanged</td></tr>
-          <tr><td>b · I<sub>res</sub> ↑</td><td class="up">↑ by ΔI</td><td class="up">↑ by ΔI/(1−c₁)</td><td class="same">unchanged</td><td class="same">unchanged</td></tr>
-          <tr><td>c · G ↓</td><td class="down">↓ by ΔG</td><td class="down">↓ by ΔG/(1−c₁)</td><td class="same">unchanged</td><td class="same">unchanged</td></tr>
-          <tr><td>d · MPC (c₁) ↑</td><td class="down">↓ slightly (−c₁T), if T &gt; 0</td><td class="up">↑</td><td class="up">steeper</td><td class="up">↑</td></tr>
-          <tr><td>e · MPS (1−c₁) ↑</td><td class="up">↑ slightly (−c₁T shrinks)</td><td class="down">↓</td><td class="down">flatter</td><td class="down">↓</td></tr>
+          <tr><td>a · I<sub>nonres</sub> ↓</td><td class="down">↓ by ΔI</td><td class="down">↓ by ΔI/(1−c₁)</td><td class="same">same</td><td class="same">same</td></tr>
+          <tr><td>b · I<sub>res</sub> ↑</td><td class="up">↑ by ΔI</td><td class="up">↑ by ΔI/(1−c₁)</td><td class="same">same</td><td class="same">same</td></tr>
+          <tr><td>c · G ↓</td><td class="down">↓ by ΔG</td><td class="down">↓ by ΔG/(1−c₁)</td><td class="same">same</td><td class="same">same</td></tr>
+          <tr><td>d · MPC ↑</td><td class="down">↓ slightly (−c₁T), if T &gt; 0</td><td class="up">↑</td><td class="up">steeper</td><td class="up">↑</td></tr>
+          <tr><td>e · MPS ↑</td><td class="up">↑ slightly (−c₁T shrinks)</td><td class="down">↓</td><td class="down">flatter</td><td class="down">↓</td></tr>
         </tbody></table></div>
-      <div class="part"><b>a–c</b><div><p>Investment (both kinds) and G are part of autonomous spending, so these events <strong>shift ZZ in parallel</strong>: down for (a) and (c), up for (b). The slope c<sub>1</sub> and the multiplier \(1/(1-c_1)\) are untouched, and output moves by the multiplier times the change.</p></div></div>
-      <div class="part"><b>d</b><div><p>A higher c<sub>1</sub> <strong>rotates ZZ upward</strong> (steeper) and raises the multiplier. Output rises: \(\partial Y/\partial c_1 = (c_0 + \bar I + G - T)/(1-c_1)^2 &gt; 0\) whenever \(c_0 + \bar I + G &gt; T\), which holds in all realistic cases, including all the tutorial numbers. Autonomous spending falls a little through −c<sub>1</sub>T (exactly as in Ex 5: 1300 → 1180); if you treat autonomous spending as just c<sub>0</sub> + I + G, it is unchanged.</p></div></div>
-      <div class="part"><b>e</b><div><p>Since MPS = 1 − c<sub>1</sub>, a higher MPS is a <strong>lower</strong> c<sub>1</sub>: ZZ becomes flatter, the multiplier \(1/\text{MPS}\) shrinks and equilibrium output falls. This is the same mechanism as the paradox of saving in 3.4.</p></div></div>
+      <p style="margin-top:10px"><strong>a–c:</strong> parallel shifts. <strong>d:</strong> ZZ rotates up; \(\partial Y/\partial c_1 = (c_0 + \bar I + G - T)/(1-c_1)^2 &gt; 0\) whenever \(c_0 + \bar I + G &gt; T\), true in all realistic cases. If you count autonomous spending as just c<sub>0</sub> + I + G, it is unchanged. <strong>e:</strong> MPS = 1 − c<sub>1</sub>, so the opposite of d; the same mechanism as the paradox of saving (3.4).</p>
     </div>
   </article>
 
   <div class="lab" id="lab-cross">
     <h4>Lab · Keynesian cross</h4>
-    <p class="sub">Move the parameters and watch ZZ shift or rotate. The preset buttons load the exact tutorial economies. The tax-rate slider t<sub>1</sub> becomes relevant in Ex 9 (automatic stabilizers).</p>
+    <p class="sub">Move the parameters and watch ZZ shift or rotate. Presets load the tutorial economies. The tax rate t<sub>1</sub> is for Ex 9.</p>
     <div class="lab-grid">
       <div>
         <div class="ctrls">
@@ -658,117 +573,78 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-fa
   </div>
 
   <div class="prose">
-  <div class="focus" style="margin-top:1.8em"><span class="bl">Focus · Lehman, fears of another Great Depression, and shifts in the consumption function</span>
-    <p>When people start worrying about the future, they save more even if their current income has not changed, so <span class="mono">c<sub>0</sub></span> falls. After Lehman Brothers went bankrupt in September 2008, Google searches for “Great Depression” spiked to about three times their average in October 2008. U.S. disposable income barely moved through 2008, yet consumption fell, and <strong>consumption of durable goods dropped roughly 11% by 2008 Q4</strong>. This is a textbook downward shift of the consumption function: lower C at a given Y<sub>D</sub>.</p></div>
+  <div class="focus" style="margin-top:1.8em"><span class="bl">Focus · Lehman, fears of another Great Depression, and c<sub>0</sub></span>
+    <p>When people worry about the future, they save more at the same income: c<sub>0</sub> falls. After Lehman’s bankruptcy (September 2008), Google searches for “Great Depression” hit about three times their average in October 2008. U.S. disposable income barely moved, yet consumption fell, and <strong>durables consumption dropped about 11% by 2008 Q4</strong>: a downward shift of the consumption function.</p></div>
   </div>
 </section>
 
 <section class="sec" id="s3-4">
-  <h3><span class="sn">3.4</span>Investment equals saving: another way to see equilibrium</h3>
+  <h3><span class="sn">3.4</span>Investment equals saving</h3>
   <div class="prose">
-  <p>John Maynard Keynes, in the <em>General Theory of Employment, Interest and Money</em> (1936), described the same equilibrium in terms of investment and saving.</p>
-  <div class="def"><span class="bl">Key terms</span>
-    <dl>
-      <dt>Private saving (S)</dt><dd>\(S \equiv Y_D - C = Y - T - C\)</dd>
-      <dt>Public saving</dt><dd>\(T - G\). If <span class="mono">T − G &gt; 0</span>: <strong>budget surplus</strong>. If <span class="mono">T − G &lt; 0</span>: <strong>budget deficit</strong>.</dd>
-    </dl></div>
-  <p>Start from the equilibrium condition, subtract T from both sides and move C to the left:</p>
-  \[ \begin{aligned} Y &= C + I + G \\ Y - T - C &= I + G - T \\ S &= I + G - T \\ I &= S + (T - G) \end{aligned} \tag{3.10} \]
-  <p>This is the <strong>IS relation</strong>: <strong>I</strong>nvestment equals <strong>S</strong>aving, private plus public. So there are two equivalent ways to state goods-market equilibrium:</p>
-  <p style="text-align:center;font-family:var(--f-display);font-weight:700;font-size:19px">Production = Demand &nbsp;⇔&nbsp; Investment = Saving</p>
-  <p>The behavioural saving function again:</p>
-  \[ S = Y - T - c_0 - c_1(Y - T) = -c_0 + (1 - c_1)(Y - T) \tag{3.11} \]
-  <p>with <span class="mono">1 − c<sub>1</sub></span>, the propensity to save, between 0 and 1. Insert (3.11) into (3.10):</p>
-  \[ \bar I = -c_0 + (1-c_1)(Y-T) + (T-G) \;\Longrightarrow\; Y = \frac{1}{1-c_1}\big[c_0 + \bar I + G - c_1T\big] \tag{3.12} \]
-  <p>This is exactly (3.8). Same model, different lens.</p>
+  <p>Keynes (<em>General Theory</em>, 1936) described the same equilibrium through saving. <strong>Private saving</strong> \(S \equiv Y - T - C\). <strong>Public saving</strong> \(T - G\): positive = <strong>budget surplus</strong>, negative = <strong>budget deficit</strong>. From Y = C + I + G, subtract T and move C:</p>
+  \[ S = I + G - T \quad\Longleftrightarrow\quad I = S + (T - G) \tag{3.10} \]
+  <p>This is the <strong>IS relation</strong>: Investment = Saving (private + public). So <strong>production = demand ⇔ investment = saving</strong>. With the saving function:</p>
+  \[ S = -c_0 + (1 - c_1)(Y - T) \tag{3.11} \]
+  \[ \bar I = -c_0 + (1-c_1)(Y-T) + (T-G) \]
+  \[ \Longrightarrow\; Y = \frac{1}{1-c_1}\big[c_0 + \bar I + G - c_1T\big] \tag{3.12} \]
+  <p>Exactly (3.8): same model, different lens.</p>
   </div>
 
   <article class="task" id="t3-7">
     <header class="task-h"><span class="tag">TUT 3 · EX 7</span><h4>Saving and the paradox of thrift</h4></header>
-    <div class="q"><span class="mono">Z = C + I + G</span>, <span class="mono">C = 300 + 0.9Y<sub>D</sub></span>, <span class="mono">T = 1000</span>, <span class="mono">I = 200</span>, <span class="mono">G = 2000</span>.
+    <div class="q"><span class="mono">C = 300 + 0.9Y<sub>D</sub></span>, <span class="mono">T = 1000</span>, <span class="mono">I = 200</span>, <span class="mono">G = 2000</span>.
       <ol>
-        <li>Calculate the equilibrium level of income.</li>
-        <li>Calculate consumption at that level of output.</li>
-        <li>Write the saving function and calculate saving at equilibrium.</li>
-        <li>Households raise autonomous saving by 100 and cut autonomous consumption by 100. Find the new equilibrium output. Was the desire to save good or bad for economic activity?</li>
-        <li>Calculate saving at the new equilibrium and compare it with (c). What happened to saving?</li>
+        <li>Equilibrium income?</li>
+        <li>Consumption there?</li>
+        <li>Saving function, and saving at equilibrium?</li>
+        <li>Households raise autonomous saving by 100 (cut autonomous consumption by 100). New Y? Good or bad for activity?</li>
+        <li>Saving at the new equilibrium vs (c)?</li>
       </ol></div>
     <button class="btn reveal" type="button">Show solution</button>
     <div class="sol"><span class="bl">Solution</span>
-      <div class="part"><b>a</b><div>
-        <p>\[ Z = 300 + 0.9(Y - 1000) + 200 + 2000 = 1600 + 0.9Y \;\Rightarrow\; 0.1Y = 1600 \;\Rightarrow\; Y = 16{,}000 \]</p>
-        <p><span class="ans">Y* = 16,000</span> (multiplier = 1/0.1 = 10)</p></div></div>
-      <div class="part"><b>b</b><div><p>\( Y_D = 15{,}000,\quad C = 300 + 0.9(15{,}000) = 13{,}800 \) <span class="ans">C = 13,800</span>. Check: \(13{,}800 + 200 + 2000 = 16{,}000\) ✓</p></div></div>
-      <div class="part"><b>c</b><div>
-        <p>\( S = -300 + 0.1(Y - 1000) \). At Y = 16,000: \(S = -300 + 0.1(15{,}000) = 1200\). <span class="ans">S = 1200</span></p>
-        <p>IS check: public saving is \(T - G = -1000\) (a deficit), and \(S + (T - G) = 1200 - 1000 = 200 = I\) ✓</p></div></div>
-      <div class="part"><b>d</b><div>
-        <p>The intercept of saving rises from −300 to −200, i.e. <span class="mono">c<sub>0</sub></span>: 300 → 200.</p>
-        <p>\[ Z' = 1500 + 0.9Y \;\Rightarrow\; Y' = 1500/0.1 = 15{,}000,\qquad \Delta Y = 10 \times (-100) = -1000 \]</p>
-        <p><span class="ans">Y′ = 15,000</span>. The desire to save had a <strong>negative</strong> effect: lower consumption means lower demand, lower production and lower income, amplified by the large multiplier of 10.</p></div></div>
-      <div class="part"><b>e</b><div>
-        <p>\( S' = -200 + 0.1(15{,}000 - 1000) = -200 + 1400 = 1200 \) <span class="ans">S′ = 1200, unchanged</span></p>
-        <p>Households tried to save 100 more, but income fell by exactly enough (1000 × MPS 0.1 = 100 less saving) to cancel the attempt. Saving cannot change because in equilibrium \(S = I + G - T = 200 + 2000 - 1000 = 1200\), and I, G and T are fixed. This is the <strong>paradox of saving</strong>.</p>
-        <figure><div class="scroll" id="fig-paradox"></div><figcaption><b>Ex 7 in the I = S view.</b> Equilibrium is where saving S equals I + G − T = 1200. A higher desire to save shifts S up by 100; the new equilibrium has lower Y and the same S. Axes are zoomed.</figcaption></figure></div></div>
+      <div class="part"><b>a</b><div><p>\(Z = 1600 + 0.9Y\); \(0.1Y = 1600\) <span class="ans">Y = 16,000</span> (multiplier 10)</p></div></div>
+      <div class="part"><b>b</b><div><p>Y<sub>D</sub> = 15,000 <span class="ans">C = 13,800</span>. Check: 13,800 + 200 + 2000 = 16,000 ✓</p></div></div>
+      <div class="part"><b>c</b><div><p>\(S = -300 + 0.1(Y - 1000)\) <span class="ans">S = 1200</span>. IS check: T − G = −1000, and 1200 − 1000 = 200 = I ✓</p></div></div>
+      <div class="part"><b>d</b><div><p>c<sub>0</sub>: 300 → 200, so \(Z' = 1500 + 0.9Y\) <span class="ans">Y′ = 15,000</span> (ΔY = 10 × −100). <strong>Bad</strong>: lower consumption → lower demand, production and income, amplified by the multiplier.</p></div></div>
+      <div class="part"><b>e</b><div><p>\(S' = -200 + 0.1(14{,}000)\) <span class="ans">S′ = 1200, unchanged</span>. Income fell by just enough to cancel the attempt (1000 × 0.1 = 100). In equilibrium S = I + G − T = 1200, and those are fixed: the <strong>paradox of saving</strong>.</p>
+        <figure><div class="scroll" id="fig-paradox"></div><figcaption><b>Ex 7, I = S view.</b> Equilibrium: S = I + G − T = 1200. Wanting to save more shifts S up by 100; Y falls, S stays. Axes zoomed.</figcaption></figure></div></div>
     </div>
   </article>
 
   <div class="prose">
   <div class="focus" style="margin-top:1.6em"><span class="bl">Focus · The paradox of saving</span>
-    <p>We grow up hearing about the virtues of thrift, but this model tells a different story. If consumers decide to save more, <span class="mono">c<sub>0</sub></span> falls and (3.12) says <strong>output falls</strong>. Saving does not even rise: by (3.10), \(I = S + (T - G)\), and since I, T and G are unchanged by assumption, S cannot change. The attempt to save more leads to lower output and unchanged saving. This is a short-run result. In the medium and long run, higher saving can finance more investment and raise output (later chapters).</p></div>
+    <p>If consumers try to save more, c<sub>0</sub> falls and output falls (3.12). Saving doesn’t rise: by (3.10), I, T and G are unchanged, so S cannot change. This is a <strong>short-run</strong> result; in the medium and long run, higher saving can finance investment and raise output.</p></div>
   </div>
 </section>
 
 <section class="sec" id="s3-5">
   <h3><span class="sn">3.5</span>Is the government omnipotent? A warning</h3>
   <div class="prose">
-  <p>Equation (3.8) suggests the government can choose G or T to hit any level of output it wants. Reality is harder, and the model leaves out a lot:</p>
+  <p>(3.8) suggests the government can hit any output with G or T. In reality:</p>
   <ul>
-    <li>Changing G or T is not easy; budgets take time to pass.</li>
-    <li>Investment and imports may respond too, which makes the effects of policy hard to assess (Chapters 5, 9, 18–20).</li>
-    <li>Expectations are likely to matter (Chapters 14–16).</li>
-    <li>The output effects may be unsustainable in the medium run (Chapter 9).</li>
-    <li>Cutting T or raising G can lead to large deficits and public debt in the long run (Chapters 9, 11, 16, 22).</li>
+    <li>changing G or T is not easy: budgets take time;</li>
+    <li>investment and imports may respond too (Ch 5, 9, 18–20);</li>
+    <li>expectations matter (Ch 14–16);</li>
+    <li>output effects may be unsustainable in the medium run (Ch 9);</li>
+    <li>lower T or higher G can mean large deficits and debt in the long run (Ch 9, 11, 16, 22).</li>
   </ul>
-  <p>One way the tax system already stabilises output without any decision by government is shown in the appendix exercise below.</p>
   </div>
 
   <article class="task" id="t3-9">
     <header class="task-h"><span class="tag">TUT 3 · APPENDIX 9</span><h4>Automatic (built-in) stabilizers</h4></header>
-    <div class="q">So far G and T did not depend on income. In reality tax revenues rise with income. Consider
-      <span class="mono">C = c<sub>0</sub> + c<sub>1</sub>Y<sub>D</sub></span>, <span class="mono">T = t<sub>0</sub> + t<sub>1</sub>Y</span>, <span class="mono">Y<sub>D</sub> = Y − T</span>, with G and I constant and <span class="mono">0 &lt; t<sub>1</sub> &lt; 1</span>.
+    <div class="q">Tax revenues rise with income: <span class="mono">C = c<sub>0</sub> + c<sub>1</sub>Y<sub>D</sub></span>, <span class="mono">T = t<sub>0</sub> + t<sub>1</sub>Y</span>, G and I constant, <span class="mono">0 &lt; t<sub>1</sub> &lt; 1</span>.
       <ol>
-        <li>Calculate equilibrium output.</li>
-        <li>What is the multiplier? Does the economy respond more strongly to changes in autonomous spending when t<sub>1</sub> is zero or when it is positive?</li>
-        <li>Why is fiscal policy in this case called an automatic stabilizer?</li>
+        <li>Equilibrium output?</li>
+        <li>The multiplier? Does the economy respond more strongly with t<sub>1</sub> zero or positive?</li>
+        <li>Why is this fiscal policy called an automatic stabilizer?</li>
       </ol></div>
     <button class="btn reveal" type="button">Show solution</button>
     <div class="sol"><span class="bl">Solution</span>
-      <div class="part"><b>a</b><div>
-        <p>\[ \begin{aligned} Y &= c_0 + c_1\big(Y - t_0 - t_1Y\big) + I + G \\ Y - c_1(1 - t_1)\,Y &= c_0 - c_1t_0 + I + G \\ Y &= \frac{1}{1 - c_1(1 - t_1)}\,\big[c_0 - c_1t_0 + I + G\big] \end{aligned} \]</p></div></div>
-      <div class="part"><b>b</b><div>
-        <p>\[ \text{multiplier} = \frac{1}{1 - c_1(1-t_1)} = \frac{1}{1 - c_1 + c_1t_1} \]</p>
-        <p>With t<sub>1</sub> &gt; 0 the denominator is larger, so the multiplier is <strong>smaller</strong> than \(1/(1-c_1)\). The economy responds <strong>more strongly when t<sub>1</sub> = 0</strong>. Each extra unit of income raises disposable income by only <span class="mono">1 − t<sub>1</sub></span>, so every round of re-spending is smaller. The slope of ZZ is <span class="mono">c<sub>1</sub>(1 − t<sub>1</sub>)</span> instead of <span class="mono">c<sub>1</sub></span>.</p>
-        <p>With Ex 4 numbers (c<sub>1</sub> = 0.5) and t<sub>1</sub> = 0.2, the multiplier is \(1/(1 - 0.4) \approx 1.67\) instead of 2. With c<sub>1</sub> = 0.8 and t<sub>1</sub> = 0.25 it is \(1/(1-0.6) = 2.5\) instead of 5. Try the “Ex 9” preset in the lab above.</p></div></div>
-      <div class="part"><b>c</b><div>
-        <p>Nobody has to pass a law. When autonomous spending falls and output starts to drop, tax payments fall <em>automatically</em> (and transfers such as unemployment benefits rise), cushioning disposable income and consumption. In a boom, taxes rise automatically and slow demand. The tax system dampens fluctuations in output “by itself”, which is why it is called an <strong>automatic stabilizer</strong>.</p></div></div>
+      <div class="part"><b>a</b><div><p>\[ \begin{aligned} Y &= c_0 + c_1(Y - t_0 - t_1Y) + I + G \\ Y &= \frac{1}{1 - c_1(1 - t_1)}\,\big[c_0 - c_1t_0 + I + G\big] \end{aligned} \]</p></div></div>
+      <div class="part"><b>b</b><div><p>Multiplier \(\frac{1}{1 - c_1(1-t_1)}\) is <strong>smaller</strong> than \(1/(1-c_1)\), so the response is <strong>stronger when t<sub>1</sub> = 0</strong>. Each extra unit of income raises Y<sub>D</sub> by only 1 − t<sub>1</sub>; the slope of ZZ is c<sub>1</sub>(1 − t<sub>1</sub>). Examples: c<sub>1</sub> = 0.5, t<sub>1</sub> = 0.2 gives ≈ 1.67 instead of 2; c<sub>1</sub> = 0.8, t<sub>1</sub> = 0.25 gives 2.5 instead of 5.</p></div></div>
+      <div class="part"><b>c</b><div><p>No law is needed. When output falls, taxes fall <em>automatically</em> (and benefits rise), cushioning Y<sub>D</sub> and C; in a boom, taxes rise and slow demand. The tax system dampens fluctuations by itself.</p></div></div>
     </div>
   </article>
-</section>
-
-<section class="sec" id="s3-sum">
-  <div class="summary">
-    <h4>Chapter 3 recap</h4>
-    <ol>
-      <li>Demand: \(Z \equiv C + I + G\) in a closed economy, with \(C = c_0 + c_1(Y-T)\), I and G exogenous.</li>
-      <li>Equilibrium: \(Y = Z\) gives \(Y = \frac{1}{1-c_1}[c_0 + \bar I + G - c_1T]\), multiplier × autonomous spending.</li>
-      <li>Graph: ZZ (intercept = autonomous spending, slope c<sub>1</sub>) crosses the 45° line. Off equilibrium, unplanned inventory changes push output toward it.</li>
-      <li>Shifts in c<sub>0</sub>, I, G, T move ZZ in parallel; a change in c<sub>1</sub> rotates it and changes the multiplier.</li>
-      <li>The multiplier is the limit of the rounds \(1 + c_1 + c_1^2 + \dots\)</li>
-      <li>Equivalent condition: \(I = S + (T - G)\), the IS relation. Wanting to save more lowers Y but leaves S unchanged (paradox of saving).</li>
-      <li>Income-dependent taxes (t<sub>1</sub> &gt; 0) shrink the multiplier: automatic stabilizers. The government is not omnipotent.</li>
-    </ol>
-  </div>
 </section>
 </div>
 
@@ -777,158 +653,127 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-fa
 <div class="opener o4" id="ch4">
   <div class="numeral">4</div>
   <div><div class="ot">Chapter four</div><h2>Financial Markets I</h2></div>
-  <div class="outline"><span>4.1 Demand for money</span><span>4.2 Interest rate I</span><span>4.3 Interest rate II</span><span>4.4 Liquidity trap</span></div>
 </div>
-
-<section class="sec prose" id="s4-0">
-  <p style="margin-top:28px">Financial markets look intimidating, but they play an essential role in the economy. This chapter focuses on one question: <strong>how is the interest rate on bonds determined, and what role does the central bank play?</strong> In the U.S. the central bank is the Federal Reserve Bank, or the <strong>Fed</strong>. The chapter builds the answer in two steps: first an economy without banks (4.2), then one with banks (4.3).</p>
-</section>
 
 <section class="sec" id="s4-1">
   <h3><span class="sn">4.1</span>The demand for money</h3>
   <div class="prose">
-  <p>Simplify the financial world to <strong>two assets</strong>:</p>
-  <div class="def"><span class="bl">Two assets</span>
-    <dl>
-      <dt>Money</dt><dd>Can be used for transactions but <strong>pays no interest</strong>. Two kinds: <strong>currency</strong> (coins and bills) and <strong>checkable deposits</strong> (bank deposits you can write checks on or use a card against).</dd>
-      <dt>Bonds</dt><dd>Pay a positive interest rate <span class="mono">i</span> but <strong>cannot be used for transactions</strong>.</dd>
-    </dl></div>
-  <p>How you split your wealth between them depends on two things: your <strong>level of transactions</strong> (more spending needs more money) and the <strong>interest rate on bonds</strong> (the reward you give up by holding money). You can also hold bonds indirectly through <strong>money market funds</strong> (money market mutual funds). In the early 1980s their interest rate reached 14% a year, so people moved a lot of wealth out of checking accounts and into these funds.</p>
-
-  <div class="focus"><span class="bl">Focus · Semantic traps: money, income and wealth</span>
+  <p><strong>The question: how is the interest rate on bonds determined, and what does the central bank do?</strong> (U.S.: the Federal Reserve, the <strong>Fed</strong>.) First without banks (4.2), then with banks (4.3). Two assets:</p>
+  <div class="def"><dl>
+    <dt>Money</dt><dd>Used for transactions, <strong>pays no interest</strong>: <strong>currency</strong> (coins, bills) + <strong>checkable deposits</strong>.</dd>
+    <dt>Bonds</dt><dd>Pay interest <span class="mono">i</span>, <strong>can’t be used for transactions</strong>.</dd>
+  </dl></div>
+  <p>The split depends on your <strong>level of transactions</strong> and the <strong>interest rate on bonds</strong>. You can also hold bonds through <strong>money market funds</strong>: in the early 1980s their rate reached 14%, so people moved a lot of wealth out of checking accounts into them.</p>
+  <div class="focus"><span class="bl">Focus · Semantic traps</span>
     <div class="tw" style="margin-top:6px"><table><thead><tr><th>Term</th><th>Meaning</th><th>Type</th></tr></thead><tbody>
-      <tr><td><b>Money</b></td><td>What can be used to pay for transactions</td><td>Stock</td></tr>
-      <tr><td><b>Income</b></td><td>What you earn from working and from interest and dividends</td><td>Flow</td></tr>
-      <tr><td><b>Saving</b></td><td>The part of after-tax income you do not spend</td><td>Flow</td></tr>
-      <tr><td><b>Savings</b></td><td>The value of what you have accumulated over time</td><td>Stock</td></tr>
-      <tr><td><b>Financial wealth</b></td><td>Value of all financial assets minus all financial liabilities</td><td>Stock</td></tr>
-      <tr><td><b>Investment</b></td><td>Purchase of <em>new capital goods</em> (machines, plants, houses)</td><td>Flow</td></tr>
+      <tr><td><b>Money</b></td><td>What can pay for transactions</td><td>Stock</td></tr>
+      <tr><td><b>Income</b></td><td>Earned from work, interest, dividends</td><td>Flow</td></tr>
+      <tr><td><b>Saving</b></td><td>After-tax income not spent</td><td>Flow</td></tr>
+      <tr><td><b>Savings</b></td><td>Value accumulated over time</td><td>Stock</td></tr>
+      <tr><td><b>Financial wealth</b></td><td>Financial assets − financial liabilities</td><td>Stock</td></tr>
+      <tr><td><b>Investment</b></td><td>Purchase of <em>new capital goods</em></td><td>Flow</td></tr>
       <tr><td><b>Financial investment</b></td><td>Purchase of shares or other financial assets</td><td>—</td></tr>
     </tbody></table></div>
-    <p style="margin-top:8px">A flow is measured per unit of time (per year); a stock is measured at a point in time.</p>
+    <p style="margin-top:8px">A flow is per unit of time; a stock is at a point in time.</p>
   </div>
-
-  <h5>The money demand function</h5>
-  <p>Aggregate demand for money <span class="mono">M<sup>d</sup></span> equals nominal income times a decreasing function of the interest rate:</p>
   \[ M^d = \$Y \, L(\underset{(-)}{i}) \tag{4.1} \]
   <ul>
-    <li><strong>Proportional to nominal income \(\$Y\)</strong>, which measures the level of transactions. If prices or real output double, people need twice as much money.</li>
-    <li><strong>Decreasing in i</strong>: the interest rate is the <em>opportunity cost</em> of holding money. A higher i makes people move wealth into bonds and hold less money.</li>
+    <li><strong>Proportional to nominal income \(\$Y\)</strong> (level of transactions): if prices or real output double, money demand doubles.</li>
+    <li><strong>Decreasing in i</strong>, the <em>opportunity cost</em> of holding money.</li>
   </ul>
-  <p>For a given \(\$Y\), plotting \(M^d\) against i gives the downward-sloping <strong>M<sup>d</sup> curve</strong>.</p>
-  <figure><div class="scroll" id="fig-md"></div><figcaption><b>Figure 4.1 · The demand for money.</b> A lower interest rate means moving <em>along</em> the curve to more money demanded. Higher nominal income <em>shifts</em> the curve right: more money demanded at every interest rate (A → A′).</figcaption></figure>
-  <div class="trap"><span class="bl">Exam trap · shift or move along?</span>A change in <strong>i</strong> is a movement <em>along</em> M<sup>d</sup>. A change in <strong>$Y</strong> (real income or the price level) <em>shifts</em> M<sup>d</sup>. Wealth only decides how much goes into bonds; it does not enter M<sup>d</sup>.</div>
+  <figure><div class="scroll" id="fig-md"></div><figcaption><b>Fig 4.1.</b> Lower i: move <em>along</em> the curve. Higher \(\$Y\): the curve <em>shifts</em> right (A → A′).</figcaption></figure>
+  <div class="trap"><span class="bl">Exam trap · shift or move along?</span><strong>i</strong> changes → <em>along</em> M<sup>d</sup>. <strong>$Y</strong> (real income or prices) changes → <em>shifts</em> M<sup>d</sup>. Wealth only decides how much goes into bonds; it isn’t in M<sup>d</sup>.</div>
   </div>
 
   <article class="task" id="t4-1">
     <header class="task-h"><span class="tag">TUT 4 · EX 1</span><h4>The money demand function</h4></header>
-    <div class="q">An individual holds part of their wealth (savings) as money and the rest as bonds (or a time deposit).
+    <div class="q">An individual holds wealth as money and bonds (or a time deposit).
       <ol>
-        <li>Show the money demand function analytically and graphically. Why does the curve slope down?</li>
-        <li>What happens to money demand if nominal income rises? Show it. What happens to the money demand curve if the interest rate falls?</li>
+        <li>Show money demand analytically and graphically. Why does it slope down?</li>
+        <li>What if nominal income rises? What happens to the curve if i falls?</li>
       </ol></div>
     <button class="btn reveal" type="button">Show solution</button>
     <div class="sol"><span class="bl">Solution</span>
-      <div class="part"><b>a</b><div>
-        <p>\(M^d = \$Y\,L(i)\) with \(L'(i) &lt; 0\). Graph: i on the vertical axis, M on the horizontal, a downward-sloping curve (Figure 4.1).</p>
-        <p>The slope is negative because i is the <strong>opportunity cost</strong> of money. Money pays nothing, bonds pay i. When i rises, keeping wealth in money gets more expensive, so people hold more bonds and economise on money: they keep less in the checking account and transfer to it more often.</p></div></div>
-      <div class="part"><b>b</b><div>
-        <p>Higher \(\$Y\) means more transactions, so more money is demanded at <em>every</em> interest rate. The curve <strong>shifts right</strong>, proportionally to \(\$Y\) (A → A′ in Figure 4.1).</p>
-        <p>A fall in i does <strong>not shift</strong> the curve. It is a <strong>movement down along</strong> the same curve to a larger quantity of money demanded.</p></div></div>
+      <div class="part"><b>a</b><div><p>\(M^d = \$Y\,L(i)\), \(L' &lt; 0\) (Fig 4.1). i is the <strong>opportunity cost</strong>: when it rises, people hold more bonds and economise on money, keeping less in the account and transferring more often.</p></div></div>
+      <div class="part"><b>b</b><div><p>Higher \(\$Y\): more transactions, so the curve <strong>shifts right</strong>, proportionally. Lower i: <strong>no shift</strong>, a <strong>movement down along</strong> the curve.</p></div></div>
     </div>
   </article>
 
   <article class="task" id="t4-6">
     <header class="task-h"><span class="tag">TUT 4 · EX 6</span><h4>An individual’s money and bond holdings</h4></header>
-    <div class="q">Wealth = $50,000, annual income = $60,000, money demand \(M^d = \$Y(0.35 - i)\).
+    <div class="q">Wealth $50,000, income $60,000, \(M^d = \$Y(0.35 - i)\).
       <ol>
-        <li>Demand for money and for bonds at i = 5%? At i = 10%?</li>
-        <li>Describe the effect of the interest rate on the demand for money and for bonds.</li>
-        <li>At i = 10%, what happens (in %) to money demand if income falls by 50%?</li>
-        <li>At i = 5%, what happens (in %) to money demand if income falls by 50%?</li>
-        <li>Summarise the effect of income on money demand. How does it depend on the interest rate?</li>
+        <li>Demand for money and bonds at i = 5%? At 10%?</li>
+        <li>Effect of the interest rate on both?</li>
+        <li>At i = 10%, % change in money demand if income falls 50%?</li>
+        <li>At i = 5%, the same?</li>
+        <li>Summarise the effect of income. How does it depend on i?</li>
       </ol></div>
     <button class="btn reveal" type="button">Show solution</button>
     <div class="sol"><span class="bl">Solution</span>
       <div class="part"><b>a</b><div>
-        <div class="tw"><table><thead><tr><th class="r">i</th><th class="r">L(i) = 0.35 − i</th><th class="r">Money Md = 60,000 · L</th><th class="r">Bonds = 50,000 − Md</th></tr></thead><tbody>
+        <div class="tw"><table><thead><tr><th class="r">i</th><th class="r">L = 0.35 − i</th><th class="r">Money = 60,000 · L</th><th class="r">Bonds = 50,000 − M</th></tr></thead><tbody>
           <tr><td class="r">5%</td><td class="r">0.30</td><td class="r"><b>$18,000</b></td><td class="r"><b>$32,000</b></td></tr>
           <tr><td class="r">10%</td><td class="r">0.25</td><td class="r"><b>$15,000</b></td><td class="r"><b>$35,000</b></td></tr></tbody></table></div>
-        <p>Money demand is driven by <em>income</em> (transactions). Wealth only fixes the total to be split, so bonds are wealth minus money.</p></div></div>
-      <div class="part"><b>b</b><div><p>A higher interest rate <strong>lowers money demand and raises bond demand</strong> by the same amount, because wealth is fixed. Bonds pay more, so holding money costs more in foregone interest.</p></div></div>
-      <div class="part"><b>c</b><div><p>Income $30,000: \(M^d = 30{,}000 \times 0.25 = 7{,}500\), down from 15,000. <span class="ans">−50%</span></p></div></div>
-      <div class="part"><b>d</b><div><p>\(M^d = 30{,}000 \times 0.30 = 9{,}000\), down from 18,000. <span class="ans">−50%</span></p></div></div>
-      <div class="part"><b>e</b><div><p>Money demand is <strong>proportional</strong> to income: a 50% fall in income cuts money demand by 50% whatever the interest rate. The interest rate sets the <em>fraction</em> of income held as money, so it changes the level and the absolute change (−9,000 at 5% vs −7,500 at 10%), but not the percentage change.</p></div></div>
+        <p><em>Income</em> drives money demand; wealth only fixes the total to split.</p></div></div>
+      <div class="part"><b>b</b><div><p>Higher i <strong>lowers money and raises bonds</strong> by the same amount (wealth is fixed).</p></div></div>
+      <div class="part"><b>c</b><div><p>30,000 × 0.25 = 7,500, from 15,000 <span class="ans">−50%</span></p></div></div>
+      <div class="part"><b>d</b><div><p>30,000 × 0.30 = 9,000, from 18,000 <span class="ans">−50%</span></p></div></div>
+      <div class="part"><b>e</b><div><p><strong>Proportional</strong>: −50% income means −50% money demand at any i. The rate sets the <em>fraction</em> held as money, so it changes the absolute fall (−9,000 at 5%, −7,500 at 10%), not the percentage.</p></div></div>
     </div>
   </article>
 
   <div class="prose">
   <div class="focus" style="margin-top:1.6em"><span class="bl">Focus · Who holds U.S. currency?</span>
-    <p>In 2006 there was $750 billion of U.S. currency in circulation. U.S. households held about $170 billion and U.S. firms about $80 billion. <strong>Foreigners held roughly $500 billion, about 66% of the total</strong>, mostly for transactions in countries that had suffered high inflation in the past and where people trust dollars more than their own currency.</p></div>
+    <p>2006: $750bn in circulation. Households about $170bn, firms about $80bn. <strong>Foreigners about $500bn (66%)</strong>, mostly in countries with past high inflation, where people trust dollars more than their own currency.</p></div>
   </div>
 </section>
 
 <section class="sec" id="s4-2">
   <h3><span class="sn">4.2</span>Determining the interest rate I: no banks</h3>
   <div class="prose">
-  <p>Assume for now that there are no banks: all money is <strong>currency</strong>, issued by the central bank. The central bank decides to supply an amount M:</p>
-  \[ M^s = M \]
-  <p>Equilibrium in financial markets requires that supply equals demand, \(M^s = M^d\):</p>
+  <p>No banks: all money is <strong>currency</strong>, issued by the central bank. Equilibrium: \(M^s = M^d\), with \(M^s = M\):</p>
   \[ M = \$Y\,L(i) \tag{4.2} \]
-  <p>Read (4.2) as: <em>the interest rate must be such that people are willing to hold exactly the amount of money the central bank has supplied.</em> The supply curve is <strong>vertical</strong> because M is chosen by the central bank and does not depend on i (Figure 4.2).</p>
-  <p><strong>How the market gets there.</strong> If i were above equilibrium, people would want to hold less money than exists. They would try to buy bonds, which raises bond prices and lowers i until they are content to hold M. Below equilibrium the reverse happens.</p>
+  <p>i must be such that people willingly hold exactly the supplied M. Supply is <strong>vertical</strong> (Fig 4.2): M doesn’t depend on i. <strong>Adjustment:</strong> if i is above equilibrium, people want less money than exists, buy bonds, bond prices rise and i falls. Below equilibrium, the reverse.</p>
   </div>
 
   <article class="task" id="t4-2">
     <header class="task-h"><span class="tag">TUT 4 · EX 2</span><h4>Money supply and equilibrium</h4></header>
-    <div class="q">Along with the money demand curve, draw the money supply. Why is the money supply curve vertical? Which variable is determined at the intersection, and what is the equilibrium condition?</div>
+    <div class="q">Draw money supply with money demand. Why is supply vertical? What is determined at the intersection, and what is the equilibrium condition?</div>
     <button class="btn reveal" type="button">Show solution</button>
     <div class="sol"><span class="bl">Solution</span>
-      <p>M<sup>s</sup> is <strong>vertical</strong> at M because the central bank chooses the quantity of money independently of the interest rate: it is an exogenous policy variable. The intersection with M<sup>d</sup> determines the <strong>equilibrium interest rate i</strong>. The equilibrium condition is \(M^s = M^d\), i.e. \(M = \$Y\,L(i)\). See the panel “Starting point” in the figure below.</p>
+      <p style="margin-top:8px"><strong>Vertical</strong>: the central bank chooses M independently of i (exogenous). The intersection determines the <strong>equilibrium i</strong>. Condition: \(M^s = M^d\), i.e. \(M = \$Y\,L(i)\). See “Starting point” below.</p>
     </div>
   </article>
 
-  <div class="prose">
-  <h5>Two comparative statics</h5>
-  <ul>
-    <li><strong>An increase in the money supply decreases the interest rate</strong> (Figure 4.3): M<sup>s</sup> shifts right and i must fall to make people willing to hold more money.</li>
-    <li><strong>For a given money supply, an increase in nominal income increases the interest rate</strong> (Figure 4.4): M<sup>d</sup> shifts right, people want more money than exists, they sell bonds, bond prices fall and i rises.</li>
-  </ul>
+  <div class="prose" style="margin-top:1.4em">
+  <p><strong>M↑ lowers i</strong> (Fig 4.3): supply shifts right. <strong>$Y↑ raises i at given M</strong> (Fig 4.4): demand shifts right, people sell bonds, bond prices fall, i rises.</p>
   </div>
   <figure style="max-width:820px">
     <div class="grid2">
-      <div><div class="pn">Starting point: M<sup>s</sup> = M<sup>d</sup> (Fig. 4.2)</div><div id="fig-mm0"></div></div>
-      <div><div class="pn">M<sup>s</sup> ↑ (expansion) → i ↓ (Fig. 4.3)</div><div id="fig-mm1"></div></div>
+      <div><div class="pn">Starting point: M<sup>s</sup> = M<sup>d</sup> (Fig 4.2)</div><div id="fig-mm0"></div></div>
+      <div><div class="pn">M<sup>s</sup> ↑ (expansion) → i ↓ (Fig 4.3)</div><div id="fig-mm1"></div></div>
       <div><div class="pn">M<sup>s</sup> ↓ (contraction) → i ↑</div><div id="fig-mm2"></div></div>
-      <div><div class="pn">$Y ↑ → M<sup>d</sup> right → i ↑ (Fig. 4.4)</div><div id="fig-mm3"></div></div>
+      <div><div class="pn">$Y ↑ → M<sup>d</sup> right → i ↑ (Fig 4.4)</div><div id="fig-mm3"></div></div>
       <div><div class="pn">$Y ↓ → M<sup>d</sup> left → i ↓, M unchanged</div><div id="fig-mm4"></div></div>
-      <div style="align-self:center;font-family:var(--f-display);font-size:14px;color:var(--fg-2);padding:8px">Dashed lines are the starting curves; red marks the curve that moved and the new equilibrium A′. When only demand shifts, the equilibrium <em>quantity</em> of money stays at M, because the central bank fixes it.</div>
+      <div style="align-self:center;font-family:var(--f-display);font-size:14px;color:var(--fg-2);padding:8px">Dashed = starting curves; red = what moved. If only demand shifts, the <em>quantity</em> of money stays at M.</div>
     </div>
-    <figcaption><b>The money market in five pictures.</b> These panels answer Ex 2, 3 and 4.</figcaption>
+    <figcaption><b>The money market in five pictures.</b> These answer Ex 2, 3 and 4.</figcaption>
   </figure>
 
   <article class="task" id="t4-3">
     <header class="task-h"><span class="tag">TUT 4 · EX 3</span><h4>Determination of the interest rate</h4></header>
-    <div class="q">No commercial banks: all money is currency, with no checkable deposits.
-      <ol>
-        <li>Show the effect of an increase in the money supply on equilibrium. What happens to the interest rate?</li>
-        <li>On a new graph, show the effect of a decrease in nominal income on the interest rate and on the equilibrium quantity of money.</li>
-      </ol></div>
+    <div class="q">No banks: all money is currency.
+      <ol><li>Show the effect of higher money supply. What happens to i?</li><li>Show the effect of lower nominal income on i and on the equilibrium quantity of money.</li></ol></div>
     <button class="btn reveal" type="button">Show solution</button>
     <div class="sol"><span class="bl">Solution</span>
-      <div class="part"><b>a</b><div><p>M<sup>s</sup> shifts right (panel “M<sup>s</sup> ↑”). At the old rate there is an excess supply of money, which is an excess demand for bonds. Bond prices rise and <strong>the interest rate falls</strong> until people willingly hold the larger money stock (A → A′).</p></div></div>
-      <div class="part"><b>b</b><div><p>Lower \(\$Y\) means fewer transactions, so M<sup>d</sup> <strong>shifts left</strong> (panel “$Y ↓”). At the old rate people hold more money than they need and buy bonds, so bond prices rise and <strong>i falls</strong>. The equilibrium <strong>quantity of money is unchanged</strong> at M, because it is set by the central bank and the vertical M<sup>s</sup> did not move.</p></div></div>
+      <div class="part"><b>a</b><div><p>M<sup>s</sup> shifts right. Excess supply of money = excess demand for bonds, bond prices rise, <strong>i falls</strong> (A → A′).</p></div></div>
+      <div class="part"><b>b</b><div><p>M<sup>d</sup> <strong>shifts left</strong>: people buy bonds, prices rise, <strong>i falls</strong>. The <strong>quantity of money is unchanged</strong> at M: the vertical supply didn’t move.</p></div></div>
     </div>
   </article>
 
-  <div class="prose">
-  <h5>Open market operations</h5>
-  <p>Central banks change the money supply by buying or selling bonds in the bond market: <strong>open market operations</strong>.</p>
-  <ul>
-    <li><strong>Expansionary</strong>: the central bank <em>buys</em> bonds and pays with newly created money. M rises and i falls.</li>
-    <li><strong>Contractionary</strong>: the central bank <em>sells</em> bonds and takes the money it receives out of circulation. M falls and i rises.</li>
-  </ul>
-  <p>The central bank’s <strong>assets</strong> are the bonds it holds; its <strong>liabilities</strong> are the money it has issued (Figure 4.5). An open market purchase raises both sides by the same amount.</p>
+  <div class="prose" style="margin-top:1.4em">
+  <p><strong>Open market operations (OMO):</strong> <strong>expansionary</strong>: the bank <em>buys</em> bonds and pays with new money (M↑, i↓). <strong>Contractionary</strong>: it <em>sells</em> bonds and removes the money received (M↓, i↑). Its <strong>assets</strong> are bonds; its <strong>liabilities</strong> are the money issued (Fig 4.5). A purchase raises both equally.</p>
   </div>
   <div class="tacc">
     <div class="ta"><h6>Central bank balance sheet</h6><div class="cols"><div><div class="hd">Assets</div><div class="it"><span>Bonds</span></div></div><div><div class="hd">Liabilities</div><div class="it"><span>Money (currency)</span></div></div></div></div>
@@ -937,15 +782,10 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-fa
 
   <article class="task" id="t4-4">
     <header class="task-h"><span class="tag">TUT 4 · EX 4</span><h4>Open market operations</h4></header>
-    <div class="q">How does the central bank increase or decrease the money supply? Which two types of open market operations does it conduct to affect the money supply and the interest rate? Show the effect of a monetary contraction graphically.</div>
+    <div class="q">How does the central bank change the money supply? Which two types of OMO does it use? Show a monetary contraction graphically.</div>
     <button class="btn reveal" type="button">Show solution</button>
     <div class="sol"><span class="bl">Solution</span>
-      <p>Through <strong>open market operations</strong>, buying or selling (government) bonds:</p>
-      <ul>
-        <li><strong>Expansionary OMO</strong> (bond purchase): new money is paid out, so M<sup>s</sup> ↑, bond prices ↑ and i ↓.</li>
-        <li><strong>Contractionary OMO</strong> (bond sale): buyers pay with money, which disappears from circulation, so M<sup>s</sup> ↓, bond prices ↓ and i ↑.</li>
-      </ul>
-      <p>Graph: the panel “M<sup>s</sup> ↓ (contraction)”. The vertical supply shifts left and the equilibrium moves up along M<sup>d</sup> from A to A′, so <strong>i rises</strong>.</p>
+      <p style="margin-top:8px">By buying or selling government bonds. <strong>Expansionary</strong> (purchase): M<sup>s</sup>↑, bond prices↑, i↓. <strong>Contractionary</strong> (sale): M<sup>s</sup>↓, bond prices↓, i↑. Graph: panel “M<sup>s</sup> ↓”: supply shifts left, A moves up along M<sup>d</sup> to A′, <strong>i rises</strong>.</p>
     </div>
   </article>
 </section>
@@ -953,89 +793,74 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-fa
 <section class="sec" id="s4-2b">
   <h3><span class="sn">4.2</span>Bonds, prices and interest rates</h3>
   <div class="prose">
-  <p>Take a one-year bond such as a U.S. <strong>Treasury bill (T-bill)</strong> that promises to pay $100 a year from now. If its price today is \(\$P_B\), the interest rate on the bond is the return from buying it now and collecting $100 later:</p>
+  <p>A one-year <strong>Treasury bill (T-bill)</strong> pays $100 in a year. With price \(\$P_B\) today (for face value F: \(i = (F - P_B)/P_B\)):</p>
   \[ i = \frac{\$100 - \$P_B}{\$P_B} \qquad\Longleftrightarrow\qquad \$P_B = \frac{\$100}{1 + i} \]
-  <ul>
-    <li><strong>The higher the price of the bond, the lower the interest rate.</strong></li>
-    <li><strong>The higher the interest rate, the lower the price today.</strong></li>
-  </ul>
-  <p>This is why an open market purchase lowers i: the central bank’s extra demand for bonds pushes up \(P_B\), which by the formula means a lower i. More generally, with face value F, \(i = (F - P_B)/P_B\).</p>
+  <p><strong>Higher bond price = lower interest rate</strong>, and vice versa. That’s why a purchase lowers i: extra demand pushes up \(P_B\).</p>
   </div>
 
   <article class="task" id="t4-7">
     <header class="task-h"><span class="tag">TUT 4 · EX 7</span><h4>Bond price and interest rate</h4></header>
-    <div class="q">A bond pays $100 one year from now.
-      <ol>
-        <li>Interest rate if the price today is $75? $85? $95?</li>
-        <li>What is the relationship between bond price and interest rate?</li>
-        <li>If the interest rate is 8%, what is the bond’s price today?</li>
-      </ol></div>
+    <div class="q">A bond pays $100 in one year. (a) i at a price of $75? $85? $95? (b) The relationship between price and i? (c) If i = 8%, what is the price today?</div>
     <button class="btn reveal" type="button">Show solution</button>
     <div class="sol"><span class="bl">Solution</span>
-      <div class="part"><b>a</b><div>
-        <p>\[ \frac{100-75}{75} = 33.33\%,\qquad \frac{100-85}{85} = 17.65\%,\qquad \frac{100-95}{95} = 5.26\% \]</p></div></div>
-      <div class="part"><b>b</b><div><p><strong>Inverse</strong>: the higher the price, the lower the interest rate, and vice versa.</p></div></div>
-      <div class="part"><b>c</b><div><p>\(P_B = 100/1.08 = 92.59\) <span class="ans">$92.59</span></p></div></div>
+      <div class="part"><b>a</b><div><p><span class="ans">33.33%</span> <span class="ans">17.65%</span> <span class="ans">5.26%</span> (e.g. 25/75)</p></div></div>
+      <div class="part"><b>b</b><div><p><strong>Inverse.</strong></p></div></div>
+      <div class="part"><b>c</b><div><p>100/1.08 <span class="ans">$92.59</span></p></div></div>
     </div>
   </article>
 
   <article class="task" id="t4-5">
     <header class="task-h"><span class="tag">TUT 4 · EX 5</span><h4>Open market operations through bond prices</h4></header>
-    <div class="q">A one-year bond has face value $200.
+    <div class="q">One-year bond, face value $200.
       <ol>
-        <li>Calculate the interest rate if the price today is $180.</li>
-        <li>The central bank buys bonds (monetary expansion) and the price rises from $180 to $190. What happens to the interest rate?</li>
-        <li>The central bank sells bonds (monetary contraction) and the price falls from $190 to $185. What happens to the interest rate?</li>
-        <li>Show the effect of a $1 million bond purchase on the central bank’s balance sheet.</li>
+        <li>i at a price of $180?</li>
+        <li>The bank buys bonds; the price rises to $190. What happens to i?</li>
+        <li>The bank sells bonds; the price falls to $185. What happens to i?</li>
+        <li>Show a $1 million purchase on the central bank’s balance sheet.</li>
       </ol></div>
     <button class="btn reveal" type="button">Show solution</button>
     <div class="sol"><span class="bl">Solution</span>
-      <div class="part"><b>a</b><div><p>\(i = (200 - 180)/180 = 20/180 = 11.11\%\) <span class="ans">i ≈ 11.11%</span></p></div></div>
-      <div class="part"><b>b</b><div><p>\(i = (200 - 190)/190 = 10/190 = 5.26\%\). The purchase raises the bond price and <strong>lowers</strong> the interest rate from 11.11% to 5.26%, matching the money-market result: M ↑ → i ↓.</p></div></div>
-      <div class="part"><b>c</b><div><p>\(i = (200 - 185)/185 = 15/185 = 8.11\%\). The sale lowers the bond price and <strong>raises</strong> the interest rate from 5.26% to 8.11%.</p></div></div>
+      <div class="part"><b>a</b><div><p>20/180 <span class="ans">i ≈ 11.11%</span></p></div></div>
+      <div class="part"><b>b</b><div><p>10/190 = 5.26%: price up, <strong>i down</strong> (M↑ → i↓).</p></div></div>
+      <div class="part"><b>c</b><div><p>15/185 = 8.11%: price down, <strong>i up</strong> from 5.26%.</p></div></div>
       <div class="part"><b>d</b><div>
-        <div class="tacc" style="margin-top:4px"><div class="ta"><h6>Central bank</h6><div class="cols"><div><div class="hd">Assets</div><div class="it"><span>Bonds</span><span class="up">+$1,000,000</span></div></div><div><div class="hd">Liabilities</div><div class="it"><span>Money (currency)</span><span class="up">+$1,000,000</span></div></div></div></div></div>
-        <p>Both sides rise by the same amount; the balance sheet still balances.</p></div></div>
+        <div class="tacc" style="margin-top:4px"><div class="ta"><h6>Central bank</h6><div class="cols"><div><div class="hd">Assets</div><div class="it"><span>Bonds</span><span class="up">+$1,000,000</span></div></div><div><div class="hd">Liabilities</div><div class="it"><span>Money (currency)</span><span class="up">+$1,000,000</span></div></div></div></div></div></div></div>
     </div>
   </article>
 
   <article class="task" id="t4-8">
     <header class="task-h"><span class="tag">TUT 4 · EX 8</span><h4>Solving for the equilibrium interest rate</h4></header>
-    <div class="q">\(M^d = \$Y(0.25 - i)\) with \(\$Y = 100\); money supply = $20; financial markets are in equilibrium.
-      <ol>
-        <li>What is the interest rate?</li>
-        <li>If the central bank wants to raise i by 10 percentage points, at what level should it set the money supply?</li>
-      </ol></div>
+    <div class="q">\(M^d = \$Y(0.25 - i)\), \(\$Y = 100\), money supply $20, equilibrium.
+      <ol><li>i?</li><li>To raise i by 10 points, at what level should the bank set money supply?</li></ol></div>
     <button class="btn reveal" type="button">Show solution</button>
     <div class="sol"><span class="bl">Solution</span>
-      <div class="part"><b>a</b><div><p>\(20 = 100(0.25 - i) \Rightarrow 0.25 - i = 0.20 \Rightarrow i = 0.05\) <span class="ans">i = 5%</span></p></div></div>
-      <div class="part"><b>b</b><div><p>Target \(i = 5\% + 10\text{pp} = 15\%\): \(M = 100(0.25 - 0.15) = 10\). <span class="ans">Cut M from $20 to $10</span>, a contractionary open market sale of $10 of bonds. (The “2% to 12%” in the question is only an example of a 10-point rise; with these numbers the rate starts at 5%.)</p>
-        <figure><div class="scroll" id="fig-t8"></div><figcaption><b>Ex 8.</b> Linear money demand \(i = 0.25 - M/100\). Halving the money supply from 20 to 10 raises i from 5% to 15%.</figcaption></figure></div></div>
+      <div class="part"><b>a</b><div><p>\(20 = 100(0.25 - i)\) <span class="ans">i = 5%</span></p></div></div>
+      <div class="part"><b>b</b><div><p>Target 15%: \(M = 100(0.25 - 0.15)\) <span class="ans">M = $10</span>, an open market sale of $10 of bonds. (The sheet’s “2% to 12%” is only an example of a 10-point rise; here the rate starts at 5%.)</p>
+        <figure><div class="scroll" id="fig-t8"></div><figcaption><b>Ex 8.</b> \(i = 0.25 - M/100\). Halving M raises i from 5% to 15%.</figcaption></figure></div></div>
     </div>
   </article>
 
-  <div class="prose">
-  <h5>Choosing the interest rate instead of the money supply</h5>
-  <p>Instead of choosing M and letting i adjust, the central bank can <strong>choose the interest rate</strong> and then adjust the money supply to achieve it. This is what modern central banks, including the Fed, typically do. In terms of (4.2): pick a target <span class="mono">i*</span>, then supply \(M = \$Y\,L(i^*)\). Because \(L(i^*)\) is then a constant, <strong>M must move in proportion to nominal income</strong>.</p>
+  <div class="prose" style="margin-top:1.4em">
+  <p><strong>Choosing i instead of M.</strong> Modern central banks, including the Fed, choose a target <span class="mono">i*</span> and supply \(M = \$Y\,L(i^*)\). L(i*) is then constant, so <strong>M must move in proportion to nominal income</strong>.</p>
   </div>
 
   <article class="task" id="t4-a1">
     <header class="task-h"><span class="tag">TUT 4 · APPENDIX 1</span><h4>What the Fed must do to hold i at i*</h4></header>
-    <div class="q">The graph shows three money demand curves (M<sup>d</sup><sub>1</sub> &lt; M<sup>d</sup><sub>2</sub> &lt; M<sup>d</sup><sub>3</sub>) and a target rate i*. Complete the table (first row given). Nominal income is \(\$Y = Y \times P / 100\).
-      <figure style="margin-top:12px"><div class="scroll" id="fig-fed"></div><figcaption>Illustration with \(L(i^*) = 0.2\): the money the Fed must supply at i* is 0.2 × $Y. M<sup>d</sup><sub>1</sub>, M<sup>d</sup><sub>2</sub>, M<sup>d</sup><sub>3</sub> drawn for $Y = 160, 250, 315.</figcaption></figure></div>
+    <div class="q">Three money demand curves (M<sup>d</sup><sub>1</sub> &lt; M<sup>d</sup><sub>2</sub> &lt; M<sup>d</sup><sub>3</sub>) and a target i*. Complete the table (first row given). \(\$Y = Y \times P / 100\).
+      <figure style="margin-top:12px"><div class="scroll" id="fig-fed"></div><figcaption>Illustration with L(i*) = 0.2; curves for $Y = 160, 250, 315.</figcaption></figure></div>
     <button class="btn reveal" type="button">Show solution</button>
     <div class="sol"><span class="bl">Solution</span>
       <div class="tw"><table>
-        <thead><tr><th>Initial M<sup>d</sup></th><th class="r">Y</th><th class="r">P</th><th class="r">$Y</th><th>Final M<sup>d</sup></th><th class="r">Y</th><th class="r">P</th><th class="r">$Y</th><th>Required Fed response</th></tr></thead>
+        <thead><tr><th>Initial M<sup>d</sup></th><th class="r">Y</th><th class="r">P</th><th class="r">$Y</th><th>Final M<sup>d</sup></th><th class="r">Y</th><th class="r">P</th><th class="r">$Y</th><th>Fed response</th></tr></thead>
         <tbody>
-          <tr><td>M<sup>d</sup><sub>2</sub></td><td class="r">250</td><td class="r">100</td><td class="r">250</td><td>M<sup>d</sup><sub>3</sub></td><td class="r">300</td><td class="r">105</td><td class="r">315</td><td><span class="up">Increase M<sup>s</sup> +26%</span> (buy bonds): $Y rises because both Y and P rise. <em>(given)</em></td></tr>
-          <tr><td>M<sup>d</sup><sub>1</sub>*</td><td class="r">200</td><td class="r">80</td><td class="r">160</td><td>M<sup>d</sup><sub>2</sub></td><td class="r">250</td><td class="r">100</td><td class="r">250</td><td><span class="up">Increase M<sup>s</sup> +56%</span> (250/160): Y and P both rise, M<sup>d</sup> shifts right.</td></tr>
-          <tr><td>M<sup>d</sup><sub>2</sub></td><td class="r">250</td><td class="r">100</td><td class="r">250</td><td>right of M<sup>d</sup><sub>2</sub> (≈M<sup>d</sup><sub>3</sub>)</td><td class="r">300</td><td class="r">100</td><td class="r">300</td><td><span class="up">Increase M<sup>s</sup> +20%</span>: real growth with stable prices still raises $Y.</td></tr>
-          <tr><td>M<sup>d</sup><sub>2</sub></td><td class="r">250</td><td class="r">100</td><td class="r">250</td><td>left of M<sup>d</sup><sub>2</sub> (toward M<sup>d</sup><sub>1</sub>)</td><td class="r">200</td><td class="r">95</td><td class="r">190</td><td><span class="down">Decrease M<sup>s</sup> −24%</span> (sell bonds): recession and falling prices; otherwise i would fall below i*.</td></tr>
-          <tr><td>M<sup>d</sup><sub>2</sub></td><td class="r">250</td><td class="r">100</td><td class="r">250</td><td>left of M<sup>d</sup><sub>2</sub></td><td class="r">275</td><td class="r">80</td><td class="r">220</td><td><span class="down">Decrease M<sup>s</sup> −12%</span>: real income rises 10% but prices fall 20%, so nominal income falls.</td></tr>
+          <tr><td>M<sup>d</sup><sub>2</sub></td><td class="r">250</td><td class="r">100</td><td class="r">250</td><td>M<sup>d</sup><sub>3</sub></td><td class="r">300</td><td class="r">105</td><td class="r">315</td><td><span class="up">M<sup>s</sup> +26%</span> (buy bonds): Y and P rise. <em>(given)</em></td></tr>
+          <tr><td>M<sup>d</sup><sub>1</sub>*</td><td class="r">200</td><td class="r">80</td><td class="r">160</td><td>M<sup>d</sup><sub>2</sub></td><td class="r">250</td><td class="r">100</td><td class="r">250</td><td><span class="up">M<sup>s</sup> +56%</span> (250/160): Y and P rise.</td></tr>
+          <tr><td>M<sup>d</sup><sub>2</sub></td><td class="r">250</td><td class="r">100</td><td class="r">250</td><td>right of M<sup>d</sup><sub>2</sub> (≈M<sup>d</sup><sub>3</sub>)</td><td class="r">300</td><td class="r">100</td><td class="r">300</td><td><span class="up">M<sup>s</sup> +20%</span>: real growth, stable prices.</td></tr>
+          <tr><td>M<sup>d</sup><sub>2</sub></td><td class="r">250</td><td class="r">100</td><td class="r">250</td><td>left of M<sup>d</sup><sub>2</sub> (toward M<sup>d</sup><sub>1</sub>)</td><td class="r">200</td><td class="r">95</td><td class="r">190</td><td><span class="down">M<sup>s</sup> −24%</span> (sell bonds): recession, falling prices.</td></tr>
+          <tr><td>M<sup>d</sup><sub>2</sub></td><td class="r">250</td><td class="r">100</td><td class="r">250</td><td>left of M<sup>d</sup><sub>2</sub></td><td class="r">275</td><td class="r">80</td><td class="r">220</td><td><span class="down">M<sup>s</sup> −12%</span>: Y +10% but P −20%, so $Y falls.</td></tr>
         </tbody></table></div>
-      <p style="margin-top:10px"><strong>Rule:</strong> money demand depends on <em>nominal</em> income. If $Y rises, M<sup>d</sup> shifts right and i would rise above i*, so the Fed must <em>increase</em> M<sup>s</sup> (buy bonds). If $Y falls, it must <em>decrease</em> M<sup>s</sup> (sell bonds). The required change in M is proportional to the change in $Y.</p>
-      <p>* The sheet labels row 2’s initial curve “M<sup>d</sup><sub>2</sub>”, but with Y = 200 and P = 80, $Y = 160 &lt; 250, so the starting curve lies to the left of M<sup>d</sup><sub>2</sub>, i.e. it is M<sup>d</sup><sub>1</sub>.</p>
+      <p style="margin-top:10px"><strong>Rule:</strong> M<sup>d</sup> depends on <em>nominal</em> income. $Y↑ → increase M<sup>s</sup> (buy bonds); $Y↓ → decrease M<sup>s</sup> (sell bonds), in proportion.</p>
+      <p style="margin-top:6px">* The sheet labels row 2’s initial curve “M<sup>d</sup><sub>2</sub>”, but $Y = 160 &lt; 250 puts it left of M<sup>d</sup><sub>2</sub>, i.e. M<sup>d</sup><sub>1</sub>.</p>
     </div>
   </article>
 </section>
@@ -1045,133 +870,110 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-fa
   <div class="prose">
   <div class="def"><span class="bl">Key terms</span>
     <dl>
-      <dt>Financial intermediaries</dt><dd>Institutions that receive funds from people and firms and use them to buy financial assets or make loans.</dd>
-      <dt>Banks</dt><dd>Financial intermediaries whose liabilities are <strong>money</strong>, in the form of checkable deposits.</dd>
-      <dt>Reserves</dt><dd>The part of the funds received that banks keep, partly as cash and partly on account at the central bank.</dd>
-      <dt>Central bank money</dt><dd>The central bank’s liabilities: currency + bank reserves. Also called <strong>high-powered money</strong> or the <strong>monetary base</strong>, H.</dd>
-      <dt>Reserve ratio θ</dt><dd>Reserves held per unit of checkable deposits.</dd>
+      <dt>Financial intermediaries</dt><dd>Receive funds and use them to buy financial assets or make loans.</dd>
+      <dt>Banks</dt><dd>Intermediaries whose liabilities are <strong>money</strong> (checkable deposits).</dd>
+      <dt>Reserves</dt><dd>Funds banks keep, as cash and on account at the central bank.</dd>
+      <dt>Central bank money</dt><dd>Currency + reserves. Also <strong>high-powered money</strong> or the <strong>monetary base</strong>, H.</dd>
+      <dt>Reserve ratio θ</dt><dd>Reserves per unit of checkable deposits.</dd>
     </dl></div>
   </div>
   <div class="tacc">
     <div class="ta"><h6>(a) Central bank</h6><div class="cols"><div><div class="hd">Assets</div><div class="it"><span>Bonds</span></div></div><div><div class="hd">Liabilities</div><div class="it"><span>Central bank money</span></div><div class="it" style="color:var(--fg-2)"><span>= Reserves + Currency</span></div></div></div></div>
     <div class="ta"><h6>(b) Banks</h6><div class="cols"><div><div class="hd">Assets</div><div class="it"><span>Reserves</span></div><div class="it"><span>Loans</span></div><div class="it"><span>Bonds</span></div></div><div><div class="hd">Liabilities</div><div class="it"><span>Checkable deposits</span></div></div></div></div>
   </div>
-  <div class="prose" style="margin-top:1.2em">
-  <p>Figure 4.6: bank reserves are an asset for banks and a liability of the central bank. Now assume people hold <strong>no currency</strong>, so all money is checkable deposits and the demand for money is the demand for deposits:</p>
-  \[ M^d = \$Y\,L(\underset{(-)}{i}) \tag{4.3} \]
-  <p>Banks hold reserves in proportion to deposits, so the demand for central bank money is</p>
-  \[ H^d = \theta M^d = \theta\,\$Y\,L(i) \tag{4.4} \]
-  <p>With H the supply of central bank money, equilibrium requires</p>
-  \[ H = H^d \tag{4.5} \]
-  \[ H = \theta\,\$Y\,L(i) \tag{4.6} \]
-  <p>An <strong>increase in H lowers the interest rate</strong>, and a decrease in H raises it (Figure 4.7). Dividing (4.6) by θ gives \(H/\theta = \$Y L(i)\): the model of 4.2 again, with money supply \(M = H/\theta\). The factor \(1/\theta\) is the <strong>money multiplier</strong>. Each unit of central bank money supports \(1/\theta\) units of deposits.</p>
-  <h5>Extension: people hold both currency and deposits</h5>
-  <p>If a fraction <span class="mono">c</span> of money is held as currency, \(CU = cM\), deposits are \(D = (1-c)M\), reserves are \(R = \theta D\), and</p>
+  <div class="prose" style="margin-top:1em">
+  <p>Fig 4.6: reserves are an asset of banks and a liability of the central bank. With <strong>no currency held</strong>, money = deposits, and banks hold reserves in proportion:</p>
+  \[ M^d = \$Y\,L(i) \quad\text{(4.3)} \qquad H^d = \theta M^d \quad\text{(4.4)} \]
+  \[ H = H^d \quad\text{(4.5)} \qquad H = \theta\,\$Y\,L(i) \quad\text{(4.6)} \]
+  <p><strong>H↑ lowers i</strong>, H↓ raises it (Fig 4.7). Dividing by θ gives \(H/\theta = \$Y L(i)\): the 4.2 model with \(M = H/\theta\). <strong>Money multiplier = 1/θ</strong>: each unit of H supports 1/θ of deposits.</p>
+  <p><strong>With currency too:</strong> a fraction c of money is currency: CU = cM, D = (1 − c)M, R = θD:</p>
   \[ H = CU + R = \big[c + \theta(1-c)\big]\,M \quad\Longrightarrow\quad M = \frac{1}{c + \theta(1 - c)}\,H \]
-  <p>With <span class="mono">c = 0</span> the multiplier is <span class="mono">1/θ</span>; with <span class="mono">c = 1</span> (no banks) it is 1. That is section 4.2.</p>
+  <p>c = 0: multiplier 1/θ. c = 1 (no banks): multiplier 1.</p>
   </div>
 
   <article class="task" id="t4-a2">
     <header class="task-h"><span class="tag">TUT 4 · APPENDIX 2</span><h4>The money multiplier</h4></header>
-    <div class="q">The public holds no currency; reserve-to-deposit ratio θ = 0.1; \(M^d = \$Y(0.8 - 4i)\). Initially the monetary base is $100 billion and nominal income $5 trillion.
+    <div class="q">No currency held; θ = 0.1; \(M^d = \$Y(0.8 - 4i)\); monetary base $100bn; nominal income $5tn.
       <ol>
-        <li>What is the demand for central bank money?</li>
-        <li>Find the equilibrium interest rate by setting demand for central bank money equal to supply.</li>
-        <li>What is the total money supply? Does it equal total money demand at the rate in (b)?</li>
-        <li>Effect on i if central bank money rises to $300 billion?</li>
-        <li>If the total money supply rises to $3,000 billion, what happens to i? (Use part c.)</li>
+        <li>Demand for central bank money?</li>
+        <li>Equilibrium i (demand = supply of central bank money)?</li>
+        <li>Total money supply? Does it equal money demand at that i?</li>
+        <li>Effect on i if central bank money rises to $300bn?</li>
+        <li>If total money supply rises to $3,000bn, what happens to i?</li>
       </ol></div>
     <button class="btn reveal" type="button">Show solution</button>
     <div class="sol"><span class="bl">Solution</span>
-      <p style="margin-top:8px">Work in $ billions: \(\$Y = 5000\).</p>
-      <div class="part"><b>a</b><div><p>\(H^d = \theta M^d = 0.1 \times 5000\,(0.8 - 4i) = 500(0.8 - 4i) = 400 - 2000i\) <span class="ans">Hd = 400 − 2000i</span></p></div></div>
-      <div class="part"><b>b</b><div><p>\(100 = 400 - 2000i \Rightarrow i = 300/2000 = 0.15\) <span class="ans">i = 15%</span></p></div></div>
-      <div class="part"><b>c</b><div><p>\(M^s = H/\theta = 100/0.1 = 1000\) <span class="ans">M = $1,000bn</span> (money multiplier 1/θ = 10). Demand at 15%: \(5000(0.8 - 0.6) = 1000\). Yes, they are equal: equilibrium in the market for central bank money implies equilibrium in the money market.</p></div></div>
-      <div class="part"><b>d</b><div><p>\(300 = 400 - 2000i \Rightarrow i = 100/2000 = 0.05\) <span class="ans">i falls to 5%</span></p></div></div>
-      <div class="part"><b>e</b><div><p>\(M = 3000\) is exactly \(H = 300\) times the multiplier 10, so it is the same situation as (d): \(3000 = 5000(0.8 - 4i) \Rightarrow 0.6 = 0.8 - 4i \Rightarrow i = 5\%\). <span class="ans">i = 5%</span></p>
-        <figure><div class="scroll" id="fig-h"></div><figcaption><b>Appendix 2 (cf. Fig. 4.7).</b> Market for central bank money: \(H^d = 400 - 2000i\). Tripling H from 100 to 300 lowers i from 15% to 5%.</figcaption></figure></div></div>
+      <div class="part"><b>a</b><div><p>\(\$Y = 5000\) (in $bn): \(0.1 \times 5000(0.8 - 4i)\) <span class="ans">H<sup>d</sup> = 400 − 2000i</span></p></div></div>
+      <div class="part"><b>b</b><div><p>\(100 = 400 - 2000i\) <span class="ans">i = 15%</span></p></div></div>
+      <div class="part"><b>c</b><div><p>100/0.1 <span class="ans">M = $1,000bn</span> (multiplier 10). Demand: 5000(0.8 − 0.6) = 1000: yes, equal.</p></div></div>
+      <div class="part"><b>d</b><div><p>\(300 = 400 - 2000i\) <span class="ans">i = 5%</span></p></div></div>
+      <div class="part"><b>e</b><div><p>M = 3000 is H = 300 × 10, the same as (d): \(3000 = 5000(0.8 - 4i)\) <span class="ans">i = 5%</span></p>
+        <figure><div class="scroll" id="fig-h"></div><figcaption><b>Appendix 2 (cf. Fig 4.7).</b> Tripling H lowers i from 15% to 5%.</figcaption></figure></div></div>
     </div>
   </article>
 
   <article class="task" id="t4-a3">
     <header class="task-h"><span class="tag">TUT 4 · APPENDIX 3</span><h4>Reserves, currency, base and multiplier</h4></header>
-    <div class="q">Data: reserves R = 50, currency CU = 250, deposits D = 500.
-      <ol>
-        <li>Calculate the reserve ratio.</li>
-        <li>Calculate the parameter c.</li>
-        <li>Calculate central bank money (the monetary base).</li>
-        <li>Calculate the money supply.</li>
-        <li>Calculate the money multiplier.</li>
-        <li>Complete the assets/liabilities table for the central bank and commercial banks.</li>
-      </ol></div>
+    <div class="q">R = 50, CU = 250, D = 500. Find (a) the reserve ratio, (b) c, (c) the monetary base, (d) the money supply, (e) the money multiplier, (f) the assets/liabilities table for the central bank and commercial banks.</div>
     <button class="btn reveal" type="button">Show solution</button>
     <div class="sol"><span class="bl">Solution</span>
-      <div class="part"><b>a</b><div><p>\(\theta = R/D = 50/500 = 0.1\) <span class="ans">θ = 10%</span></p></div></div>
-      <div class="part"><b>b</b><div><p>Blanchard defines c as the share of money held as currency: \(c = CU/M = 250/(250 + 500) = 1/3 \approx 0.333\). <span class="ans">c ≈ 0.33</span> (If your course defines it as the currency–deposit ratio, CU/D = 0.5; check which one your lecturer uses.)</p></div></div>
-      <div class="part"><b>c</b><div><p>\(H = CU + R = 250 + 50 = 300\) <span class="ans">H = 300</span></p></div></div>
-      <div class="part"><b>d</b><div><p>\(M = CU + D = 250 + 500 = 750\) <span class="ans">M = 750</span></p></div></div>
-      <div class="part"><b>e</b><div><p>\(M/H = 750/300 = 2.5\). Check with the formula: \(\frac{1}{c + \theta(1-c)} = \frac{1}{1/3 + 0.1 \cdot 2/3} = \frac{1}{0.4} = 2.5\) ✓ <span class="ans">multiplier = 2.5</span></p></div></div>
+      <div class="part"><b>a</b><div><p>50/500 <span class="ans">θ = 10%</span></p></div></div>
+      <div class="part"><b>b</b><div><p>\(c = CU/M = 250/750\) <span class="ans">c ≈ 0.33</span> (Blanchard’s definition. If your course uses currency/deposits, CU/D = 0.5: check with your lecturer.)</p></div></div>
+      <div class="part"><b>c</b><div><p>250 + 50 <span class="ans">H = 300</span></p></div></div>
+      <div class="part"><b>d</b><div><p>250 + 500 <span class="ans">M = 750</span></p></div></div>
+      <div class="part"><b>e</b><div><p>750/300 <span class="ans">2.5</span>. Check: \(\frac{1}{1/3 + 0.1 \cdot 2/3} = \frac{1}{0.4}\) ✓</p></div></div>
       <div class="part"><b>f</b><div>
         <div class="tacc" style="margin-top:4px">
           <div class="ta"><h6>Central bank</h6><div class="cols"><div><div class="hd">Assets</div><div class="it"><span>Bonds</span><span>300</span></div></div><div><div class="hd">Liabilities</div><div class="it"><span>CB money H</span><span>300</span></div><div class="it" style="color:var(--fg-2)"><span>Currency</span><span>250</span></div><div class="it" style="color:var(--fg-2)"><span>Reserves</span><span>50</span></div></div></div></div>
           <div class="ta"><h6>Commercial banks</h6><div class="cols"><div><div class="hd">Assets</div><div class="it"><span>Reserves</span><span>50</span></div><div class="it"><span>Loans + bonds</span><span>450</span></div></div><div><div class="hd">Liabilities</div><div class="it"><span>Checkable deposits</span><span>500</span></div></div></div></div>
-        </div>
-        <p>The central bank’s assets are the bonds it bought to issue H = 300. Banks lend out or invest everything they do not keep as reserves: 500 − 50 = 450.</p></div></div>
+        </div></div></div>
     </div>
   </article>
 
-  <div class="prose">
-  <h5>The federal funds market</h5>
-  <p>In practice, the market for central bank money is the <strong>federal funds market</strong>: a market where banks with spare reserves lend them overnight to banks that need them. The interest rate there is the <strong>federal funds rate</strong>. It is the main indicator of U.S. monetary policy, because the Fed can set the rate it wants by changing H, exactly as in Figure 4.7.</p>
-  <div class="focus" style="margin-top:1.2em"><span class="bl">Focus · Will bitcoins replace dollars?</span>
-    <p>Bitcoins are virtual assets that can be used for transactions; in December 2018 the total value in circulation was about $67 billion. They are unlikely to replace dollars for three reasons: (1) most prices are quoted in dollars, so paying in bitcoin carries price risk; (2) verifying bitcoin transactions takes too much electricity; (3) governments do not want bitcoin to become the accepted currency, because they want to keep control of monetary policy.</p></div>
+  <div class="prose" style="margin-top:1.4em">
+  <p><strong>Federal funds market:</strong> where banks with spare reserves lend them overnight to banks that need them. Its rate, the <strong>federal funds rate</strong>, is the main indicator of U.S. monetary policy: the Fed sets it by changing H (Fig 4.7).</p>
+  <div class="focus"><span class="bl">Focus · Will bitcoins replace dollars?</span>
+    <p>Virtual assets usable for transactions; about $67bn in circulation (December 2018). Unlikely, because (1) most prices are in dollars, so paying in bitcoin carries price risk; (2) verifying transactions uses too much electricity; (3) governments want to keep control of monetary policy.</p></div>
   </div>
 </section>
 
 <section class="sec" id="s4-4">
   <h3><span class="sn">4.4</span>The liquidity trap</h3>
   <div class="prose">
-  <p>The interest rate cannot go below zero: the <strong>zero lower bound</strong>. If bonds paid a negative rate, people would simply hold money, which pays zero.</p>
-  <p>Once i reaches zero and people hold enough money for their transactions, they become <strong>indifferent between money and bonds</strong>: both pay nothing. Beyond that point the money demand curve is <strong>horizontal</strong> at i = 0 (Figure 4.8). Further increases in the money supply then have <strong>no effect on the interest rate</strong>; people simply hold the extra money. The economy is in a <strong>liquidity trap</strong>: monetary policy cannot lower the interest rate any further.</p>
-  <figure><div class="scroll" id="fig-t10"></div><figcaption><b>Figure 4.8 with Ex 10 numbers.</b> \(M^d = 80(0.25 - i)\) down to i = 0 at M = 20, then horizontal. At A the supply of 12 gives i = 10%. At B (M = 20) the rate reaches zero; at C (M = 26) it is still zero.</figcaption></figure>
+  <p>i can’t go below zero, the <strong>zero lower bound</strong>: at a negative rate people would just hold money. Once i = 0 and people have enough money for transactions, they’re <strong>indifferent between money and bonds</strong>, so M<sup>d</sup> is <strong>horizontal</strong> at i = 0 (Fig 4.8). More money then has <strong>no effect on i</strong>: a <strong>liquidity trap</strong>.</p>
+  <figure><div class="scroll" id="fig-t10"></div><figcaption><b>Fig 4.8 with Ex 10 numbers.</b> \(M^d = 80(0.25 - i)\) down to i = 0 at M = 20, then flat. A: M = 12, i = 10%. B: M = 20, i = 0. C: M = 26, i still 0.</figcaption></figure>
   </div>
 
   <article class="task" id="t4-9">
-    <header class="task-h"><span class="tag">TUT 4 · EX 9</span><h4>A severe recession and continuous monetary expansion</h4></header>
-    <div class="q">The economy falls into a severe recession and the central bank keeps increasing the money supply to support it. What happens to the interest rate after some time? What is this situation called, and what is the constraint on the interest rate called? Is monetary policy very effective against a recession if the economy is already in this situation?</div>
+    <header class="task-h"><span class="tag">TUT 4 · EX 9</span><h4>A severe recession and continuous expansion</h4></header>
+    <div class="q">In a severe recession the bank keeps raising the money supply. What happens to i after some time? What is this situation called, and the constraint on i? Is monetary policy effective then?</div>
     <button class="btn reveal" type="button">Show solution</button>
     <div class="sol"><span class="bl">Solution</span>
-      <p>Each expansion lowers i, until the interest rate reaches <strong>zero</strong>. It cannot fall further: that constraint is the <strong>zero lower bound</strong>. The situation is a <strong>liquidity trap</strong>: money demand is horizontal at i = 0, so additional money is simply held (by households as deposits, by banks as reserves) and the interest rate stays at zero.</p>
-      <p>So <strong>no</strong>, conventional monetary policy is <strong>not effective</strong> once the economy is in a liquidity trap. The central bank can still increase M, but it can no longer lower i to stimulate demand. Other tools, such as fiscal policy, have to carry more of the load.</p>
+      <p style="margin-top:8px">i falls until it reaches <strong>zero</strong>: the <strong>zero lower bound</strong>. The situation is a <strong>liquidity trap</strong>: extra money is simply held (households’ deposits, banks’ reserves). So conventional policy is <strong>not effective</strong>: the bank can raise M but can’t lower i. Other tools, such as fiscal policy, must carry more of the load.</p>
     </div>
   </article>
 
   <article class="task" id="t4-10">
     <header class="task-h"><span class="tag">TUT 4 · EX 10</span><h4>Monetary policy in a liquidity trap</h4></header>
-    <div class="q">\(M^d = \$Y(0.25 - i)\) as long as interest rates are non-negative. The questions refer to the case i = 0.
-      <ol>
-        <li>What is the demand for money when i = 0 and \(\$Y = 80\)?</li>
-        <li>With \(\$Y = 80\), what is the minimum money supply at which i = 0?</li>
-        <li>Once i = 0, can the central bank keep increasing the money supply?</li>
-        <li>What is the effect of further increases in the money supply on the interest rate?</li>
-      </ol></div>
+    <div class="q">\(M^d = \$Y(0.25 - i)\) for non-negative rates.
+      <ol><li>M<sup>d</sup> at i = 0 and \(\$Y = 80\)?</li><li>With \(\$Y = 80\), the minimum money supply at which i = 0?</li><li>Once i = 0, can the bank keep raising M?</li><li>Effect of further increases on i?</li></ol></div>
     <button class="btn reveal" type="button">Show solution</button>
     <div class="sol"><span class="bl">Solution</span>
-      <div class="part"><b>a</b><div><p>\(M^d = 80(0.25 - 0) = 20\) <span class="ans">Md = 20</span></p></div></div>
-      <div class="part"><b>b</b><div><p>The rate hits zero when \(M^s = 20\). Any \(M^s &lt; 20\) gives i &gt; 0, e.g. \(M^s = 12\) gives \(i = 0.25 - 12/80 = 10\%\). <span class="ans">Minimum M = 20</span></p></div></div>
-      <div class="part"><b>c</b><div><p><strong>Yes.</strong> The central bank can always buy more bonds and issue more money. People are indifferent between money and bonds at i = 0, so they accept the extra money.</p></div></div>
-      <div class="part"><b>d</b><div><p><strong>None.</strong> Beyond M = 20 the demand curve is horizontal at zero, so i stays at 0 (points B → C in the figure). Monetary policy has lost its power over the interest rate.</p></div></div>
+      <div class="part"><b>a</b><div><p>80(0.25) <span class="ans">M<sup>d</sup> = 20</span></p></div></div>
+      <div class="part"><b>b</b><div><p><span class="ans">Minimum M = 20</span>. Below it i &gt; 0: M = 12 gives i = 10%.</p></div></div>
+      <div class="part"><b>c</b><div><p><strong>Yes.</strong> It can always buy bonds; people accept the money because they’re indifferent at i = 0.</p></div></div>
+      <div class="part"><b>d</b><div><p><strong>None</strong>: i stays at 0 (B → C). Monetary policy has lost its power over i.</p></div></div>
     </div>
   </article>
 
   <div class="prose">
   <div class="focus" style="margin-top:1.6em"><span class="bl">Focus · The liquidity trap in action</span>
-    <p>Between 2008 and 2015 the Fed vastly increased the supply of central bank money, yet the federal funds rate stayed near zero. Where did the money go? <strong>Bank reserves</strong> rose from almost nothing in 2008 to around $2,700 billion at their 2014 peak, and <strong>checkable deposits</strong> grew from about $600 billion to roughly $2,000 billion. Households held more money and banks held huge excess reserves, exactly as the horizontal part of money demand predicts.</p></div>
+    <p>2008–2015: the Fed vastly raised central bank money, yet the federal funds rate stayed near zero. <strong>Bank reserves</strong> rose from almost nothing to about $2,700bn (2014 peak) and <strong>checkable deposits</strong> from about $600bn to roughly $2,000bn, as the flat part of money demand predicts.</p></div>
   </div>
 
   <div class="lab" id="lab-money">
     <h4>Lab · Money market</h4>
-    <p class="sub">Money demand \(M^d = \$Y\,(0.25 - i)\), floored at i = 0. The central bank supplies H; with reserve ratio θ the money supply is M = H/θ (θ = 1 means no banks, as in 4.2).</p>
+    <p class="sub">\(M^d = \$Y\,(0.25 - i)\), floored at i = 0. The bank supplies H; M = H/θ (θ = 1 means no banks, as in 4.2).</p>
     <div class="lab-grid">
       <div>
         <div class="ctrls">
@@ -1194,21 +996,6 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-fa
         <span class="state" id="lab2-state"></span>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="sec" id="s4-sum">
-  <div class="summary">
-    <h4>Chapter 4 recap</h4>
-    <ol>
-      <li>Two assets: money (transactions, no interest) and bonds (interest i, no transactions).</li>
-      <li>\(M^d = \$Y\,L(i)\): proportional to nominal income, decreasing in i (opportunity cost).</li>
-      <li>Without banks, \(M = \$Y L(i)\) determines i. M ↑ → i ↓; $Y ↑ → i ↑.</li>
-      <li>The central bank changes M through open market operations; buying bonds raises their price and lowers i, since \(i = (100 - P_B)/P_B\).</li>
-      <li>Modern central banks choose i and supply whatever M that requires: \(M = \$Y L(i^*)\).</li>
-      <li>With banks, \(H = \theta \$Y L(i)\); money multiplier 1/θ, or \(1/[c + \theta(1-c)]\) with currency. In the U.S. this is the federal funds market.</li>
-      <li>Zero lower bound: at i = 0 money demand turns horizontal, extra money has no effect on i, and the economy is in a liquidity trap.</li>
-    </ol>
   </div>
 </section>
 </div>

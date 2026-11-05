@@ -47,6 +47,8 @@ a{color:var(--acc)}
 .eyebrow{font-family:var(--f-display);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2);font-weight:650}
 .hub-hero h1{font-family:var(--f-display);font-weight:800;font-stretch:125%;font-size:clamp(56px,11vw,120px);line-height:.85;letter-spacing:-.04em;margin:14px 0 0;text-wrap:balance}
 .hub-hero h1 .dim{color:var(--acc)}
+/* subject names are long single words: keep them inside the page */
+.crumbs + .hub-hero h1{font-size:clamp(30px,8.4vw,120px)}
 .hub-hero p{margin:18px 0 0;max-width:58ch;color:var(--fg-2);font-size:18px}
 .crumbs{font-family:var(--f-display);font-size:13.5px;color:var(--fg-2);margin-top:22px}
 .crumbs a{color:var(--fg-2)}
