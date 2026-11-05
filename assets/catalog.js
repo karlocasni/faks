@@ -13,6 +13,13 @@ window.FAKS_CATALOG = [
         title: 'The Goods Market & Financial Markets I',
         topics: ['Keynesian cross', 'Multiplier', 'Investment = Saving', 'Paradox of saving', 'Money demand', 'Open market operations', 'Money multiplier', 'Liquidity trap'],
         exercises: 22
+      },
+      {
+        href: 'ch05-06.html',
+        chapters: 'Chapters 5 & 6',
+        title: 'The IS-LM Model & Financial Markets II',
+        topics: ['IS curve', 'LM curve', 'Fiscal & monetary policy', 'Policy mix', 'Real interest rate', 'Risk premium', 'Bank leverage', 'Extended IS-LM', '2008 crisis'],
+        exercises: 18
       }
     ]
   },
