@@ -39,6 +39,8 @@ a{color:var(--acc)}
 .sn-drop a:hover,.sn-drop a[aria-current="page"]{background:var(--bg)}
 .sn-ch{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-2);font-weight:700}
 .sn-t{font-size:14.5px;font-weight:600;line-height:1.3}
+/* phones: subject menus wrap, so anchor every dropdown to the bar, not to its button */
+@media (max-width:600px){.sn-in{position:relative}.sn-menu{position:static}.sn-drop{left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));width:auto}}
 .sn-all{font-size:13.5px;font-weight:650;color:var(--acc)!important;border-top:1px solid var(--line);border-radius:0 0 8px 8px!important;margin-top:4px}
 
 /* hub pages */

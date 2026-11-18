@@ -36,5 +36,18 @@ window.FAKS_CATALOG = [
         exercises: 19
       }
     ]
+  },
+  {
+    id: 'accounting',
+    name: 'Accounting',
+    source: 'Lecture slides & past midterm papers',
+    scripts: [
+      {
+        href: 'l01-07.html',
+        chapters: 'Lectures 1–7 · 1st midterm',
+        title: 'Midterm Crash Script: Balance Sheet, Recording & Merchandise',
+        topics: ['Financial statements', 'IFRS concepts', 'Balance sheet order', 'Debit / credit', 'Balance sheet changes', 'VAT', 'Purchasing cost', 'Average cost & FIFO', 'Income statement', 'Long-term assets', 'New-numbers generator']
+      }
+    ]
   }
 ];

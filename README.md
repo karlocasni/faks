@@ -15,6 +15,9 @@ macroeconomics/ch05-06.html Blanchard Ch. 5 & 6: The IS-LM Model, Financial Mark
 corporate-finance/index.html    Subject page
 corporate-finance/l01-04.html   Lectures 1–4 + Tutorials 1–2: financial management,
                                 financial environment, statements, ratio analysis
+accounting/index.html           Subject page
+accounting/l01-07.html          1st midterm crash script: Lectures 1–7, both exam
+                                assignments solved, MC/fill-in banks, task generators
 ```
 
 ## Adding a script to an existing subject

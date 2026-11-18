@@ -1,0 +1,1259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Accounting · 1st Midterm Crash Script</title>
+<meta name="description" content="Accounting 1st midterm: theory from lectures 1–7, the exam tasks solved step by step, a question bank and a new-numbers practice generator.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+:root{
+  --bg:#F4F5F2; --surface:#FFFFFF; --fg:#18201C; --fg-2:#4D5853; --mute:#9AA59F; --line:#D5DBD6;
+  --acc:#0E6A58;          /* structure, key terms */
+  --bs:#A8640A;           /* balance sheet */
+  --bs-tint:#FBF4EA;
+  --rec:#2F47B0;          /* recording / merchandise */
+  --rec-tint:#EEF1FB;
+  --lta:#6A3E9E;          /* long-term assets */
+  --lta-tint:#F4EFFA;
+  --red:#C2382F;          /* traps */
+  --trap-tint:#FCEEEC;
+  --focus-tint:#EAF3F0;
+  --f-display:'Archivo','Arial Narrow',system-ui,sans-serif;
+  --f-body:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --f-mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#0F1412; --surface:#161D1A; --fg:#E2EAE6; --fg-2:#A4B1AB; --mute:#5E6D67; --line:#2A3530;
+  --acc:#4FC3A6; --bs:#E7A43C; --bs-tint:#221B11; --rec:#8C9DFF; --rec-tint:#161B2E;
+  --lta:#B994F0; --lta-tint:#1E1729; --red:#F27468; --trap-tint:#2A1716; --focus-tint:#13221D; color-scheme:dark}}
+
+*{box-sizing:border-box}
+html{scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--acc)}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:2px}
+h1,h2,h3,h4,h5{font-family:var(--f-display);text-wrap:balance;line-height:1.15;margin:0}
+p{margin:0}
+strong{font-weight:650}
+.mono{font-family:var(--f-mono);font-size:.9em;font-variant-numeric:tabular-nums}
+
+.shell{display:grid;grid-template-columns:236px minmax(0,1fr);gap:52px;max-width:1180px;margin:0 auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-bottom:96px}
+@media (max-width:980px){.shell{grid-template-columns:minmax(0,1fr);gap:0}}
+
+/* contents rail */
+.rail{position:sticky;top:0;align-self:start;max-height:100vh;overflow:auto;padding-block:32px 24px;font-family:var(--f-display);font-size:13.5px}
+.rail .rl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-2);font-weight:700;margin-bottom:8px}
+.rail ol{list-style:none;margin:0;padding:0;display:grid;gap:1px}
+.rail a{display:block;text-decoration:none;color:var(--fg-2);padding:3px 10px;border-radius:6px;line-height:1.3}
+.rail a:hover{color:var(--fg);background:var(--surface)}
+.rail a.on{color:var(--fg);background:var(--surface);font-weight:650}
+.rail .grp{margin-top:12px;font-weight:750;color:var(--fg);padding:3px 10px}
+.rail .g1{color:var(--acc)} .rail .g2{color:var(--bs)} .rail .g3{color:var(--rec)} .rail .g4{color:var(--lta)} .rail .g5{color:var(--red)}
+@media (max-width:980px){.rail{display:none}}
+.mtoc{display:none}
+@media (max-width:980px){.mtoc{display:block;margin-top:20px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-family:var(--f-display);font-size:14px}
+  .mtoc summary{padding:12px 14px;cursor:pointer;font-weight:650}
+  .mtoc ol{margin:0;padding:0 14px 14px 32px;display:grid;gap:4px}
+  .mtoc a{color:var(--fg-2);text-decoration:none}}
+
+main{min-width:0}
+.prose{max-width:72ch}
+.prose > * + *{margin-top:1em}
+
+/* hero */
+.hero{padding-block:44px 28px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:var(--f-display);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2);font-weight:650}
+.hero h1{font-size:clamp(34px,5.4vw,54px);font-stretch:118%;font-weight:780;letter-spacing:-.01em;margin-top:12px}
+.hero h1 span{color:var(--rec)}
+.hero .lede{margin-top:14px;max-width:64ch;color:var(--fg-2);font-size:18px}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-top:22px}
+.btn{font-family:var(--f-display);font-size:14px;font-weight:650;border:1px solid var(--line);background:var(--surface);color:var(--fg);padding:8px 14px;border-radius:999px;cursor:pointer}
+.btn:hover{border-color:var(--fg-2)}
+.btn[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.btn.solid{background:var(--rec);color:#fff;border-color:var(--rec)}
+.legend{display:flex;flex-wrap:wrap;gap:8px;font-family:var(--f-display);font-size:12.5px;color:var(--fg-2)}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:5px;border:1px solid var(--line);background:var(--surface)}
+.chip i{width:9px;height:9px;border-radius:2px;display:inline-block}
+
+/* exam map */
+.exam{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:26px;max-width:860px}
+@media (max-width:640px){.exam{grid-template-columns:minmax(0,1fr)}}
+.exam > div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:15px;line-height:1.45}
+.exam .hd{display:flex;justify-content:space-between;gap:8px;align-items:baseline;font-family:var(--f-display);font-weight:750;margin-bottom:6px}
+.exam .pts{font-family:var(--f-mono);font-size:13px;font-weight:600;color:var(--fg-2)}
+.exam .t1 .hd span:first-child{color:var(--acc)} .exam .t2 .hd span:first-child{color:var(--acc)}
+.exam .a1 .hd span:first-child{color:var(--bs)} .exam .a2 .hd span:first-child{color:var(--rec)}
+.exam .go{font-family:var(--f-display);font-size:13px;margin-top:6px;display:inline-block}
+.pass{margin-top:12px;max-width:860px;font-family:var(--f-display);font-size:14px;color:var(--fg-2)}
+.pass b{color:var(--red)}
+
+/* part openers */
+.opener{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 26px;align-items:end;padding-block:70px 20px;border-bottom:2px solid var(--fg);margin-bottom:6px}
+.opener .numeral{font-family:var(--f-display);font-weight:800;font-stretch:125%;font-size:clamp(88px,15vw,156px);line-height:.78;letter-spacing:-.04em}
+.o1 .numeral{color:var(--acc)} .o2 .numeral{color:var(--bs)} .o3 .numeral{color:var(--rec)} .o4 .numeral{color:var(--lta)} .o5 .numeral{color:var(--red)}
+.opener .ot{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2);font-family:var(--f-display);font-weight:650}
+.opener h2{font-size:clamp(28px,4vw,40px);font-stretch:112%;font-weight:760;margin-top:6px}
+.opener .outline{grid-column:1/-1;font-family:var(--f-display);font-size:14px;color:var(--fg-2);margin-top:12px;max-width:80ch}
+
+section.sec{padding-top:42px}
+.sec > h3{font-size:25px;font-stretch:108%;font-weight:740;display:flex;gap:12px;align-items:baseline}
+.sec > h3 .sn{font-family:var(--f-mono);font-size:15px;font-weight:600;color:var(--fg-2)}
+.p1 .sn{color:var(--acc)!important} .p2 .sn{color:var(--bs)!important} .p3 .sn{color:var(--rec)!important} .p4 .sn{color:var(--lta)!important} .p5 .sn{color:var(--red)!important}
+.sec > h3 + *{margin-top:14px}
+.sec h5{font-family:var(--f-display);font-size:17px;font-weight:700;margin-top:1.5em}
+.sec ul,.sec ol{padding-left:1.25em;margin-block:.5em 0}
+.sec li + li{margin-top:.3em}
+.src{font-family:var(--f-display);font-size:12px;color:var(--mute);letter-spacing:.04em;margin-top:4px}
+
+/* blocks */
+.def,.trap,.focus{border-radius:10px;padding:14px 18px;font-size:16px;line-height:1.55;max-width:72ch}
+.def{background:var(--surface);border:1px solid var(--line)}
+.trap{background:var(--trap-tint);border:1px solid color-mix(in srgb,var(--red) 30%,transparent)}
+.focus{background:var(--focus-tint);border:1px solid color-mix(in srgb,var(--acc) 28%,transparent)}
+.bl{display:block;font-family:var(--f-display);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:750;margin-bottom:6px}
+.def .bl,.focus .bl{color:var(--acc)} .trap .bl{color:var(--red)}
+.def dl{margin:0;display:grid;grid-template-columns:max-content minmax(0,1fr);gap:6px 16px}
+.def dt{font-weight:650}
+.def dd{margin:0}
+@media (max-width:560px){.def dl{grid-template-columns:minmax(0,1fr)} .def dd{margin-bottom:6px}}
+.trap ul,.focus ul,.def ul{margin-top:.3em}
+
+/* tables */
+.tw{overflow-x:auto;margin-top:1.1em;max-width:100%}
+table{border-collapse:collapse;font-family:var(--f-display);font-size:14.5px;font-variant-numeric:tabular-nums;width:100%}
+th,td{padding:7px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-2);font-weight:700;background:var(--bg)}
+td.r,th.r{text-align:right;white-space:nowrap}
+tr.h td{font-weight:750;background:color-mix(in srgb,var(--bg) 60%,var(--surface))}
+tr.sub td:first-child{padding-left:28px}
+tr.sub2 td:first-child{padding-left:44px;color:var(--fg-2)}
+tr.tot td{font-weight:800;border-top:2px solid var(--fg);border-bottom:none}
+tr.key td{background:var(--focus-tint);font-weight:700}
+.tbl-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:4px 6px;max-width:820px}
+.dr{color:var(--rec);font-weight:700} .cr{color:var(--bs);font-weight:700}
+.up{color:var(--acc);font-weight:700} .down{color:var(--red);font-weight:700}
+
+/* balance sheet two-column */
+.bsheet{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface);max-width:860px;margin-top:1.1em}
+.bsheet > div{min-width:0}
+.bsheet > div + div{border-left:2px solid var(--fg)}
+.bsheet table{font-size:14px}
+.bsheet .cap{font-family:var(--f-display);font-weight:750;text-align:center;padding:8px;border-bottom:2px solid var(--fg);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+@media (max-width:700px){.bsheet{grid-template-columns:minmax(0,1fr)}.bsheet > div + div{border-left:none;border-top:2px solid var(--fg)}}
+
+/* T-accounts */
+.tacc{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:12px;margin-top:1.1em}
+.ta{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px 8px;font-family:var(--f-display);font-size:13.5px;min-width:0}
+.ta h6{margin:0 0 6px;font-size:12.5px;text-align:center;font-weight:750;line-height:1.25;min-height:2.5em;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+.ta h6 small{display:block;font-weight:500;color:var(--fg-2);font-size:11px}
+.ta .cols{display:grid;grid-template-columns:1fr 1fr;border-top:2px solid var(--fg)}
+.ta .cols > div{padding:6px 6px 2px;min-height:44px}
+.ta .cols > div + div{border-left:2px solid var(--fg)}
+.ta .it{display:flex;justify-content:space-between;gap:6px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ta .it span:first-child{color:var(--fg-2);font-size:12px}
+.ta .bal{margin-top:6px;padding-top:4px;border-top:1px dashed var(--line);font-size:12px;color:var(--fg-2);text-align:center}
+.ta .bal b{color:var(--fg)}
+.ta.g-bs{border-top:3px solid var(--bs)} .ta.g-is{border-top:3px solid var(--rec)} .ta.g-cl{border-top:3px solid var(--acc)} .ta.g-res{border-top:3px solid var(--red)}
+
+/* journal */
+.jr td:nth-child(1){font-family:var(--f-mono);font-weight:600;color:var(--fg-2);width:44px}
+.jr td.why{color:var(--fg-2);font-size:13.5px}
+
+/* flow */
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin-top:1.1em;font-family:var(--f-display);font-size:13.5px;max-width:880px}
+.flow .st{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:8px 11px;flex:1 1 130px;min-width:0}
+.flow .st b{display:block;font-family:var(--f-mono);font-size:11.5px;color:var(--rec)}
+.flow .ar{align-self:center;color:var(--fg-2);font-weight:700}
+
+/* tasks */
+.task{margin-top:1.6em;border-radius:12px;border:1px solid var(--line);overflow:hidden;max-width:880px}
+.task.k2{background:var(--bs-tint)} .task.k3{background:var(--rec-tint)} .task.k4{background:var(--lta-tint)} .task.k1{background:var(--focus-tint)}
+.task-h{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;padding:12px 18px;border-bottom:1px solid var(--line)}
+.tag{font-family:var(--f-mono);font-size:11.5px;font-weight:600;letter-spacing:.04em;padding:3px 8px;border-radius:4px;color:#fff;background:var(--acc)}
+.k2 .tag{background:var(--bs)} .k3 .tag{background:var(--rec)} .k4 .tag{background:var(--lta)}
+.task-h h4{font-size:16.5px;font-weight:700}
+.task .q{padding:14px 18px 6px;font-size:16px}
+.task .q > * + *{margin-top:.6em}
+.task .q ol{padding-left:1.4em;margin:.4em 0 0}
+.reveal{display:none;margin:10px 18px 16px}
+.sol{margin:12px 18px 18px;background:var(--surface);border-radius:10px;border:1px solid var(--line);padding:6px 18px 16px;font-size:16px}
+.sol > .bl{color:var(--fg-2);margin:12px 0 2px}
+.sol > * + *{margin-top:.7em}
+.ans{display:inline-block;font-family:var(--f-mono);font-weight:600;font-size:14px;padding:1px 8px;border-radius:5px;border:1px solid var(--line);background:var(--bg)}
+body.practice .reveal{display:inline-flex}
+body.practice .task:not(.open) .sol{display:none}
+
+/* question bank */
+.qb{display:grid;gap:12px;margin-top:1.2em;max-width:880px}
+.mcq{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.mcq .qt{font-family:var(--f-display);font-weight:700;font-size:15.5px;line-height:1.35}
+.mcq .qt .n{font-family:var(--f-mono);color:var(--fg-2);font-weight:600;margin-right:6px}
+.mcq .opts{display:grid;gap:6px;margin-top:10px}
+.mcq button{all:unset;cursor:pointer;display:block;font-family:var(--f-display);font-size:14.5px;padding:7px 11px;border-radius:7px;border:1px solid var(--line);background:var(--bg);line-height:1.35}
+.mcq button:hover{border-color:var(--fg-2)}
+.mcq button:focus-visible{outline:2px solid var(--acc)}
+.mcq button.ok{background:var(--focus-tint);border-color:var(--acc);font-weight:700}
+.mcq button.no{background:var(--trap-tint);border-color:var(--red);text-decoration:line-through}
+.mcq .why{display:none;margin-top:10px;font-size:15px;color:var(--fg-2)}
+.mcq.done .why{display:block}
+.score{font-family:var(--f-display);font-size:14px;font-weight:700;margin-top:10px}
+.fill{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:16px}
+.fill .blank{display:inline-block;min-width:120px;border-bottom:2px solid var(--fg-2);font-family:var(--f-display);font-weight:700;color:transparent;cursor:pointer;padding:0 4px;border-radius:3px 3px 0 0;user-select:none}
+.fill .blank.show{color:var(--acc);background:var(--focus-tint)}
+.fill .blank:not(.show):hover{background:var(--bg)}
+
+/* generators */
+.gen{margin-top:1.4em;border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:18px;max-width:900px}
+.gen .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.gen .prob{margin-top:14px;font-size:16px}
+.gen .prob ul{margin-top:.4em}
+.gen .prob li + li{margin-top:.25em}
+.gen .gsol{margin-top:14px;display:none}
+.gen.show .gsol{display:block}
+.calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin-top:10px}
+.calc div{background:var(--bg);border-radius:8px;padding:8px 10px;font-family:var(--f-display)}
+.calc span{display:block;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--fg-2);font-weight:700}
+.calc b{font-family:var(--f-mono);font-size:15.5px;font-variant-numeric:tabular-nums}
+.calc small{display:block;font-family:var(--f-mono);font-size:11.5px;color:var(--fg-2);margin-top:2px}
+
+/* plan */
+.plan{display:grid;gap:8px;margin-top:1em;max-width:860px}
+.plan .row{display:grid;grid-template-columns:86px minmax(0,1fr);gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:15.5px}
+.plan .row b{font-family:var(--f-mono);font-size:13px;color:var(--rec);padding-top:2px}
+.plan label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.plan input{margin-top:5px;accent-color:var(--acc)}
+
+/* kit */
+.kit{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px;margin-top:1.2em}
+.kit .kc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0;font-size:15px}
+.kit .kc h5{margin:0 0 6px;font-family:var(--f-display);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--acc)}
+.kit .kc ul{padding-left:1.1em;margin:0}
+.kit .kc li + li{margin-top:.25em}
+footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--line);font-family:var(--f-display);font-size:13px;color:var(--fg-2)}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+@media (max-width:600px){body{font-size:16px}.sol{padding:6px 12px 14px;margin-inline:10px}.task .q,.task-h{padding-inline:12px}.gen{padding:14px}}
+@media print{.rail,.toolbar,.reveal,.gen .bar{display:none!important}.shell{display:block}body.practice .task .sol{display:block!important}}
+</style>
+</head>
+<body>
+<div id="site-nav" data-root="../" data-current="accounting/l01-07.html"></div>
+<div class="shell">
+<nav class="rail" aria-label="Contents">
+  <div class="rl">Contents</div>
+  <ol id="toc">
+    <li><a href="#top">The exam &amp; day plan</a></li>
+    <li class="grp g1">1 · Foundations</li>
+    <li><a href="#s1-1">What accounting is</a></li>
+    <li><a href="#s1-2">Financial statements</a></li>
+    <li><a href="#s1-3">Concepts &amp; principles</a></li>
+    <li class="grp g2">2 · Balance sheet</li>
+    <li><a href="#s2-1">Assets</a></li>
+    <li><a href="#s2-2">Sources of assets</a></li>
+    <li><a href="#s2-3">Ordering criteria</a></li>
+    <li><a href="#s2-4">Exam task 1 solved</a></li>
+    <li class="grp g3">3 · Recording</li>
+    <li><a href="#s3-1">Equation &amp; T-account</a></li>
+    <li><a href="#s3-2">Debit / credit rules</a></li>
+    <li><a href="#s3-3">4 balance sheet changes</a></li>
+    <li><a href="#s3-4">Documents &amp; books</a></li>
+    <li><a href="#s3-5">Revenues, expenses, IS</a></li>
+    <li><a href="#s3-6">VAT</a></li>
+    <li><a href="#s3-7">Merchandise &amp; COGS</a></li>
+    <li><a href="#s3-8">Costs → result</a></li>
+    <li><a href="#s3-9">Exam task 2 solved</a></li>
+    <li><a href="#s3-10">The 10-step recipe</a></li>
+    <li class="grp g4">4 · Long-term assets</li>
+    <li><a href="#s4-1">Intangible</a></li>
+    <li><a href="#s4-2">Tangible &amp; depreciation</a></li>
+    <li><a href="#s4-3">Financial &amp; receivables</a></li>
+    <li class="grp g5">5 · Practice</li>
+    <li><a href="#s5-1">Multiple choice bank</a></li>
+    <li><a href="#s5-2">Fill-in bank</a></li>
+    <li><a href="#s5-3">New numbers: task 1</a></li>
+    <li><a href="#s5-4">New numbers: task 2</a></li>
+    <li><a href="#kit">Last-hour sheet</a></li>
+  </ol>
+</nav>
+
+<main id="top">
+<header class="hero">
+  <div class="eyebrow">Accounting · 1st midterm · Lectures 1–7 + past papers 2022–2025</div>
+  <h1>1st Midterm <span>Crash Script</span></h1>
+  <p class="lede">Built around the exact shape of the exam: the same two theory blocks and the same two assignments come back every year with new numbers. Every section here feeds one of those four blocks. Learn the recipe, then drill it with fresh numbers at the end.</p>
+  <div class="toolbar">
+    <button class="btn" id="practice" type="button" aria-pressed="false">Practice mode: off</button>
+    <div class="legend">
+      <span class="chip"><i style="background:var(--acc)"></i>Key terms</span>
+      <span class="chip"><i style="background:var(--bs)"></i>Balance sheet</span>
+      <span class="chip"><i style="background:var(--rec)"></i>Recording / debit</span>
+      <span class="chip"><i style="background:var(--red)"></i>Exam trap</span>
+    </div>
+  </div>
+  <p style="margin-top:8px;font-family:var(--f-display);font-size:13.5px;color:var(--fg-2)">Practice mode hides the worked solutions behind a button so you can try the tasks first.</p>
+
+  <div class="exam">
+    <div class="t1"><div class="hd"><span>A · Theory, Example 1</span><span class="pts">10 pts</span></div>5 multiple-choice questions, 2 points each. The same questions repeat almost word for word between years.<br><a class="go" href="#s5-1">→ Question bank</a></div>
+    <div class="t2"><div class="hd"><span>A · Theory, Example 2</span><span class="pts">15 pts</span></div>Fill in the blanks: balance sheet changes, conditions for recording, 3 types of accounting, accrual basis, business books, equity split.<br><a class="go" href="#s5-2">→ Fill-in bank</a></div>
+    <div class="a1"><div class="hd"><span>B · Assignment, Example 1</span><span class="pts">6 pts</span></div>Find the missing item with the accounting equation (1), then draw the opening balance sheet in the asked order (5).<br><a class="go" href="#s2-4">→ Solved task 1</a></div>
+    <div class="a2"><div class="hd"><span>B · Assignment, Example 2</span><span class="pts">19 pts</span></div>Merchandise company: 10 transactions in T-accounts (12), income statement (5), two ending balances (2).<br><a class="go" href="#s3-9">→ Solved task 2</a></div>
+  </div>
+  <p class="pass">To pass you need <b>60% of theory (15/25)</b> and <b>60% of the assignment (15/25)</b> separately. A great score in one half does not save the other.</p>
+
+  <h3 style="font-family:var(--f-display);font-size:18px;margin-top:28px">One-day plan</h3>
+  <div class="plan" id="plan">
+    <div class="row"><b>1 · 90 min</b><label><input type="checkbox"><span>Part 3 from <a href="#s3-1">3.1</a> to <a href="#s3-10">3.10</a>. Then close the page and redo exam task 2 from memory on paper. This alone is 19 points.</span></label></div>
+    <div class="row"><b>2 · 40 min</b><label><input type="checkbox"><span>Part 2 (balance sheet) and exam task 1. Memorise the order of positions.</span></label></div>
+    <div class="row"><b>3 · 45 min</b><label><input type="checkbox"><span>Part 1 and Part 4 for theory. Read the green “key terms” and red “trap” boxes twice.</span></label></div>
+    <div class="row"><b>4 · 30 min</b><label><input type="checkbox"><span>Multiple choice and fill-in banks until you score 100%.</span></label></div>
+    <div class="row"><b>5 · 90 min</b><label><input type="checkbox"><span>Generators: at least 3 rounds of task 2 and 2 rounds of task 1 on paper, checking each against the solution.</span></label></div>
+    <div class="row"><b>6 · 15 min</b><label><input type="checkbox"><span>Before sleep and on the morning of the exam: the <a href="#kit">last-hour sheet</a>.</span></label></div>
+  </div>
+
+  <details class="mtoc"><summary>Contents</summary><ol>
+    <li><a href="#s1-1">1 · Foundations</a></li><li><a href="#s2-1">2 · Balance sheet</a></li><li><a href="#s2-4">Exam task 1 solved</a></li>
+    <li><a href="#s3-1">3 · Recording</a></li><li><a href="#s3-6">VAT</a></li><li><a href="#s3-7">Merchandise</a></li><li><a href="#s3-9">Exam task 2 solved</a></li><li><a href="#s3-10">10-step recipe</a></li>
+    <li><a href="#s4-1">4 · Long-term assets</a></li><li><a href="#s5-1">MC bank</a></li><li><a href="#s5-2">Fill-in bank</a></li><li><a href="#s5-3">Generator task 1</a></li><li><a href="#s5-4">Generator task 2</a></li><li><a href="#kit">Last-hour sheet</a></li>
+  </ol></details>
+</header>
+
+<!-- ============================== PART 1 ============================== -->
+<div class="p1">
+<div class="opener o1"><div class="numeral">1</div><div><div class="ot">Part one · Lecture 1</div><h2>Foundations</h2></div>
+<div class="outline">Definitions, users, the set of financial statements and the concepts and principles behind them. Mostly theory points.</div></div>
+
+<section class="sec" id="s1-1">
+  <h3><span class="sn">1.1</span>What accounting is</h3>
+  <div class="prose">
+  <p>Accounting is the continual process of <strong>capturing</strong> financial data, <strong>organizing</strong> it and <strong>producing financial reports</strong> for people who make economic decisions. It is called the “language of business”. The day-to-day record-keeping part is <strong>bookkeeping</strong>.</p>
+  <div class="def"><span class="bl">Key terms</span><dl>
+    <dt>Business transaction</dt><dd>An economic event that directly changes a company’s financial position or its results.</dd>
+    <dt>Stakeholder</dt><dd>Anyone with an interest in the company’s performance. <strong>Internal:</strong> owners, managers, employees. <strong>External:</strong> investors, creditors, tax authorities, regulators, customers, unions.</dd>
+    <dt>Double-entry</dt><dd>Every transaction is recorded at least twice: a debit in one account and a credit in another. Total debits = total credits, which is how errors are found.</dd>
+    <dt>Types of business</dt><dd>Manufacturing (makes products), merchandising (resells goods, like the exam’s company “Villi”), service.</dd>
+  </dl></div>
+  <h5>Modern accounting content: 3 types <span class="mono" style="color:var(--red)">(fill-in every year)</span></h5>
+  <div class="tw tbl-card"><table>
+    <tr><th>Type</th><th>What it does</th><th>For whom</th></tr>
+    <tr><td><strong>Financial accounting</strong></td><td>Records transactions and reports them in financial statements (bookkeeping)</td><td>External users</td></tr>
+    <tr><td><strong>Cost accounting</strong></td><td>Internal efficiency: measures costs and revenues by parts of the company (accounting analysis)</td><td>Internal</td></tr>
+    <tr><td><strong>Managerial accounting</strong></td><td>Planning and control of costs and revenues</td><td>Managers</td></tr>
+  </table></div>
+  <p>Do not confuse it with <strong>traditional</strong> accounting content, which has five parts: accounting planning, bookkeeping, accounting control, accounting analysis and providing information.</p>
+  </div>
+</section>
+
+<section class="sec" id="s1-2">
+  <h3><span class="sn">1.2</span>The set of financial statements</h3>
+  <div class="prose">
+  <p>The full set has <strong>five</strong> statements. The exam’s correct answer is: <em>balance sheet, income statement, cash flow statement, statement of changes in equity and notes to the financial statements</em>. A distractor always slips in “ledger”, “journal” or “depreciation statement”; those are books or schedules, not statements.</p>
+  <div class="tw tbl-card"><table>
+    <tr><th>Statement</th><th>Shows</th><th>Time</th></tr>
+    <tr class="key"><td>Balance sheet</td><td><strong>Financial position</strong>: assets = liabilities + equity</td><td>A point in time (static)</td></tr>
+    <tr><td>Income statement (P&amp;L)</td><td>Success: revenues − expenses = profit or loss</td><td>A period (dynamic)</td></tr>
+    <tr><td>Cash flow statement</td><td>Cash in and out, in 3 activities: operating, investing, financing</td><td>A period</td></tr>
+    <tr><td>Statement of changes in equity / retained earnings</td><td>Owners’ investment, dividends, net income; the “bridge” from income statement to balance sheet</td><td>A period</td></tr>
+    <tr><td>Notes</td><td>Extra information, need not be numbers: accounting policies, uncertainties, statistics</td><td>—</td></tr>
+  </table></div>
+  <p>The six <strong>basic accounting categories</strong>: assets, liabilities, equity, revenues, expenses, financial result.</p>
+  <p>Order of preparation in the accounting cycle: income statement → retained earnings statement → balance sheet, because profit flows into equity.</p>
+  </div>
+</section>
+
+<section class="sec" id="s1-3">
+  <h3><span class="sn">1.3</span>Concepts, principles, standards</h3>
+  <div class="prose">
+  <p>The hierarchy is <strong>concepts → principles → standards → accounting policies</strong>. Each level makes the one above it more concrete.</p>
+  <div class="def"><span class="bl">Concepts (assumptions)</span><dl>
+    <dt>IFRS concepts</dt><dd><strong>Accrual basis</strong> and <strong>going concern</strong>. These two are the official ones.</dd>
+    <dt>Accrual basis</dt><dd>Revenues and expenses are recorded when <strong>earned / incurred</strong>, not when cash is received or paid.</dd>
+    <dt>Going concern</dt><dd>The company is expected to keep operating into the foreseeable future.</dd>
+    <dt>Monetary unit</dt><dd>Money is the unit of measurement.</dd>
+    <dt>Economic entity</dt><dd>Whose asset is it? The company is separate from its owners.</dd>
+    <dt>Time period</dt><dd>Life of a business is cut into artificial periods (quarter, year).</dd>
+  </dl></div>
+  <h5>IFRS principles</h5>
+  <p>Understandability, cost, relevance, materiality, reliability, true presentation, substance over form, neutrality, prudence, full disclosure, comparability. The ones defined in class:</p>
+  <ul>
+    <li><strong>Cost principle</strong>: assets are recorded at acquisition cost.</li>
+    <li><strong>Relevance</strong>: the information makes a difference to decisions. <strong>Reliability</strong>: free of error and bias.</li>
+    <li><strong>Comparability</strong>: can compare companies. <strong>Consistency</strong>: same methods year to year.</li>
+    <li><strong>Full disclosure</strong>: disclose anything that would change an investor’s or creditor’s view.</li>
+  </ul>
+  <h5>Constraints</h5>
+  <ul>
+    <li><strong>Materiality</strong>: if an item makes no difference, the rule need not be followed strictly.</li>
+    <li><strong>Conservatism (prudence)</strong>: in grey areas choose what does not overstate assets or income.</li>
+  </ul>
+  <h5>GAAP covers 3 areas</h5>
+  <p><strong>Valuation</strong> (at what value), <strong>recognition</strong> (asset or expense?), <strong>disclosure</strong> (what to explain).</p>
+  <h5>Standards and policies</h5>
+  <p><strong>IFRS</strong> are international standards (made by the IASB); national standards (in Croatia HSFI / CFRS) cover national specifics. <strong>Accounting policies</strong> are the choices the standards allow a company (for example depreciation method, inventory method); they must be disclosed in the notes.</p>
+  </div>
+</section>
+</div>
+
+<!-- ============================== PART 2 ============================== -->
+<div class="p2">
+<div class="opener o2"><div class="numeral">2</div><div><div class="ot">Part two · Lecture 2</div><h2>The Balance Sheet</h2></div>
+<div class="outline">Classify every item, then put the classes in the right order. That is the whole of exam task 1 (6 points) and at least one multiple-choice question.</div></div>
+
+<section class="sec" id="s2-1">
+  <h3><span class="sn">2.1</span>Assets</h3>
+  <div class="prose">
+  <p>An <strong>asset</strong> is a resource the company <strong>controls</strong> that will bring <strong>future economic benefit</strong>. The dividing line is <strong>one year from the balance sheet date</strong>: realised within a year → current; longer → non-current.</p>
+  </div>
+  <div class="tw tbl-card"><table>
+    <tr><th style="width:34%">Group</th><th>Typical items (the exam picks from these)</th></tr>
+    <tr class="h"><td colspan="2">I · NON-CURRENT (long-term) ASSETS</td></tr>
+    <tr class="sub"><td>1. Intangible</td><td>Patents, licences, software, concessions, franchise, trademarks, goodwill, advances for intangible assets</td></tr>
+    <tr class="sub"><td>2. Tangible</td><td>Land, buildings, plant, equipment, tools, furniture, motor vehicles, advances for tangible assets</td></tr>
+    <tr class="sub"><td>3. Financial</td><td><strong>Given</strong> long-term loans, long-term deposits given, bought long-term securities, shares in related companies</td></tr>
+    <tr class="sub"><td>4. Receivables</td><td>Receivables due in more than 1 year (sales on credit)</td></tr>
+    <tr class="h"><td colspan="2">II · CURRENT (short-term) ASSETS</td></tr>
+    <tr class="sub"><td>1. Inventories</td><td>Raw materials, work in progress, finished goods, <strong>merchandise</strong>, advances for inventories</td></tr>
+    <tr class="sub"><td>2. Receivables</td><td><strong>Accounts receivable</strong> (customers), from employees, from the state (<strong>VAT receivable</strong>), other</td></tr>
+    <tr class="sub"><td>3. Financial assets</td><td>Given short-term loans, short-term deposits, bought short-term securities</td></tr>
+    <tr class="sub"><td>4. Cash</td><td>Cash at bank, cash in hand (register)</td></tr>
+  </table></div>
+</section>
+
+<section class="sec" id="s2-2">
+  <h3><span class="sn">2.2</span>Sources of assets: equity and liabilities</h3>
+  <div class="prose">
+  <p><strong>Liabilities</strong> are obligations to transfer assets later, because of a past event (owed to suppliers, lenders, banks, employees, the state). <strong>Equity</strong> is the residual: <span class="mono">Equity = Assets − Liabilities</span>. In a bankruptcy creditors are paid first; owners get what is left.</p>
+  </div>
+  <div class="tw tbl-card"><table>
+    <tr><th style="width:34%">Group</th><th>Typical items</th></tr>
+    <tr class="h"><td colspan="2">I · EQUITY</td></tr>
+    <tr class="sub"><td>Paid-in</td><td>Owner’s / shareholders’ equity (share capital, common stock), additional paid-in capital</td></tr>
+    <tr class="sub"><td>Earned</td><td>Reserves (legal, statutory, other), <strong>retained earnings</strong>, net income of the year (or loss, as a minus)</td></tr>
+    <tr class="h"><td colspan="2">II · NON-CURRENT LIABILITIES (due after more than 1 year)</td></tr>
+    <tr class="sub"><td></td><td><strong>Received</strong> long-term loans, <strong>issued</strong> long-term bonds / securities, long-term accounts payable</td></tr>
+    <tr class="h"><td colspan="2">III · CURRENT LIABILITIES (due within 1 year)</td></tr>
+    <tr class="sub"><td></td><td>Accounts payable, salaries payable, received short-term loans, issued short-term securities, income tax liability, VAT liability, dividends payable, received advances</td></tr>
+  </table></div>
+  <div class="trap" style="margin-top:1.1em"><span class="bl">Trap: given vs received, bought vs issued</span>
+    <ul>
+      <li><strong>Given</strong> loan / deposit and <strong>bought</strong> securities = money we lent out → <strong>asset</strong> (financial).</li>
+      <li><strong>Received</strong> loan and <strong>issued</strong> bonds = money we borrowed → <strong>liability</strong>.</li>
+      <li>“Issued bonds on the 3-year period” → more than 1 year → <strong>non-current liability</strong>.</li>
+      <li>Retained earnings → <strong>equity</strong>, never a liability.</li>
+    </ul>
+  </div>
+  <p class="prose" style="margin-top:1em">Equity is divided into <strong>paid-in</strong> and <strong>earned</strong> equity <span class="mono" style="color:var(--red)">(fill-in every year)</span>.</p>
+</section>
+
+<section class="sec" id="s2-3">
+  <h3><span class="sn">2.3</span>Ordering criteria</h3>
+  <div class="prose">
+  <p>Liquidity = how fast an asset turns into cash. Cash is the most liquid; intangible assets are the least. The question is just: <strong>where does cash stand?</strong></p>
+  </div>
+  <div class="tw tbl-card"><table>
+    <tr><th>Criterion</th><th>Cash is…</th><th>Assets order</th><th>Matching sources order</th></tr>
+    <tr class="key"><td><strong>Increasing liquidity</strong><br><span style="font-weight:500;color:var(--fg-2)">(used in the exam, EU / Croatian format)</span></td><td><strong>last</strong></td><td>Non-current: intangible → tangible → financial → receivables; then current: inventories → receivables → financial → <strong>cash</strong></td><td>Equity → non-current liabilities → current liabilities<br><span style="font-weight:500;color:var(--fg-2)">(from the longest-held source to the one due soonest)</span></td></tr>
+    <tr><td><strong>Decreasing liquidity</strong><br><span style="font-weight:500;color:var(--fg-2)">(US format)</span></td><td><strong>first</strong></td><td>Current: <strong>cash</strong> → financial → receivables → inventories; then non-current: receivables → financial → tangible → intangible</td><td>Current liabilities → non-current liabilities → equity</td></tr>
+  </table></div>
+  <div class="focus" style="margin-top:1.1em"><span class="bl">Memory hook</span>MC question: “cash is the <em>first</em> position” → <strong>decreasing liquidity</strong>. “Cash is the <em>last</em> position” → <strong>increasing liquidity</strong>. “Maturity” options are distractors: maturity is used for the sources side, not for assets.</div>
+</section>
+
+<section class="sec" id="s2-4">
+  <h3><span class="sn">2.4</span>Exam task 1, solved (2024 paper)</h3>
+  <div class="task k2">
+    <div class="task-h"><span class="tag">B · EX 1</span><h4>Company “Villi”, 1 January 2020</h4></div>
+    <div class="q">
+      <p>Account receivables ?; Merchandise inventories “X” (100 kg) 100.000; Given long-term loans 50.000; Account payables 10.000; Patents 50.000; Equipment 30.000; Shareholders equity 725.000; Cash at bank 50.000; Issued bonds on the 3-year period 5.000; Retained earnings 10.000.</p>
+      <ol type="a"><li>Calculate account receivables using the basic accounting equation. (1)</li><li>Prepare the beginning balance sheet using <strong>increasing liquidity</strong> and the appropriate maturity criteria for liabilities and equity. (5)</li></ol>
+    </div>
+    <button class="btn reveal" type="button">Show solution</button>
+    <div class="sol">
+      <span class="bl">Step 1 · Label every item</span>
+      <p>Write the class next to each line before doing anything else (as you did on the paper): AR → CA receivables · Merchandise → CA inventories · Given LT loans → NCA financial · AP → CL · Patents → NCA intangible · Equipment → NCA tangible · Shareholders equity → E · Cash at bank → CA cash · Bonds 3 years → NCL · Retained earnings → E.</p>
+      <span class="bl">a) The equation</span>
+      <p>Sources = 725.000 + 10.000 + 5.000 + 10.000 = <strong>750.000</strong>. Known assets = 100.000 + 50.000 + 50.000 + 30.000 + 50.000 = 280.000.</p>
+      <p>Assets = Sources ⇒ AR = 750.000 − 280.000 = <span class="ans">AR = 470.000</span></p>
+      <span class="bl">b) Balance sheet</span>
+      <div class="bsheet">
+        <div><div class="cap">Assets</div><table>
+          <tr class="h"><td>I Non-current assets</td><td class="r">130.000</td></tr>
+          <tr class="sub"><td>1. Intangible: patents</td><td class="r">50.000</td></tr>
+          <tr class="sub"><td>2. Tangible: equipment</td><td class="r">30.000</td></tr>
+          <tr class="sub"><td>3. Financial: given LT loans</td><td class="r">50.000</td></tr>
+          <tr class="h"><td>II Current assets</td><td class="r">620.000</td></tr>
+          <tr class="sub"><td>1. Inventories: merchandise</td><td class="r">100.000</td></tr>
+          <tr class="sub"><td>2. Receivables: account rec.</td><td class="r">470.000</td></tr>
+          <tr class="sub"><td>3. Cash: cash at bank</td><td class="r">50.000</td></tr>
+          <tr class="tot"><td>TOTAL ASSETS</td><td class="r">750.000</td></tr>
+        </table></div>
+        <div><div class="cap">Sources of assets</div><table>
+          <tr class="h"><td>I Equity</td><td class="r">735.000</td></tr>
+          <tr class="sub"><td>Shareholders equity</td><td class="r">725.000</td></tr>
+          <tr class="sub"><td>Retained earnings</td><td class="r">10.000</td></tr>
+          <tr class="h"><td>II Non-current liabilities</td><td class="r">5.000</td></tr>
+          <tr class="sub"><td>Issued bonds (3 years)</td><td class="r">5.000</td></tr>
+          <tr class="h"><td>III Current liabilities</td><td class="r">10.000</td></tr>
+          <tr class="sub"><td>Account payables</td><td class="r">10.000</td></tr>
+          <tr><td>&nbsp;</td><td></td></tr><tr><td>&nbsp;</td><td></td></tr>
+          <tr class="tot"><td>TOTAL SOURCES</td><td class="r">750.000</td></tr>
+        </table></div>
+      </div>
+      <div class="trap"><span class="bl">Where the 5 points go</span>
+        <ul><li>Heading: company name + “Balance sheet on 1.1.2020”.</li><li>Group headings (I, II, III) with <strong>subtotals</strong>, items under them.</li><li>Correct order on both sides.</li><li>Totals equal. If they do not, you misclassified something: re-check given/received.</li><li>Empty groups (e.g. NCA receivables, CA financial) can be shown with 0 or left out; your paper showed them as 0, which is fine.</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ============================== PART 3 ============================== -->
+<div class="p3">
+<div class="opener o3"><div class="numeral">3</div><div><div class="ot">Part three · Lectures 3, 4, 5</div><h2>The Recording Process</h2></div>
+<div class="outline">Debit and credit rules, the four balance sheet changes, business books, revenues and expenses, VAT and merchandise. Everything you need for exam task 2 (19 points) and half the theory.</div></div>
+
+<section class="sec" id="s3-1">
+  <h3><span class="sn">3.1</span>The accounting equation and the T-account</h3>
+  <div class="prose">
+  <p>Double-entry bookkeeping is governed by the <strong>accounting equation</strong>. If revenue equals expenses the <strong>basic</strong> equation holds:</p>
+  <p style="text-align:center;font-family:var(--f-mono);font-size:19px;font-weight:600">Assets = Liabilities + Equity</p>
+  <p>During a period revenues and expenses differ, so the <strong>extended</strong> equation is:</p>
+  <p style="text-align:center;font-family:var(--f-mono);font-size:16px;font-weight:600">A = L + E + (Revenue − Expenses)</p>
+  <p>An <strong>account</strong> is the record of increases and decreases of one item. A <strong>T-account</strong> has three elements <span class="mono" style="color:var(--red)">(fill-in)</span>: <strong>1. a title, 2. a left (debit) side, 3. a right (credit) side.</strong> The balance is the difference of the two sides: bigger debit side → debit balance, bigger credit side → credit balance.</p>
+  <p>There are five basic account types: <strong>assets, liabilities, equity</strong> (balance sheet accounts) and <strong>revenues, expenses</strong> (income statement accounts).</p>
+  </div>
+</section>
+
+<section class="sec" id="s3-2">
+  <h3><span class="sn">3.2</span>Debit / credit rules</h3>
+  <div class="tw tbl-card"><table>
+    <tr><th>Account type</th><th>Beginning balance S°</th><th>Increase</th><th>Decrease</th><th>Normal balance</th></tr>
+    <tr><td><strong>Assets</strong> (incl. VAT receivable, AR, inventories)</td><td><span class="dr">Debit</span></td><td><span class="dr">Debit</span></td><td><span class="cr">Credit</span></td><td>Debit</td></tr>
+    <tr><td><strong>Liabilities</strong> (AP, VAT payable, salaries, tax)</td><td><span class="cr">Credit</span></td><td><span class="cr">Credit</span></td><td><span class="dr">Debit</span></td><td>Credit</td></tr>
+    <tr><td><strong>Equity</strong></td><td><span class="cr">Credit</span></td><td><span class="cr">Credit</span></td><td><span class="dr">Debit</span></td><td>Credit</td></tr>
+    <tr class="key"><td><strong>Expenses / costs</strong></td><td><strong>none</strong></td><td><span class="dr">Debit</span></td><td><span class="cr">Credit</span> (when closed)</td><td>Debit</td></tr>
+    <tr class="key"><td><strong>Revenues</strong></td><td><strong>none</strong></td><td><span class="cr">Credit</span></td><td><span class="dr">Debit</span> (when closed)</td><td>Credit</td></tr>
+  </table></div>
+  <div class="trap" style="margin-top:1.1em"><span class="bl">MC trap, asked in 2024 and 2025</span>“Beginning value on T-account expenses / revenues is recorded…” → <strong>they don’t have a beginning value.</strong> Revenues and expenses are <em>temporary</em> accounts: they start every period at zero and are closed into the result at the end. Only balance sheet (permanent) accounts carry a beginning balance S°, because of the going concern concept.</div>
+  <div class="prose" style="margin-top:1em">
+  <p>How revenues and expenses touch the balance sheet:</p>
+  <ul>
+    <li><strong>Revenue</strong> comes with an <strong>increase of an asset</strong> (cash, AR) or a <strong>decrease of a liability</strong>.</li>
+    <li><strong>Expense</strong> comes with a <strong>decrease of an asset</strong> (inventory sold, cash paid) or an <strong>increase of a liability</strong> (salaries owed, invoice received).</li>
+  </ul>
+  <p>Journal convention: debits are written first, the credit is indented below.</p>
+  </div>
+</section>
+
+<section class="sec" id="s3-3">
+  <h3><span class="sn">3.3</span>The 4 balance sheet changes</h3>
+  <div class="prose"><p>Every balance sheet transaction falls into exactly one of four types. Asked every year in the fill-in: <em>“Changes that cause just a change in qualitative meaning are <u>concentric</u> and <u>perifern</u> balance sheet changes.”</em></p></div>
+  <div class="tw tbl-card"><table>
+    <tr><th>Change</th><th>Effect</th><th>Total changes?</th><th>Nature</th><th>Example</th></tr>
+    <tr><td><strong>Centripetal</strong> (towards the company)</td><td>Asset <span class="up">↑</span> &nbsp; Source <span class="up">↑</span></td><td>Yes, up</td><td>Quantitative + qualitative</td><td>Buy merchandise on credit; owner invests cash</td></tr>
+    <tr><td><strong>Centrifugal</strong> (out of the company)</td><td>Asset <span class="down">↓</span> &nbsp; Source <span class="down">↓</span></td><td>Yes, down</td><td>Quantitative + qualitative</td><td>Pay a supplier from the bank account</td></tr>
+    <tr class="key"><td><strong>Concentric</strong> (inside assets)</td><td>Asset <span class="up">↑</span> &nbsp; Asset <span class="down">↓</span></td><td>No</td><td><strong>Qualitative only</strong></td><td>Buy equipment for cash; customer pays AR</td></tr>
+    <tr class="key"><td><strong>Perifern</strong> (inside sources)</td><td>Source <span class="up">↑</span> &nbsp; Source <span class="down">↓</span></td><td>No</td><td><strong>Qualitative only</strong></td><td>Pay a supplier with a new bank loan; turn a loan into share capital</td></tr>
+  </table></div>
+  <p class="src">Note: one slide says centrifugal is “decrease of asset and increase of sources”; that is a typo. Both sides decrease, otherwise the balance sheet would not balance.</p>
+</section>
+
+<section class="sec" id="s3-4">
+  <h3><span class="sn">3.4</span>Documents, transactions and business books</h3>
+  <div class="prose">
+  <h5 style="margin-top:0">4 conditions for recording a transaction <span class="mono" style="color:var(--red)">(fill-in, 4 points)</span></h5>
+  <ol>
+    <li>There is an <strong>accounting (bookkeeping) document</strong>: written proof of the business event (invoice, sales slip, cheque, bank statement).</li>
+    <li>It <strong>influences assets, sources of assets, revenues or expenses</strong>.</li>
+    <li>It <strong>happened in the past</strong>.</li>
+    <li>It is <strong>measurable in money</strong>.</li>
+  </ol>
+  <p><strong>External</strong> transactions happen between the company and an outside party (these are recorded). <strong>Internal</strong> events happen within the company. Test: <em>is the financial position changed?</em> Buying a computer or paying a bill: yes. Discussing a design with a customer or hiring someone: no.</p>
+  <h5>Business books <span class="mono" style="color:var(--red)">(fill-in: name 2 main books)</span></h5>
+  <div class="def"><dl>
+    <dt>Journal</dt><dd>Book of original entry. <strong>Chronological</strong> (by date). Shows the whole effect of a transaction in one place and helps find errors.</dd>
+    <dt>Ledger</dt><dd>The whole group of accounts. Organised <strong>by accounts</strong>, not dates, in financial statement order.</dd>
+    <dt>Subledgers</dt><dd>Analytical / support books: per customer, supplier, raw material, finished good.</dd>
+    <dt>Posting</dt><dd>Transferring journal entries to ledger accounts. Done chronologically and on time.</dd>
+    <dt>Trial balance</dt><dd>List of all accounts with their debit and credit balances; proves debits = credits and is the starting point for the statements.</dd>
+    <dt>Chart of accounts</dt><dd>Numbering of all accounts. In Croatia each company makes its own; it is not set by law.</dd>
+  </dl></div>
+  <h5>Accounting cycle</h5>
+  <p>Analyse → journalize → post to T-accounts → trial balance → adjusting entries → adjusted trial balance → financial statements (IS → RE statement → BS) → close temporary accounts.</p>
+  </div>
+</section>
+
+<section class="sec" id="s3-5">
+  <h3><span class="sn">3.5</span>Revenues, expenses and the income statement</h3>
+  <div class="prose">
+  <div class="def"><span class="bl">Definitions (IFRS wording)</span><dl>
+    <dt>Revenue</dt><dd>Increase in economic benefits in the period (inflow of assets or decrease of liabilities) that increases equity, other than owners’ contributions.</dd>
+    <dt>Expense</dt><dd>Decrease in economic benefits (outflow of assets or new liabilities) that decreases equity, other than distributions to owners.</dd>
+    <dt>Revenue recognition</dt><dd>Recognise revenue in the period it is <strong>earned</strong> (goods delivered / service done) and collection is reasonably certain.</dd>
+    <dt>Matching principle</dt><dd>Expenses go into the same period as the revenues they helped produce.</dd>
+    <dt>Accrual basis</dt><dd>Revenues and expenses are recorded when earned / incurred, <strong>not</strong> when cash is received or paid. <span class="mono" style="color:var(--red)">(2-point fill-in)</span></dd>
+    <dt>Gains / losses</dt><dd>Difference between what is received and the book value given up (e.g. selling equipment). Shown separately, since selling assets is not the main business.</dd>
+    <dt>Retained earnings</dt><dd>All net income since formation minus dividends paid. Not the same as cash.</dd>
+  </dl></div>
+  <p><strong>Adjusting entries</strong> (end of period) always touch one income statement account and one balance sheet account, <strong>never cash</strong>. Two families: <strong>prepayments</strong> (prepaid expenses, unearned revenues) and <strong>accruals</strong> (accrued revenues, accrued expenses).</p>
+  <h5>Two methods for preparing the income statement <span class="mono" style="color:var(--red)">(MC 2025)</span></h5>
+  <p>The answer is <strong>“by nature types method and functional method.”</strong> (Direct / indirect is for the <em>cash flow</em> statement; average cost / FIFO is for <em>inventory</em>.)</p>
+  <div class="tw tbl-card"><table>
+    <tr><th></th><th>By nature (type of expense)</th><th>Functional (function of expense)</th></tr>
+    <tr><td>Groups expenses by</td><td>What was used: cost of goods sold, materials &amp; energy, staff, depreciation…</td><td>What they were for: cost of sales, then period expenses (selling, admin)</td></tr>
+    <tr><td>Signature line</td><td>Operating revenues − operating expenses</td><td><strong>Gross margin</strong> = revenue − cost of sold merchandise</td></tr>
+  </table></div>
+  </div>
+</section>
+
+<section class="sec" id="s3-6">
+  <h3><span class="sn">3.6</span>VAT (value added tax)</h3>
+  <div class="prose">
+  <p>Croatian VAT: general rate <strong>25%</strong>, lower rate 13%. Features: neutral for the company, wide base, destination principle, credit method (you pay VAT on sales minus VAT on purchases).</p>
+  <div class="tw tbl-card"><table>
+    <tr><th>Wording in the task</th><th>Base (net)</th><th>VAT</th><th>Total (gross)</th></tr>
+    <tr class="key"><td>“X eur <strong>plus VAT</strong>”</td><td>X</td><td>X × 0,25</td><td>X × 1,25</td></tr>
+    <tr class="key"><td>“X eur, <strong>VAT included</strong>”</td><td>X ÷ 1,25</td><td>X × 20% &nbsp;<span style="font-weight:500">(= X − X/1,25)</span></td><td>X</td></tr>
+  </table></div>
+  <p>The <strong>converted rate</strong> 20% comes from 25 × 100 / (100 + 25). Example from the paper: electricity 10.000 VAT included → base 8.000, VAT 2.000.</p>
+  </div>
+  <div class="tacc">
+    <div class="ta g-bs"><h6>Received invoice (purchase)</h6><div class="cols"><div><div class="it"><span>Cost/asset</span><b>net</b></div><div class="it"><span>VAT receivable</span><b>VAT</b></div></div><div><div class="it"><span>Acc. payable</span><b>gross</b></div></div></div></div>
+    <div class="ta g-is"><h6>Issued invoice (sale)</h6><div class="cols"><div><div class="it"><span>Acc. receivable</span><b>gross</b></div></div><div><div class="it"><span>Revenue</span><b>net</b></div><div class="it"><span>VAT payable</span><b>VAT</b></div></div></div></div>
+  </div>
+  <div class="prose" style="margin-top:1em">
+  <h5 style="margin-top:0">End of period: VAT settlement (step 9)</h5>
+  <p>Close the smaller account into the bigger one and record the difference:</p>
+  <ul>
+    <li><strong>VAT payable &gt; VAT receivable</strong> → we owe the state: D VAT payable (full) / C VAT receivable (full) + C <strong>Liability for VAT difference</strong>.</li>
+    <li><strong>VAT receivable &gt; VAT payable</strong> → the state owes us (<strong>return</strong>): D VAT payable (full) + D <strong>Receivable for VAT return</strong> / C VAT receivable (full).</li>
+  </ul>
+  </div>
+</section>
+
+<section class="sec" id="s3-7">
+  <h3><span class="sn">3.7</span>Merchandise: purchasing cost and cost of goods sold</h3>
+  <div class="prose">
+  <p>Merchandise is recorded first at <strong>purchasing (acquisition) cost</strong> (cost principle) and later at the <strong>lower of purchasing cost and net market value</strong> (IAS 2).</p>
+  <div class="focus"><span class="bl">Purchasing cost (MC every year)</span>
+  <p style="font-family:var(--f-mono);font-weight:600">Purchasing price + dependent (depending) costs + customs duties + non-refundable taxes − discounts</p>
+  <p style="margin-top:.4em">Dependent costs = transport, loading, unloading, insurance on the way. <strong>VAT receivable is never part of it</strong>, because it is refunded by the state. That eliminates every option with “VAT”.</p></div>
+  <h5>Recording at purchasing cost: the “calculation of supply” route</h5>
+  <p>Each cost component first gets its own account, then all are gathered in <strong>Calculation of supply</strong> (obračun nabave) and moved into the inventory at once.</p>
+  </div>
+  <div class="flow">
+    <div class="st"><b>(1)</b>Purchasing price D<br>VAT rec. D / AP C</div><div class="ar">→</div>
+    <div class="st"><b>(2)</b>Depending costs D<br>VAT rec. D / AP C</div><div class="ar">→</div>
+    <div class="st"><b>(3)</b>Calculation of supply D / price C, depending costs C</div><div class="ar">→</div>
+    <div class="st"><b>(3a)</b>Merchandise inventories D / Calculation of supply C</div>
+  </div>
+  <div class="prose" style="margin-top:1em">
+  <h5 style="margin-top:0">Sale = two entries</h5>
+  <ol>
+    <li><strong>Revenue side</strong> at selling price: D AR (gross) / C Revenue from sold merchandise (net) + C VAT payable.</li>
+    <li><strong>Cost side</strong> at purchasing cost: D Expenses from sold merchandise / C Merchandise inventories.</li>
+  </ol>
+  <h5>Which cost leaves the warehouse?</h5>
+  <p>Allowed by IFRS: <strong>FIFO</strong> and <strong>average cost</strong>. Also exist: LIFO (last in, first out) and HIFO (highest in, first out).</p>
+  </div>
+  <div class="tw tbl-card"><table>
+    <tr><th>Villi, sell 150 kg</th><th>Stock</th><th>Calculation</th><th class="r">COGS</th></tr>
+    <tr><td rowspan="2">Data</td><td>Beginning 100 kg</td><td>100.000 → 1.000 €/kg</td><td></td></tr>
+    <tr><td>Purchased 200 kg</td><td>220.000 (price + transport) → 1.100 €/kg</td><td></td></tr>
+    <tr class="key"><td><strong>Average cost</strong></td><td>300 kg / 320.000</td><td>320.000 / 300 = 1.066,67 €/kg × 150</td><td class="r">160.000</td></tr>
+    <tr><td><strong>FIFO</strong></td><td>oldest first</td><td>100 × 1.000 + 50 × 1.100</td><td class="r">155.000</td></tr>
+  </table></div>
+  <div class="trap" style="margin-top:1.1em"><span class="bl">Average cost: don’t round early</span>Use <span class="mono">COGS = total value × kg sold / total kg</span> = 320.000 × 150 / 300. You get an exact number without rounding 1.066,67.</div>
+  <div class="prose" style="margin-top:1em">
+  <h5 style="margin-top:0">Alternative: recording at selling price (lecture 5)</h5>
+  <p>The inventory is kept at selling price = purchasing cost + <strong>difference in price</strong> (DIP, the margin). On a sale, expenses are recorded at selling price and the DIP of sold goods is then reversed. In retail shops the calculated VAT is also included in the inventory price. The exam task so far always says <em>“recorded by actual purchasing cost”</em>, so the route above is the one to know cold.</p>
+  </div>
+</section>
+
+<section class="sec" id="s3-8">
+  <h3><span class="sn">3.8</span>From costs to the financial result</h3>
+  <div class="prose">
+  <p>Costs such as electricity, salaries, rent, advertising and insurance are first recorded on <strong>cost accounts</strong>. At period end they move to expenses in two hops, then everything closes into the result:</p>
+  </div>
+  <div class="flow">
+    <div class="st"><b>(8)</b>Cost transference D / each cost account C</div><div class="ar">→</div>
+    <div class="st"><b>(8a)</b>Period expenses D / Cost transference C</div><div class="ar">→</div>
+    <div class="st"><b>(10)</b>Revenues D / Difference of revenue &amp; expenses C</div><div class="ar">→</div>
+    <div class="st"><b>(10a)</b>Difference D / all expense accounts C</div><div class="ar">→</div>
+    <div class="st"><b>(10b–c)</b>Gross income → tax + net income</div>
+  </div>
+  <div class="prose" style="margin-top:1em">
+  <ul>
+    <li><strong>Gross income</strong> (profit before tax) = revenues − expenses.</li>
+    <li><strong>Income tax</strong> = gross income × rate (10% in the papers; Croatia also uses 18%).</li>
+    <li><strong>Net income</strong> = gross income − tax. It goes to equity (earned).</li>
+    <li>If expenses &gt; revenues, it is a <strong>loss</strong>: D Loss / C Difference, and there is <strong>no tax</strong>.</li>
+  </ul>
+  <p>The student-side tip from your notes holds: revenues are closed from the <em>left</em> (debit) side because they were booked on the right; expenses are closed from the <em>right</em> (credit) side.</p>
+  </div>
+</section>
+
+<section class="sec" id="s3-9">
+  <h3><span class="sn">3.9</span>Exam task 2, solved (2024 paper)</h3>
+  <div class="task k3">
+    <div class="task-h"><span class="tag">B · EX 2</span><h4>Company “Villi”, merchandise X, year 2020</h4></div>
+    <div class="q">
+      <p><strong>1.1.2020:</strong> Merchandise inventories X (100 kg) 100.000 eur; Equity 100.000 eur.</p>
+      <ol>
+        <li>Bought 200 kg of X from “Mango”, invoice 200.000 + VAT 25%.</li>
+        <li>Invoice from “Transprom” for transport and unloading of X, 20.000 + VAT 25%.</li>
+        <li>Record the calculation of purchase; merchandise is recorded at actual purchasing cost.</li>
+        <li>Sold 150 kg to customer “Six”, invoice 250.000 + VAT 25%.</li>
+        <li>Decrease inventories for sold merchandise using the average cost method.</li>
+        <li>Invoice from “HEP” for electricity, 10.000 eur, VAT (25%) included.</li>
+        <li>Calculation of salaries 30.000 eur.</li>
+        <li>Record cost transference on expenses.</li>
+        <li>Calculate VAT and determine the difference (liability or return).</li>
+        <li>Establish and record the financial result; corporate income tax 10%.</li>
+      </ol>
+      <p>a) Open T-accounts and record (12) · b) Income statement by functional method (5) · c) Ending values of merchandise inventories and account payables (2).</p>
+    </div>
+    <button class="btn reveal" type="button">Show solution</button>
+    <div class="sol">
+      <span class="bl">Helper calculations (write these at the bottom of the page, as you did)</span>
+      <div class="calc">
+        <div><span>(1) Purchase</span><b>250.000</b><small>200.000 × 1,25 · VAT 50.000</small></div>
+        <div><span>(2) Transport</span><b>25.000</b><small>20.000 × 1,25 · VAT 5.000</small></div>
+        <div><span>(4) Sale</span><b>312.500</b><small>250.000 × 1,25 · VAT 62.500</small></div>
+        <div><span>(5) Average cost</span><b>160.000</b><small>320.000 / 300 kg × 150 kg</small></div>
+        <div><span>(6) Electricity</span><b>8.000</b><small>10.000 / 1,25 · VAT 2.000</small></div>
+        <div><span>(9) VAT</span><b>5.500 owed</b><small>62.500 − 57.000</small></div>
+      </div>
+      <span class="bl">a) Journal (what goes into the T-accounts)</span>
+      <div class="tw"><table class="jr">
+        <tr><th>#</th><th>Debit</th><th>Credit</th><th class="r">Amount</th></tr>
+        <tr><td>S°</td><td>Merchandise inventories</td><td>Equity</td><td class="r">100.000</td></tr>
+        <tr><td>1</td><td>Purchasing price 200.000<br>VAT receivable 50.000</td><td>Account payable</td><td class="r">250.000</td></tr>
+        <tr><td>2</td><td>Depending costs 20.000<br>VAT receivable 5.000</td><td>Account payable</td><td class="r">25.000</td></tr>
+        <tr><td>3</td><td>Calculation of supply</td><td>Purchasing price 200.000<br>Depending costs 20.000</td><td class="r">220.000</td></tr>
+        <tr><td>3a</td><td>Merchandise inventories (+200 kg)</td><td>Calculation of supply</td><td class="r">220.000</td></tr>
+        <tr><td>4</td><td>Account receivable</td><td>Revenue from sold merch. 250.000<br>VAT payable 62.500</td><td class="r">312.500</td></tr>
+        <tr><td>5</td><td>Expenses from sold merchandise</td><td>Merchandise inventories (−150 kg)</td><td class="r">160.000</td></tr>
+        <tr><td>6</td><td>Cost of electricity 8.000<br>VAT receivable 2.000</td><td>Account payable</td><td class="r">10.000</td></tr>
+        <tr><td>7</td><td>Cost of salaries</td><td>Liability for salaries</td><td class="r">30.000</td></tr>
+        <tr><td>8</td><td>Cost transference</td><td>Cost of electricity 8.000<br>Cost of salaries 30.000</td><td class="r">38.000</td></tr>
+        <tr><td>8a</td><td>Period expenses</td><td>Cost transference</td><td class="r">38.000</td></tr>
+        <tr><td>9</td><td>VAT payable</td><td>VAT receivable 57.000<br>Liability for VAT difference 5.500</td><td class="r">62.500</td></tr>
+        <tr><td>10</td><td>Revenue from sold merchandise</td><td>Difference of revenue and expenses</td><td class="r">250.000</td></tr>
+        <tr><td>10a</td><td>Difference of revenue and expenses</td><td>Expenses from sold merch. 160.000<br>Period expenses 38.000</td><td class="r">198.000</td></tr>
+        <tr><td>10b</td><td>Difference of revenue and expenses</td><td>Gross income</td><td class="r">52.000</td></tr>
+        <tr><td>10c</td><td>Gross income</td><td>Income tax liability 5.200<br>Net income 46.800</td><td class="r">52.000</td></tr>
+      </table></div>
+      <span class="bl">a) The T-accounts</span>
+      <div class="tacc" id="villiT"></div>
+      <p style="font-family:var(--f-display);font-size:13px;color:var(--fg-2)">Top stripe: <span style="color:var(--bs)">■</span> balance sheet · <span style="color:var(--rec)">■</span> cost / revenue / expense · <span style="color:var(--acc)">■</span> clearing account (closes to zero) · <span style="color:var(--red)">■</span> result. Clearing and income statement accounts end at 0, shown as “=”.</p>
+      <span class="bl">b) Income statement, functional method</span>
+      <div class="tw"><table>
+        <tr><th colspan="2">Company “Villi” · Income statement 1.1.–31.12.2020</th></tr>
+        <tr><td>1. Revenue from sold merchandise</td><td class="r">250.000</td></tr>
+        <tr><td>2. Expenses from sold merchandise</td><td class="r">160.000</td></tr>
+        <tr class="key"><td>3. Gross margin (1 − 2)</td><td class="r">90.000</td></tr>
+        <tr><td>4. Period expenses</td><td class="r">38.000</td></tr>
+        <tr class="sub2"><td>cost of electricity 8.000 · cost of salaries 30.000</td><td></td></tr>
+        <tr><td>5. Income from operating activity (3 − 4)</td><td class="r">52.000</td></tr>
+        <tr><td>6. Financial revenue (interest)</td><td class="r">0</td></tr>
+        <tr><td>7. Financial expenses (interest)</td><td class="r">0</td></tr>
+        <tr><td>8. Income from financial activity (6 − 7)</td><td class="r">0</td></tr>
+        <tr><td>9. Gross income (5 + 8)</td><td class="r">52.000</td></tr>
+        <tr><td>10. Income tax (10%)</td><td class="r">5.200</td></tr>
+        <tr class="tot"><td>11. Net income (9 − 10)</td><td class="r">46.800</td></tr>
+      </table></div>
+      <span class="bl">b′) If they ask “by nature type” instead</span>
+      <div class="tw"><table>
+        <tr><td>1. Operating revenues (revenue from sold merchandise)</td><td class="r">250.000</td></tr>
+        <tr><td>2. Operating expenses (a + b)</td><td class="r">198.000</td></tr>
+        <tr class="sub"><td>a) Expenses from sold merchandise</td><td class="r">160.000</td></tr>
+        <tr class="sub"><td>b) Period expenses: electricity (material costs) 8.000, salaries (staff costs) 30.000</td><td class="r">38.000</td></tr>
+        <tr><td>3. Income / loss from operating activity (1 − 2)</td><td class="r">52.000</td></tr>
+        <tr><td>4.–6. Financial revenue, expenses, result</td><td class="r">0</td></tr>
+        <tr><td>7. Gross income (3 + 6)</td><td class="r">52.000</td></tr>
+        <tr><td>8. Income tax (10%)</td><td class="r">5.200</td></tr>
+        <tr class="tot"><td>9. Net income (7 − 8)</td><td class="r">46.800</td></tr>
+      </table></div>
+      <p>Same final number; the only visible difference is that the <strong>functional</strong> one has the <strong>gross margin</strong> line.</p>
+      <span class="bl">c) Ending values</span>
+      <p>Merchandise inventories = 100.000 + 220.000 − 160.000 = <span class="ans">160.000 (150 kg)</span></p>
+      <p>Account payables = 250.000 + 25.000 + 10.000 = <span class="ans">285.000</span> (salaries are a separate liability, not AP).</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s3-10">
+  <h3><span class="sn">3.10</span>The 10-step recipe (memorise this)</h3>
+  <div class="prose"><p>Whatever the numbers, task 2 follows this skeleton. Learn the right-hand column and the task becomes arithmetic.</p></div>
+  <div class="tw tbl-card"><table>
+    <tr><th>#</th><th>Event in the task</th><th>Entry</th></tr>
+    <tr><td>S°</td><td>Opening balances</td><td>Assets on the debit side, equity/liabilities on the credit side. Write the kg next to merchandise.</td></tr>
+    <tr><td>1</td><td>Supplier invoice for goods + VAT</td><td>D Purchasing price (net), D VAT receivable / C Account payable (gross)</td></tr>
+    <tr><td>2</td><td>Transport / unloading / insurance invoice + VAT (customs: no VAT, liability to customs)</td><td>D Depending costs (net), D VAT receivable / C Account payable (gross)</td></tr>
+    <tr><td>3</td><td>Calculation of purchase at purchasing cost</td><td>D Calculation of supply / C Purchasing price, C Depending costs; then (3a) D Merchandise inventories / C Calculation of supply</td></tr>
+    <tr><td>4</td><td>Sale + VAT</td><td>D Account receivable (gross) / C Revenue from sold merchandise (net), C VAT payable</td></tr>
+    <tr><td>5</td><td>Decrease inventories (average / FIFO)</td><td>D Expenses from sold merchandise / C Merchandise inventories</td></tr>
+    <tr><td>6</td><td>Utility / service invoice (watch “VAT included”)</td><td>D Cost of … (net), D VAT receivable / C Account payable (gross)</td></tr>
+    <tr><td>7</td><td>Salaries calculated</td><td>D Cost of salaries / C Liability for salaries</td></tr>
+    <tr><td>8</td><td>Cost transference</td><td>D Cost transference / C each cost; then (8a) D Period expenses / C Cost transference</td></tr>
+    <tr><td>9</td><td>VAT settlement</td><td>D VAT payable / C VAT receivable, difference to Liability for VAT difference (or D Receivable for VAT return)</td></tr>
+    <tr><td>10</td><td>Financial result, tax t%</td><td>(10) D Revenues / C Difference · (10a) D Difference / C Expenses from sold merch., C Period expenses · (10b) D Difference / C Gross income · (10c) D Gross income / C Income tax liability, C Net income</td></tr>
+  </table></div>
+  <div class="trap" style="margin-top:1.1em"><span class="bl">Point-killers seen on papers</span>
+    <ul>
+      <li>Putting VAT into the merchandise value. VAT always goes to its own account.</li>
+      <li>Multiplying a “VAT included” amount by 1,25. Divide.</li>
+      <li>Using the selling price for step 5. The inventory decrease is always at <em>cost</em>.</li>
+      <li>Forgetting the kg: the average cost needs beginning kg + bought kg.</li>
+      <li>Forgetting (3a) or (8a): the clearing accounts must end at zero.</li>
+      <li>Counting salaries into account payables in part c.</li>
+      <li>Number every entry (1), (2), (3a)… on both sides; graders follow the numbers.</li>
+    </ul>
+  </div>
+</section>
+</div>
+
+<!-- ============================== PART 4 ============================== -->
+<div class="p4">
+<div class="opener o4"><div class="numeral">4</div><div><div class="ot">Part four · Lectures 6 &amp; 7</div><h2>Long-Term Assets</h2></div>
+<div class="outline">Not yet on the past papers’ assignments, but in the lectures and fair game for multiple choice and fill-ins. Learn the definitions, the 4 formulas and the entries.</div></div>
+
+<section class="sec" id="s4-1">
+  <h3><span class="sn">4.1</span>Long-term intangible assets (LTIA)</h3>
+  <div class="prose">
+  <p>Long-term assets are not meant for sale, last longer than one year and <strong>transfer their value gradually</strong> onto new products. Tax rule: value <strong>&gt; 500 EUR</strong> and useful life <strong>&gt; 1 year</strong>.</p>
+  <p>Intangible assets have no physical form, their life and benefits are hard to predict and they are often hard to sell separately. Types: R&amp;D expenditures, patents, licences, software, concessions, franchise, trademarks, other rights, goodwill (only if bought), advances.</p>
+  <div class="def"><dl>
+    <dt>Research</dt><dd>Always an <strong>expense</strong> of the period: future benefit cannot be proved yet.</dd>
+    <dt>Development</dt><dd><strong>Capitalised</strong> as an intangible asset if all criteria hold (technical feasibility, intention and ability to use or sell, a market, resources to finish, cost reliably measurable). Otherwise a period expense.</dd>
+    <dt>Patent</dt><dd>Exclusive right to use an own innovation after registration. Bought: at purchase price + dependent costs (legal, admin fees).</dd>
+    <dt>Licence</dt><dd>A bought right to use someone else’s patented innovation.</dd>
+    <dt>Franchise</dt><dd>Paying another company for the right to run its business for a time, purpose and area (fast food).</dd>
+    <dt>Concession</dt><dd>Right granted by the state (roads, water, oil, gas) for a fee; recorded as LTIA and amortised over the concession period.</dd>
+    <dt>Trademark</dt><dd>Recognised only if <strong>bought</strong>; internally developed is not an asset.</dd>
+    <dt>Goodwill</dt><dd>Reputation. Only <strong>bought</strong> goodwill (purchase of a whole business) is recorded: cost − fair value of net assets acquired. <strong>Not amortised</strong>, only written down if impaired.</dd>
+  </dl></div>
+  <p>Valuation: at the start, <strong>acquisition cost</strong> (price after discounts + dependent costs + customs + excise). Later, either the <strong>cost model</strong> (cost − amortisation − write-downs) or the <strong>revaluation model</strong> (fair value). Standards: IAS 38, HSFI/CFRS 5.</p>
+  </div>
+</section>
+
+<section class="sec" id="s4-2">
+  <h3><span class="sn">4.2</span>Long-term tangible assets (LTTA) and depreciation</h3>
+  <div class="prose">
+  <p>Recognised as an asset if future benefits are probable and the cost can be measured reliably. <strong>Acquisition cost</strong> = purchase price (incl. customs, excise, after discounts) + all costs to bring it to working condition: site preparation, delivery, installation, architects’ and engineers’ fees, estimated dismantling cost. Standards: IAS 16, IAS 36, IAS 40, IFRS 5.</p>
+  </div>
+  <div class="tw tbl-card"><table>
+    <tr><th>Event</th><th>Debit</th><th>Credit</th></tr>
+    <tr><td>Purchase invoice</td><td>Asset in preparation (net), VAT receivable</td><td>Account payable</td></tr>
+    <tr><td>Put into use</td><td>Asset in usage</td><td>Asset in preparation</td></tr>
+    <tr><td>Depreciation / amortisation</td><td>Depreciation cost</td><td>Accumulated depreciation</td></tr>
+    <tr><td>Write-down (impairment)</td><td>Expenses of value adjustment</td><td>Value correction</td></tr>
+    <tr><td>Sale</td><td>AR (gross); Accumulated depreciation; Expense of sold asset (carrying amount)</td><td>Asset in usage (cost); Revenue from sold asset; VAT payable</td></tr>
+  </table></div>
+  <div class="calc" style="max-width:820px">
+    <div><span>Straight-line rate</span><b>100 / useful life</b><small>5 years → 20% per year</small></div>
+    <div><span>Annual amount</span><b>cost × rate / 100</b><small>quarterly = annual / 4</small></div>
+    <div><span>Functional (units)</span><b>(cost / n) × n₁</b><small>n total units, n₁ units this year</small></div>
+    <div><span>Carrying amount</span><b>cost − acc. depr.</b><small>book value</small></div>
+  </div>
+  <div class="prose" style="margin-top:1em">
+  <ul>
+    <li>Time methods: <strong>proportional</strong> (straight-line, same every year), <strong>degressive</strong> (falling), <strong>progressive</strong> (rising). Plus the <strong>functional</strong> (units of activity) method.</li>
+    <li>Depreciation starts the <strong>month after</strong> the asset is put into use. It is <strong>cost allocation, not valuation</strong>, and is an accounting policy that affects the result.</li>
+    <li><strong>Not depreciated:</strong> land, forest, art, archives, assets in preparation, advances.</li>
+    <li><strong>Impairment:</strong> if carrying amount &gt; recoverable amount (the <em>higher</em> of fair value / net selling price and value in use).</li>
+    <li><strong>Stocktake (inventory process):</strong> actual &gt; book → <strong>surplus</strong>; actual &lt; book → <strong>deficit</strong>.</li>
+    <li>Ways an asset leaves: sale, disposal, donation, inventory deficit.</li>
+  </ul>
+  </div>
+</section>
+
+<section class="sec" id="s4-3">
+  <h3><span class="sn">4.3</span>Long-term financial assets and receivables</h3>
+  <div class="prose">
+  <p><strong>Long-term financial assets</strong> are financial investments for more than one year that bring interest or dividends: shares in related companies, given loans, participating interests, securities, given deposits (IAS 32, IAS 39, IFRS 7). <strong>Long-term receivables</strong> are due after more than one year: from related companies, from sales on credit, other.</p>
+  <p>On the short-term side (lecture 5): <strong>receivables</strong> come from customers (AR, domestic and abroad), employees (advances for trips, extra-paid salary, damages), and the state (mostly VAT receivable). <strong>Cash</strong> is cash at bank and cash in the register; payments between companies are cashless. A <strong>letter of credit</strong> is a bank’s promise to pay the seller: a payment-insurance instrument.</p>
+  </div>
+</section>
+</div>
+
+<!-- ============================== PART 5 ============================== -->
+<div class="p5">
+<div class="opener o5"><div class="numeral">5</div><div><div class="ot">Part five</div><h2>Practice</h2></div>
+<div class="outline">Click an answer to check it. Click a blank to reveal it. Then generate fresh versions of the two assignments and solve them on paper.</div></div>
+
+<section class="sec" id="s5-1">
+  <h3><span class="sn">5.1</span>Multiple choice bank</h3>
+  <div class="prose"><p>Questions marked ★ appeared on a past paper. The rest are built from the lectures in the same style.</p></div>
+  <div class="qb" id="mcq"></div>
+  <div class="score" id="mcqScore"></div>
+</section>
+
+<section class="sec" id="s5-2">
+  <h3><span class="sn">5.2</span>Fill-in bank</h3>
+  <div class="prose"><p>Say the answer out loud, then click the blank.</p></div>
+  <div class="qb" id="fills"></div>
+</section>
+
+<section class="sec" id="s5-3">
+  <h3><span class="sn">5.3</span>New numbers: assignment task 1</h3>
+  <div class="gen" id="gen1">
+    <div class="bar"><button class="btn solid" type="button" data-act="new">New task</button><button class="btn" type="button" data-act="sol">Show / hide solution</button></div>
+    <div class="prob"></div>
+    <div class="gsol"></div>
+  </div>
+</section>
+
+<section class="sec" id="s5-4">
+  <h3><span class="sn">5.4</span>New numbers: assignment task 2</h3>
+  <div class="gen" id="gen2">
+    <div class="bar"><button class="btn solid" type="button" data-act="new">New task</button><button class="btn" type="button" data-act="sol">Show / hide solution</button></div>
+    <div class="prob"></div>
+    <div class="gsol"></div>
+  </div>
+</section>
+
+<section class="sec" id="kit">
+  <h3><span class="sn">★</span>Last-hour sheet</h3>
+  <div class="kit">
+    <div class="kc"><h5>Fill-in answers</h5><ul>
+      <li>Qualitative-only changes: <strong>concentric</strong> &amp; <strong>perifern</strong></li>
+      <li>Quantitative: centripetal (both ↑), centrifugal (both ↓)</li>
+      <li>3 types: <strong>financial, cost, managerial</strong></li>
+      <li>2 books: <strong>journal</strong> &amp; <strong>ledger</strong></li>
+      <li>Equity: <strong>paid-in</strong> &amp; <strong>earned</strong></li>
+      <li>T-account: title, debit (left), credit (right)</li>
+      <li>Journal → ledger = <strong>posting</strong></li>
+      <li>Double entry governed by the <strong>accounting equation</strong>: A = L + E</li>
+    </ul></div>
+    <div class="kc"><h5>4 recording conditions</h5><ul>
+      <li>Accounting document = written proof</li>
+      <li>Affects assets, sources, revenues or expenses</li>
+      <li>Happened in the past</li>
+      <li>Measurable in money</li>
+    </ul><h5 style="margin-top:12px">Accrual basis</h5><p>Revenues and expenses recorded when earned/incurred, not when cash is received/paid.</p></div>
+    <div class="kc"><h5>MC instant answers</h5><ul>
+      <li>IS methods: nature types &amp; functional</li>
+      <li>Expenses/revenues S°: none</li>
+      <li>Financial position: balance sheet</li>
+      <li>Purchasing cost: price + dependent + customs − discounts</li>
+      <li>Cash first: decreasing liquidity · last: increasing</li>
+      <li>FS set: BS, IS, CF, changes in equity, notes</li>
+    </ul></div>
+    <div class="kc"><h5>Numbers</h5><ul>
+      <li>“plus VAT”: × 1,25 · “VAT included”: ÷ 1,25</li>
+      <li>Avg cost COGS = total value × kg sold / total kg</li>
+      <li>FIFO: oldest layer first</li>
+      <li>Tax = gross income × t · NI = GI − tax</li>
+      <li>End merch = S° + (3a) − (5)</li>
+      <li>End AP = all gross supplier invoices</li>
+      <li>Straight-line = cost / years</li>
+    </ul></div>
+  </div>
+</section>
+
+<footer>Sources: lectures 1–7 (prof. Ivana Dražić Lutilsky) and midterm papers 2022, 2023/24 (B, 21.11.2024) and 2025 (A, 04.12.2025). Amounts in EUR, written with the exam’s dot thousands separator.</footer>
+</div>
+</main>
+</div>
+
+<script>
+/* ---------- helpers ---------- */
+const fmt = n => { const r = Math.round(n*100)/100; const d = Number.isInteger(r)?0:2; return r.toLocaleString('de-DE',{minimumFractionDigits:d,maximumFractionDigits:2}); };
+const pick = a => a[Math.floor(Math.random()*a.length)];
+const el = (tag, cls, html) => { const e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; };
+const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+
+/* ---------- practice mode ---------- */
+const pbtn=document.getElementById('practice');
+pbtn.addEventListener('click',()=>{const on=document.body.classList.toggle('practice');pbtn.setAttribute('aria-pressed',on);pbtn.textContent='Practice mode: '+(on?'on':'off');});
+document.querySelectorAll('.task .reveal').forEach(b=>b.addEventListener('click',()=>{const t=b.closest('.task');t.classList.toggle('open');b.textContent=t.classList.contains('open')?'Hide solution':'Show solution';}));
+
+/* ---------- plan checkboxes (remembered) ---------- */
+(function(){let saved=[];try{saved=JSON.parse(localStorage.getItem('acc-plan')||'[]')}catch(e){}
+  document.querySelectorAll('#plan input').forEach((c,i)=>{c.checked=!!saved[i];c.addEventListener('change',()=>{try{localStorage.setItem('acc-plan',JSON.stringify([...document.querySelectorAll('#plan input')].map(x=>x.checked)))}catch(e){}});});})();
+
+/* ---------- T-account renderer ---------- */
+function tacc(container, accounts){
+  container.innerHTML='';
+  accounts.forEach(a=>{
+    const d=el('div','ta g-'+a.g);
+    d.appendChild(el('h6','',a.t+(a.s?'<small>'+a.s+'</small>':'')));
+    const cols=el('div','cols');
+    const side = items => { const c=el('div'); (items||[]).forEach(([k,v])=>c.appendChild(el('div','it','<span>'+k+'</span><b>'+fmt(v)+'</b>'))); return c; };
+    cols.appendChild(side(a.d)); cols.appendChild(side(a.c));
+    d.appendChild(cols);
+    const sd=(a.d||[]).reduce((s,x)=>s+x[1],0), sc=(a.c||[]).reduce((s,x)=>s+x[1],0);
+    let bal;
+    if(Math.abs(sd-sc)<0.005) bal='= closed, balance 0';
+    else if(sd>sc) bal='debit balance <b>'+fmt(sd-sc)+'</b>';
+    else bal='credit balance <b>'+fmt(sc-sd)+'</b>';
+    d.appendChild(el('div','bal',bal));
+    container.appendChild(d);
+  });
+}
+tacc(document.getElementById('villiT'),[
+  {t:'Merchandise inventories',s:'S° 100 kg · +200 · −150 = 150 kg',g:'bs',d:[['S°',100000],['(3a)',220000]],c:[['(5)',160000]]},
+  {t:'Equity',g:'bs',c:[['S°',100000]]},
+  {t:'Account payable',g:'bs',c:[['(1)',250000],['(2)',25000],['(6)',10000]]},
+  {t:'VAT receivable',g:'bs',d:[['(1)',50000],['(2)',5000],['(6)',2000]],c:[['(9)',57000]]},
+  {t:'Purchasing price',g:'cl',d:[['(1)',200000]],c:[['(3)',200000]]},
+  {t:'Depending costs',g:'cl',d:[['(2)',20000]],c:[['(3)',20000]]},
+  {t:'Calculation of supply',g:'cl',d:[['(3)',220000]],c:[['(3a)',220000]]},
+  {t:'Account receivable',g:'bs',d:[['(4)',312500]]},
+  {t:'VAT payable',g:'bs',d:[['(9)',62500]],c:[['(4)',62500]]},
+  {t:'Revenue from sold merchandise',g:'is',d:[['(10)',250000]],c:[['(4)',250000]]},
+  {t:'Expenses from sold merchandise',g:'is',d:[['(5)',160000]],c:[['(10a)',160000]]},
+  {t:'Cost of electricity',g:'is',d:[['(6)',8000]],c:[['(8)',8000]]},
+  {t:'Cost of salaries',g:'is',d:[['(7)',30000]],c:[['(8)',30000]]},
+  {t:'Liability for salaries',g:'bs',c:[['(7)',30000]]},
+  {t:'Cost transference',g:'cl',d:[['(8)',38000]],c:[['(8a)',38000]]},
+  {t:'Period expenses',g:'is',d:[['(8a)',38000]],c:[['(10a)',38000]]},
+  {t:'Liability for VAT difference',g:'bs',c:[['(9)',5500]]},
+  {t:'Difference of revenue and expenses',g:'res',d:[['(10a)',198000],['(10b)',52000]],c:[['(10)',250000]]},
+  {t:'Gross income',g:'res',d:[['(10c)',52000]],c:[['(10b)',52000]]},
+  {t:'Income tax liability',g:'bs',c:[['(10c)',5200]]},
+  {t:'Net income',g:'res',c:[['(10c)',46800]]}
+]);
+
+/* ---------- MCQ bank ---------- */
+const MCQ=[
+ {s:1,q:'Methods for preparing income statements are:',o:['Direct and indirect method','By nature types method and functional method','By nature types method and average cost method','Cost plus method and by nature method'],a:1,w:'Direct/indirect belongs to the cash flow statement; average cost is an inventory method.'},
+ {s:1,q:'Beginning value on T-account expenses is recorded:',o:['On debit side','On credit side','On debit or credit side depending on balance sheet date','Expenses don’t have beginning value'],a:3,w:'Expenses and revenues are temporary accounts that start each period at zero.'},
+ {s:1,q:'Beginning value on T-account revenues is recorded:',o:['On debit side','On credit side','On debit or credit side depending on balance sheet date','Revenues don’t have beginning value'],a:3,w:'Same logic as expenses: closed at the end of every period.'},
+ {s:1,q:'Financial position of a company is evident from:',o:['Profit and loss account','Cash flow statement','Balance sheet statement','Notes to the financial statements'],a:2,w:'The balance sheet shows assets, liabilities and equity on a date. The P&L shows success, not position.'},
+ {s:1,q:'Purchasing cost (acquisition cost) of merchandise consists of:',o:['Purchasing price, depending costs and VAT receivables','Purchasing price, depending costs and VAT minus discounts','Purchasing price, depending costs, custom duties and VAT receivables','Purchasing price, depending costs, custom duties minus discounts'],a:3,w:'VAT is refundable, so it is never part of cost. Customs are not refundable, so they are.'},
+ {s:1,q:'If cash is the first position under assets in the balance sheet, the criteria applied is:',o:['Decreasing maturity','Increasing maturity','Increasing liquidity','Decreasing liquidity'],a:3,w:'Most liquid first = decreasing liquidity.'},
+ {s:1,q:'If cash is the last position under assets in the balance sheet, the criteria applied is:',o:['Decreasing maturity','Increasing maturity','Increasing liquidity','Decreasing liquidity'],a:2,w:'Least liquid first, cash at the end = increasing liquidity.'},
+ {s:1,q:'The set of financial statements consists of:',o:['Balance sheet, income statement, cash flow statement, statement of changes in equity and notes','Balance sheet, depreciation statement, cash flow statement, statement of changes in equity and notes','Balance sheet, income statement, cash flow statement, statement of changes in equity and ledger','Balance sheet, income statement, cash flow statement, statement of changes in equity and journal'],a:0,w:'Ledger and journal are business books, not statements.'},
+ {s:0,q:'Which concepts are the underlying assumptions by IFRS?',o:['Monetary unit and economic entity','Accrual basis and going concern','Prudence and materiality','Cost and relevance'],a:1,w:'The two IFRS concepts. Prudence, materiality, cost, relevance are principles.'},
+ {s:0,q:'Which inventory cost methods are allowed by IFRS?',o:['LIFO and HIFO','FIFO and LIFO','FIFO and average cost','HIFO and average cost'],a:2,w:'LIFO and HIFO exist but are not allowed by IFRS.'},
+ {s:0,q:'A company pays a supplier with a newly received bank loan. This is a:',o:['Centripetal change','Centrifugal change','Concentric change','Perifern change'],a:3,w:'One source goes down (AP), another goes up (loan): change inside sources only.'},
+ {s:0,q:'A company buys equipment and pays from its bank account. This is a:',o:['Centripetal change','Centrifugal change','Concentric change','Perifern change'],a:2,w:'One asset up, another asset down.'},
+ {s:0,q:'A company buys merchandise on credit. This is a:',o:['Centripetal change','Centrifugal change','Concentric change','Perifern change'],a:0,w:'Asset up, liability up: the balance sheet total grows.'},
+ {s:0,q:'An increase of an asset is recorded:',o:['On the debit side','On the credit side','On either side','Only in the journal'],a:0,w:'Assets increase on the debit side; sources increase on the credit side.'},
+ {s:0,q:'Which account has a normal credit balance?',o:['Account receivable','VAT receivable','Expenses from sold merchandise','VAT payable'],a:3,w:'Liabilities and revenues have credit balances.'},
+ {s:0,q:'The journal is organised:',o:['By accounts','Chronologically (by date)','By financial statement order','By customers and suppliers'],a:1,w:'The ledger is by accounts; subledgers by customers/suppliers.'},
+ {s:0,q:'The procedure of transferring journal entries to the ledger accounts is called:',o:['Balancing','Posting','Closing','Adjusting'],a:1,w:'Posting.'},
+ {s:0,q:'Invoice for electricity 12.500 eur, VAT (25%) included. The cost of electricity is:',o:['12.500','15.625','10.000','9.375'],a:2,w:'12.500 / 1,25 = 10.000; VAT = 2.500.'},
+ {s:0,q:'Given long-term loans are shown as:',o:['Non-current liabilities','Non-current financial assets','Current liabilities','Equity'],a:1,w:'We lent the money: it is our asset. A received loan would be a liability.'},
+ {s:0,q:'Issued bonds with a 3-year maturity are:',o:['Current liabilities','Non-current financial assets','Non-current liabilities','Equity'],a:2,w:'Issued = we borrowed; more than 1 year = non-current.'},
+ {s:0,q:'Which of these is NOT depreciated?',o:['Buildings','Equipment','Land','Transport vehicles'],a:2,w:'Also not depreciated: forest, art, archives, assets in preparation, advances.'},
+ {s:0,q:'Expenditures for research are:',o:['Capitalised as intangible assets','Recognised as expenses of the period','Recorded as goodwill','Recorded as long-term financial assets'],a:1,w:'Research is always expensed; development can be capitalised if the criteria are met.'},
+ {s:0,q:'Internally generated goodwill is:',o:['Capitalised at fair value','Capitalised at cost','Not capitalised','Amortised over 5 years'],a:2,w:'Only goodwill bought with a whole business is recorded, and it is not amortised.'},
+ {s:0,q:'Annual straight-line depreciation rate for an asset with 8 years of useful life is:',o:['8%','12,5%','20%','25%'],a:1,w:'100 / 8 = 12,5%.'},
+ {s:0,q:'Every adjusting entry affects an income statement account and a balance sheet account, and the balance sheet account is never:',o:['Cash','Accumulated depreciation','Prepaid insurance','Salaries payable'],a:0,w:'Adjusting entries never touch cash.'},
+ {s:0,q:'Merchandise inventories are afterwards valued at:',o:['Selling price','Purchasing cost or net market value, whichever is higher','Purchasing cost or net market value, whichever is lower','Purchasing price without dependent costs'],a:2,w:'IAS 2: lower of cost and net realisable (market) value.'}
+];
+(function(){
+  const box=document.getElementById('mcq'), score=document.getElementById('mcqScore'); let done=0, right=0;
+  const upd=()=>{score.textContent=done?('Score: '+right+' / '+done+' answered (of '+MCQ.length+')'):'';};
+  MCQ.forEach((m,i)=>{
+    const c=el('div','mcq');
+    c.appendChild(el('div','qt','<span class="n">'+(i+1)+(m.s?' ★':'')+'</span>'+m.q));
+    const o=el('div','opts');
+    m.o.forEach((t,j)=>{const b=el('button','',String.fromCharCode(97+j)+') '+t);b.type='button';
+      b.addEventListener('click',()=>{if(c.classList.contains('done'))return;c.classList.add('done');done++;
+        if(j===m.a){b.classList.add('ok');right++;}else{b.classList.add('no');o.children[m.a].classList.add('ok');}upd();});
+      o.appendChild(b);});
+    c.appendChild(o); c.appendChild(el('div','why',m.w)); box.appendChild(c);
+  });
+})();
+
+/* ---------- Fill-in bank ---------- */
+const FILL=[
+ 'Changes in the balance sheet that cause just a change in qualitative meaning are [[concentric]] and [[perifern]] balance sheet changes.',
+ 'Changes that change the balance sheet total are [[centripetal]] (both sides increase) and [[centrifugal]] (both sides decrease) changes.',
+ 'Conditions for recording a business transaction: 1. [[an accounting document is written proof of the business event]] 2. [[it influences assets, sources of assets, revenues or expenses]] 3. [[it happened in the past]] 4. [[it is measurable in money]].',
+ 'Modern accounting content includes [[financial accounting]], [[cost accounting]] and [[managerial accounting]].',
+ 'Accrual basis of accounting: [[revenues and expenses are recorded when earned / incurred, not when cash is received or paid]].',
+ 'The 2 main business books are the [[journal]] and the [[ledger]].',
+ 'Equity is divided into [[paid-in]] and [[earned]] equity.',
+ 'The 3 elements of a T-account are [[a title]], [[a left (debit) side]] and [[a right (credit) side]].',
+ 'Double-entry bookkeeping is governed by the [[accounting equation]]. If revenue equals expenses: [[assets]] = [[liabilities]] + [[equity]].',
+ 'The procedure of transferring journal entries to the ledger accounts is called [[posting]].',
+ 'The two concepts by IFRS are [[accrual basis]] and [[going concern]].',
+ 'The 5 financial statements: [[balance sheet]], [[income statement]], [[cash flow statement]], [[statement of changes in equity]] and [[notes to the financial statements]].',
+ 'The cash flow statement classifies flows into [[operating]], [[investing]] and [[financing]] activities.',
+ 'GAAP applies to three areas: [[valuation]], [[recognition]] and [[disclosure]].',
+ 'The constraints in accounting are [[materiality]] and [[conservatism (prudence)]].',
+ 'Methods of income statement preparation: [[by nature types]] and [[functional]] method.',
+ 'Inventory cost methods allowed by IFRS: [[FIFO]] and [[average cost]].',
+ 'Recoverable amount is the higher of [[fair value (net selling price)]] and [[value in use]].'
+];
+(function(){const box=document.getElementById('fills');
+  FILL.forEach((f,i)=>{const html=f.replace(/\[\[(.+?)\]\]/g,(m,a)=>'<span class="blank" tabindex="0" role="button">'+a+'</span>');
+    const c=el('div','fill','<span class="mono" style="color:var(--fg-2);margin-right:6px">'+(i+1)+'</span>'+html);box.appendChild(c);});
+  box.addEventListener('click',e=>{if(e.target.classList.contains('blank'))e.target.classList.toggle('show');});
+  box.addEventListener('keydown',e=>{if(e.target.classList.contains('blank')&&(e.key==='Enter'||e.key===' ')){e.preventDefault();e.target.classList.toggle('show');}});
+})();
+
+/* ---------- Generator 1: balance sheet ---------- */
+const ASSET_POOL=[
+ ['Patents','NCA',1],['Licences','NCA',1],['Software','NCA',1],['Concessions','NCA',1],
+ ['Buildings','NCA',2],['Land','NCA',2],['Equipment','NCA',2],['Transport vehicles','NCA',2],['Furniture','NCA',2],
+ ['Given long-term loans','NCA',3],['Long-term deposits given','NCA',3],['Bought long-term bonds','NCA',3],
+ ['Merchandise inventories','CA',1],['Raw materials','CA',1],['Finished goods','CA',1],
+ ['Account receivables','CA',2],['Receivables from employees','CA',2],['VAT receivables','CA',2],
+ ['Given short-term loans','CA',3],['Short-term deposits given','CA',3],
+ ['Cash at bank','CA',4],['Cash in hand','CA',4]
+];
+const SRC_POOL=[
+ ['Retained earnings','E',2],['Legal reserves','E',2],
+ ['Issued bonds on the 3 years period','NCL',1],['Received long-term loans (5 years)','NCL',1],
+ ['Account payables','CL',1],['Liabilities for salaries','CL',1],['Received short-term loans','CL',1],['VAT liabilities','CL',1],['Income tax liabilities','CL',1]
+];
+const GROUPNAME={NCA:['','Intangible assets','Tangible assets','Financial assets','Receivables'],CA:['','Inventories','Receivables','Financial assets','Cash']};
+function gen1(){
+  const r=()=>pick([5,10,15,20,25,30,40,50,60,80,100,120,150])*1000;
+  // choose assets: one per some groups, ensure cash & AR-like presence
+  const groups={};ASSET_POOL.forEach(a=>{const k=a[1]+a[2];(groups[k]=groups[k]||[]).push(a);});
+  let chosen=[];Object.keys(groups).forEach(k=>{if(k==='CA4'||k==='CA2'||k==='CA1'||Math.random()<0.6)chosen.push(pick(groups[k]));});
+  if(Math.random()<0.4){const extra=pick(ASSET_POOL);if(!chosen.includes(extra))chosen.push(extra);}
+  const assets=chosen.map(a=>({n:a[0],c:a[1],g:a[2],v:r()}));
+  const srcs=[];const sp=shuffle(SRC_POOL);
+  srcs.push({n:'Shareholders equity',c:'E',g:1,v:0});
+  ['E','NCL','CL','CL'].forEach(c=>{const s=sp.find(x=>x[1]===c&&!srcs.some(y=>y.n===x[0]));if(s&&Math.random()<0.9)srcs.push({n:s[0],c:s[1],g:s[2],v:r()});});
+  const totA=assets.reduce((s,a)=>s+a.v,0), other=srcs.reduce((s,a)=>s+a.v,0);
+  srcs[0].v=totA-other;
+  if(srcs[0].v<=50000){const add=Math.ceil((50000-srcs[0].v)/100000)*100000+100000;srcs[0].v+=add;assets.find(a=>a.c==='CA'&&a.g===4).v+=add;}
+  const total=assets.reduce((s,a)=>s+a.v,0);
+  const all=shuffle(assets.map(a=>({...a,side:'A'})).concat(srcs.map(s=>({...s,side:'S'}))));
+  const unknown=pick(Math.random()<0.7?all.filter(x=>x.side==='A'&&(x.c==='CA')):all.filter(x=>x.n==='Shareholders equity'||x.side==='A'));
+  const crit=Math.random()<0.6?'increasing':'decreasing';
+  return {assets,srcs,all,unknown,crit,total};
+}
+function bsTable(title,blocks){
+  let h='<div><div class="cap">'+title+'</div><table>';
+  blocks.forEach(b=>{h+='<tr class="h"><td>'+b.h+'</td><td class="r">'+fmt(b.items.reduce((s,x)=>s+x.v,0))+'</td></tr>';
+    b.items.forEach(x=>{h+='<tr class="sub"><td>'+(x.lbl?x.lbl+': ':'')+x.n+'</td><td class="r">'+fmt(x.v)+'</td></tr>';});});
+  return h+'</table></div>';
+}
+function render1(){
+  const g=gen1(), box=document.getElementById('gen1');
+  box.classList.remove('show');
+  const lines=g.all.map(x=>'<tr><td>'+x.n+(x.n.startsWith('Merchandise')?' “X”':'')+'</td><td class="r">'+(x.n===g.unknown.n?'?????':fmt(x.v))+'</td></tr>').join('');
+  box.querySelector('.prob').innerHTML='<p>Company “Alfa” on 1 January has the following assets, liabilities and equity:</p><div class="tw"><table>'+lines+'</table></div>'+
+    '<ol type="a" style="margin-top:.8em"><li>Calculate <strong>'+g.unknown.n.toLowerCase()+'</strong> using the basic accounting equation.</li><li>Prepare the beginning balance sheet using <strong>'+g.crit+' liquidity</strong> criteria and the appropriate criteria for liabilities and equity.</li></ol>';
+  // solution
+  const sumA=g.assets.filter(a=>a.n!==g.unknown.n).reduce((s,a)=>s+a.v,0), sumS=g.srcs.filter(a=>a.n!==g.unknown.n).reduce((s,a)=>s+a.v,0);
+  let eq;
+  if(g.unknown.side==='A') eq='Sources = '+fmt(sumS)+'. Known assets = '+fmt(sumA)+'. '+g.unknown.n+' = '+fmt(sumS)+' − '+fmt(sumA)+' = <span class="ans">'+fmt(g.unknown.v)+'</span>';
+  else eq='Assets = '+fmt(sumA)+'. Other sources = '+fmt(sumS)+'. Shareholders equity = '+fmt(sumA)+' − '+fmt(sumS)+' = <span class="ans">'+fmt(g.unknown.v)+'</span>';
+  const inc=g.crit==='increasing';
+  const ab=[];
+  const ncaB={h:'Non-current assets',items:[]}, caB={h:'Current assets',items:[]};
+  const gOrder=inc?[1,2,3,4]:[4,3,2,1];
+  gOrder.forEach(k=>{g.assets.filter(a=>a.c==='NCA'&&a.g===k).forEach(a=>ncaB.items.push({...a,lbl:GROUPNAME.NCA[k]}));g.assets.filter(a=>a.c==='CA'&&a.g===k).forEach(a=>caB.items.push({...a,lbl:GROUPNAME.CA[k]}));});
+  if(inc){ncaB.h='I '+ncaB.h;caB.h='II '+caB.h;ab.push(ncaB,caB);}else{caB.h='I '+caB.h;ncaB.h='II '+ncaB.h;ab.push(caB,ncaB);}
+  const E={h:'Equity',items:g.srcs.filter(s=>s.c==='E')},N={h:'Non-current liabilities',items:g.srcs.filter(s=>s.c==='NCL')},C={h:'Current liabilities',items:g.srcs.filter(s=>s.c==='CL')};
+  let sb=(inc?[E,N,C]:[C,N,E]).filter(b=>b.items.length);sb=sb.map((b,i)=>({...b,h:['I','II','III'][i]+' '+b.h}));
+  ab.forEach(b=>b.items=b.items.filter(Boolean));
+  const tot='<tr class="tot"><td>TOTAL</td><td class="r">'+fmt(g.total)+'</td></tr>';
+  box.querySelector('.gsol').innerHTML='<div class="sol" style="margin:0"><span class="bl">a) Equation</span><p>'+eq+'</p><span class="bl">b) Balance sheet ('+g.crit+' liquidity: cash '+(inc?'last':'first')+')</span><div class="bsheet">'+
+    bsTable('Assets',ab.filter(b=>b.items.length)).replace('</table></div>',tot+'</table></div>')+bsTable('Sources of assets',sb).replace('</table></div>',tot+'</table></div>')+'</div></div>';
+}
+document.getElementById('gen1').addEventListener('click',e=>{const a=e.target.dataset.act;if(a==='new')render1();if(a==='sol')document.getElementById('gen1').classList.toggle('show');});
+render1();
+
+/* ---------- Generator 2: merchandise ---------- */
+function gen2(){
+  for(let tries=0;tries<200;tries++){
+    const q0=pick([50,100,120,150,200,250]), p0=pick([200,400,500,800,1000,1200,1500]);
+    const v0=q0*p0;
+    const q1=pick([100,150,200,250,300,400]), p1=pick([p0-100,p0,p0+100,p0+200,p0+300].filter(x=>x>0));
+    const P=q1*p1, T=pick([5000,8000,10000,12000,15000,20000,24000]);
+    const Q=q0+q1, qs=pick([...Array(Math.floor(Q/10)).keys()].map(i=>(i+1)*10).filter(x=>x>=Q*0.3&&x<=Q*0.85));
+    const method=pick(['average cost','FIFO']);
+    let cogs;
+    if(method==='average cost') cogs=(v0+P+T)*qs/Q;
+    else cogs= qs<=q0 ? qs*p0 : v0+(qs-q0)*(P+T)/q1;
+    if(Math.abs(cogs*100-Math.round(cogs*100))>1e-6) continue;
+    const S=Math.round(cogs*pick([1.1,1.25,1.4,1.6,1.8])/1000)*1000;
+    const Eb=pick([4000,6000,8000,10000,12000,16000]), Eg=Eb*1.25;
+    const W=pick([10000,15000,20000,30000,40000,50000]);
+    const t=pick([10,10,18]);
+    if(S*.25===(P+T+Eb)*.25) continue;
+    const items={q0,p0,v0,q1,P,T,Q,qs,method,cogs,S,Eb,Eg,W,t,cost:pick(['electricity','rent','advertising','telephone'])};
+    return items;
+  }
+}
+function render2(){
+  const g=gen2(), box=document.getElementById('gen2'); box.classList.remove('show');
+  const supplier=pick(['Mango','Delta','Orion','Lavanda']), carrier=pick(['Transprom','Fast-log','Cargo d.o.o.']), cust=pick(['Six','Beta','Kvadrat']);
+  const costCo={electricity:'HEP',rent:'Nekretnine d.d.',advertising:'Media Plus',telephone:'A1'}[g.cost];
+  box.querySelector('.prob').innerHTML='<p>Company “Villi” on 1 January has: Merchandise inventories X ('+g.q0+' kg) '+fmt(g.v0)+' eur; Equity '+fmt(g.v0)+' eur.</p><ol>'+
+   '<li>Purchased '+g.q1+' kg of merchandise X from supplier “'+supplier+'”, invoice '+fmt(g.P)+' eur plus VAT (25%).</li>'+
+   '<li>Received invoice from “'+carrier+'” for transporting and unloading of X, '+fmt(g.T)+' eur plus VAT (25%).</li>'+
+   '<li>Record calculation of purchase if merchandise is recorded by actual purchasing cost.</li>'+
+   '<li>'+g.qs+' kg of X sold to customer “'+cust+'”, invoice '+fmt(g.S)+' eur plus VAT (25%).</li>'+
+   '<li>Decrease inventories for sold merchandise using the <strong>'+g.method+'</strong> method.</li>'+
+   '<li>Received invoice from “'+costCo+'” for '+g.cost+' in the amount of '+fmt(g.Eg)+' eur, VAT (25%) included.</li>'+
+   '<li>Record calculation of salaries in the amount of '+fmt(g.W)+' eur.</li>'+
+   '<li>Record cost transference on expenses.</li>'+
+   '<li>Calculate VAT and determine the difference (liability or return).</li>'+
+   '<li>Establish and record the financial result if corporate income tax is '+g.t+'%.</li></ol>'+
+   '<p>a) T-accounts · b) Income statement by functional method · c) Ending values of merchandise inventories and account payables.</p>';
+  const vP=g.P*.25,vT=g.T*.25,vE=g.Eg-g.Eb, PC=g.P+g.T, vRec=vP+vT+vE, vPay=g.S*.25, diff=vPay-vRec;
+  const per=g.Eb+g.W, gm=g.S-g.cogs, gi=gm-per, tax=gi>0?gi*g.t/100:0, ni=gi-tax;
+  const costName='Cost of '+g.cost;
+  let cogsCalc;
+  if(g.method==='average cost') cogsCalc=fmt(g.v0+PC)+' × '+g.qs+' / '+g.Q+' kg';
+  else cogsCalc= g.qs<=g.q0 ? g.qs+' kg × '+fmt(g.p0) : fmt(g.v0)+' + '+(g.qs-g.q0)+' kg × '+fmt(PC/g.q1);
+  const rows=[
+   ['1','Purchasing price '+fmt(g.P)+'<br>VAT receivable '+fmt(vP),'Account payable',g.P*1.25],
+   ['2','Depending costs '+fmt(g.T)+'<br>VAT receivable '+fmt(vT),'Account payable',g.T*1.25],
+   ['3','Calculation of supply','Purchasing price '+fmt(g.P)+'<br>Depending costs '+fmt(g.T),PC],
+   ['3a','Merchandise inventories (+'+g.q1+' kg)','Calculation of supply',PC],
+   ['4','Account receivable','Revenue from sold merch. '+fmt(g.S)+'<br>VAT payable '+fmt(vPay),g.S*1.25],
+   ['5','Expenses from sold merchandise','Merchandise inventories (−'+g.qs+' kg)',g.cogs],
+   ['6',costName+' '+fmt(g.Eb)+'<br>VAT receivable '+fmt(vE),'Account payable',g.Eg],
+   ['7','Cost of salaries','Liability for salaries',g.W],
+   ['8','Cost transference',costName+' '+fmt(g.Eb)+'<br>Cost of salaries '+fmt(g.W),per],
+   ['8a','Period expenses','Cost transference',per],
+   diff>=0?['9','VAT payable','VAT receivable '+fmt(vRec)+'<br>Liability for VAT difference '+fmt(diff),vPay]
+          :['9','VAT payable '+fmt(vPay)+'<br>Receivable for VAT return '+fmt(-diff),'VAT receivable',vRec],
+   ['10','Revenue from sold merchandise','Difference of revenue and expenses',g.S],
+   ['10a','Difference of revenue and expenses','Expenses from sold merch. '+fmt(g.cogs)+'<br>Period expenses '+fmt(per),g.cogs+per]
+  ];
+  if(gi>0){rows.push(['10b','Difference of revenue and expenses','Gross income',gi]);rows.push(['10c','Gross income','Income tax liability '+fmt(tax)+'<br>Net income '+fmt(ni),gi]);}
+  else rows.push(['10b','Loss','Difference of revenue and expenses',-gi]);
+  const jr='<div class="tw"><table class="jr"><tr><th>#</th><th>Debit</th><th>Credit</th><th class="r">Amount</th></tr><tr><td>S°</td><td>Merchandise inventories ('+g.q0+' kg)</td><td>Equity</td><td class="r">'+fmt(g.v0)+'</td></tr>'+rows.map(r=>'<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td class="r">'+fmt(r[3])+'</td></tr>').join('')+'</table></div>';
+  const is='<div class="tw"><table>'+
+   '<tr><td>1. Revenue from sold merchandise</td><td class="r">'+fmt(g.S)+'</td></tr>'+
+   '<tr><td>2. Expenses from sold merchandise</td><td class="r">'+fmt(g.cogs)+'</td></tr>'+
+   '<tr class="key"><td>3. Gross margin (1 − 2)</td><td class="r">'+fmt(gm)+'</td></tr>'+
+   '<tr><td>4. Period expenses ('+g.cost+' '+fmt(g.Eb)+', salaries '+fmt(g.W)+')</td><td class="r">'+fmt(per)+'</td></tr>'+
+   '<tr><td>5. Income from operating activity (3 − 4)</td><td class="r">'+fmt(gi)+'</td></tr>'+
+   '<tr><td>6.–8. Financial revenue / expenses / result</td><td class="r">0</td></tr>'+
+   '<tr><td>9. '+(gi>0?'Gross income':'Loss')+' (5 + 8)</td><td class="r">'+fmt(gi)+'</td></tr>'+
+   '<tr><td>10. Income tax ('+g.t+'%)</td><td class="r">'+fmt(tax)+'</td></tr>'+
+   '<tr class="tot"><td>11. Net '+(gi>0?'income':'loss')+' (9 − 10)</td><td class="r">'+fmt(ni)+'</td></tr></table></div>';
+  box.querySelector('.gsol').innerHTML='<div class="sol" style="margin:0"><span class="bl">Helper calculations</span><div class="calc">'+
+   '<div><span>(1) Supplier gross</span><b>'+fmt(g.P*1.25)+'</b><small>VAT '+fmt(vP)+'</small></div>'+
+   '<div><span>(2) Transport gross</span><b>'+fmt(g.T*1.25)+'</b><small>VAT '+fmt(vT)+'</small></div>'+
+   '<div><span>(3) Purchasing cost</span><b>'+fmt(PC)+'</b><small>'+fmt(PC/g.q1)+' €/kg</small></div>'+
+   '<div><span>(4) Sale gross</span><b>'+fmt(g.S*1.25)+'</b><small>VAT '+fmt(vPay)+'</small></div>'+
+   '<div><span>(5) COGS · '+g.method+'</span><b>'+fmt(g.cogs)+'</b><small>'+cogsCalc+'</small></div>'+
+   '<div><span>(6) '+g.cost+' net</span><b>'+fmt(g.Eb)+'</b><small>'+fmt(g.Eg)+' / 1,25 · VAT '+fmt(vE)+'</small></div>'+
+   '<div><span>(9) VAT</span><b>'+fmt(Math.abs(diff))+(diff>=0?' owed':' return')+'</b><small>'+fmt(vPay)+' − '+fmt(vRec)+'</small></div>'+
+   '<div><span>(10) Result</span><b>'+(gi>0?'NI '+fmt(ni):'Loss '+fmt(-gi))+'</b><small>'+(gi>0?'GI '+fmt(gi)+' − tax '+fmt(tax):'no tax on a loss')+'</small></div>'+
+   '</div><span class="bl">a) Journal</span>'+jr+'<span class="bl">b) Income statement, functional method</span>'+is+
+   '<span class="bl">c) Ending values</span><p>Merchandise inventories = '+fmt(g.v0)+' + '+fmt(PC)+' − '+fmt(g.cogs)+' = <span class="ans">'+fmt(g.v0+PC-g.cogs)+' ('+(g.Q-g.qs)+' kg)</span></p>'+
+   '<p>Account payables = '+fmt(g.P*1.25)+' + '+fmt(g.T*1.25)+' + '+fmt(g.Eg)+' = <span class="ans">'+fmt(g.P*1.25+g.T*1.25+g.Eg)+'</span></p></div>';
+}
+document.getElementById('gen2').addEventListener('click',e=>{const a=e.target.dataset.act;if(a==='new')render2();if(a==='sol')document.getElementById('gen2').classList.toggle('show');});
+render2();
+
+/* ---------- active TOC ---------- */
+(function(){const links=[...document.querySelectorAll('#toc a')];const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('on'));const l=map.get(e.target.id);if(l)l.classList.add('on');}});},{rootMargin:'-20% 0px -70% 0px'});
+  map.forEach((a,id)=>{const s=document.getElementById(id);if(s)io.observe(s);});})();
+</script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>
