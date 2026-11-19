@@ -25,7 +25,7 @@ window.FAKS_CATALOG = [
         href: 'ch07-09.html',
         chapters: 'Chapters 7, 8 & 9',
         title: 'The Labor Market, the Phillips Curve & IS-LM-PC',
-        topics: ['Labor force & unemployment', 'WS-PS model', 'Natural rate', 'Markups', 'Original Phillips curve', 'Accelerationist PC', 'Wage indexation', 'IS-LM-PC', 'Zero lower bound', 'Fiscal consolidation', 'Oil shocks'],
+        topics: ['Labor force & unemployment', 'WS-PS model', 'Natural rate', 'Markups', 'Original Phillips curve', 'Accelerationist PC', 'Wage indexation', 'IS-LM-PC', 'Zero lower bound', 'Fiscal consolidation', 'Oil shocks', 'Exam cram view'],
         exercises: 28
       }
     ]

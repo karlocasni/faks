@@ -227,6 +227,25 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-fa
 .stack .pn{font-family:var(--f-display);font-size:13px;font-weight:650;padding:2px 4px 0}
 .map{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:720px){.map{grid-template-columns:minmax(0,1fr)}}
+
+/* view switcher: full script vs exam cram */
+.seg{display:inline-flex;gap:2px;padding:3px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-family:var(--f-display)}
+.seg button{border:0;background:transparent;color:var(--fg-2);font:inherit;font-size:14px;font-weight:650;padding:7px 14px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.rail .seg{margin-bottom:22px}.rail .seg button{font-size:12.5px;padding:6px 11px}
+.fab{display:none;position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:max(14px,env(safe-area-inset-bottom,0px));z-index:40;box-shadow:0 6px 22px rgba(0,0,0,.22)}
+@media (max-width:980px){.fab{display:inline-flex}}
+#cram{display:none} body.cram #cram{display:block}
+body.cram main > :not(.hero):not(#cram){display:none !important}
+body.cram .full-only{display:none !important} .cram-only{display:none} body.cram .cram-only{display:block}
+#toc-cram{display:none} body.cram #toc{display:none} body.cram #toc-cram{display:grid}
+body.cram #mtoc-full{display:none !important} body:not(.cram) #mtoc-cram{display:none !important}
+.cards-q{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px;margin-top:1em;max-width:900px}
+.cards-q details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.cards-q summary{cursor:pointer;font-family:var(--f-display);font-weight:650;font-size:15px;line-height:1.35}
+.cards-q details[open]{border-color:color-mix(in srgb,var(--acc) 55%,var(--line))}
+.cards-q details p{margin-top:8px;font-size:15.5px;color:var(--fg-2)}
+.task .q ol li b{font-family:var(--f-display);font-size:13px;color:var(--fg-2);white-space:nowrap}
 </style>
 </head>
 <body>
@@ -234,6 +253,7 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-fa
 
 <div class="shell">
 <nav class="rail" aria-label="Contents">
+  <div class="seg viewseg " role="group" aria-label="View"><button type="button" data-view="full" aria-pressed="true">Full script</button><button type="button" data-view="cram" aria-pressed="false">Exam cram</button></div>
   <div class="rl">Contents</div>
   <ol id="toc">
     <li><a href="#top">Overview</a></li>
@@ -261,14 +281,28 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-fa
     <li class="grp">Exam kit</li>
     <li><a href="#kit">Formula sheet &amp; traps</a></li>
   </ol>
+  <ol id="toc-cram">
+    <li><a href="#top">Overview</a></li>
+    <li class="grp">Exam cram</li>
+    <li><a href="#c-plan">One-day plan</a></li>
+    <li><a href="#c-must">Must-know sheet</a></li>
+    <li class="grp g7">Exam-style problems</li>
+    <li><a href="#c-p1">P1 · Labor market</a></li>
+    <li><a href="#c-p2">P2 · Phillips curve</a></li>
+    <li><a href="#c-p3">P3 · IS-LM-PC</a></li>
+    <li class="grp">Theory</li>
+    <li><a href="#c-cards">Flashcards</a></li>
+  </ol>
 </nav>
 
 <main id="top">
 <header class="hero">
   <div class="eyebrow">Macroeconomics · Blanchard, 8th edition · Lectures + Tutorials</div>
   <h1><span class="a">The Labor Market</span>, <span class="b">the Phillips Curve</span> &amp; <span class="c">IS-LM-PC</span></h1>
-  <p class="lede">Everything from the Chapter 7, 8 and 9 slides, condensed for fast learning. All 28 tutorial exercises sit right after the theory they use, fully worked.</p>
+  <p class="lede full-only">Everything from the Chapter 7, 8 and 9 slides, condensed for fast learning. All 28 tutorial exercises sit right after the theory they use, fully worked.</p>
+  <p class="lede cram-only">The one-day version: a must-know sheet, three exam-style problems built like the midterm (calculate, show graphically, explain) and flashcards for the 1-point questions. Switch back to the full script for the detailed theory.</p>
   <div class="toolbar">
+    <div class="seg viewseg " role="group" aria-label="View"><button type="button" data-view="full" aria-pressed="true">Full script</button><button type="button" data-view="cram" aria-pressed="false">Exam cram · 1 day</button></div>
     <button class="btn" id="practice" type="button" aria-pressed="false">Practice mode: off</button>
     <div class="legend">
       <span class="chip"><i style="background:var(--c7)"></i>Ch 7 · Labor market</span>
@@ -283,13 +317,172 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-fa
     <div class="m8"><b>Chapter 8</b>Let prices differ from expectations: \(\pi = \pi^e + (m+z) - \alpha u\). Anchored expectations give the original Phillips curve, backward-looking ones the accelerationist curve.</div>
     <div class="m9"><b>Chapter 9</b>Stack IS-LM on top of the Phillips curve. In the short run demand sets output; in the medium run output returns to \(Y_n\) and inflation to target.</div>
   </div>
-  <p style="margin-top:14px;font-size:15.5px;color:var(--fg-2)"><strong style="color:var(--fg)">Fast route:</strong> the WS-PS diagram (<a href="#t7-2">Tut 7 Ex 2</a>), the numeric Phillips exercises (<a href="#t8-4">Ex 4</a>, <a href="#t8-7">7</a>, <a href="#t8-9">9</a>), the <a href="#shocks9">IS-LM-PC shock table</a>, then the <a href="#kit">exam kit</a>.</p>
-  <details class="mtoc"><summary>Contents</summary><ol>
+  <p class="full-only" style="margin-top:14px;font-size:15.5px;color:var(--fg-2)"><strong style="color:var(--fg)">Fast route:</strong> the WS-PS diagram (<a href="#t7-2">Tut 7 Ex 2</a>), the numeric Phillips exercises (<a href="#t8-4">Ex 4</a>, <a href="#t8-7">7</a>, <a href="#t8-9">9</a>), the <a href="#shocks9">IS-LM-PC shock table</a>, then the <a href="#kit">exam kit</a>.</p>
+  <details class="mtoc" id="mtoc-cram"><summary>Contents</summary><ol>
+    <li><a href="#c-plan">Plan</a></li><li><a href="#c-must">Must-know</a></li><li><a href="#c-p1">P1 Labor market</a></li><li><a href="#c-p2">P2 Phillips curve</a></li><li><a href="#c-p3">P3 IS-LM-PC</a></li><li><a href="#c-cards">Flashcards</a></li>
+  </ol></details>
+  <details class="mtoc" id="mtoc-full"><summary>Contents</summary><ol>
     <li><a href="#s7-1">7.1 Tour</a></li><li><a href="#s7-2">7.2 Movements</a></li><li><a href="#s7-3">7.3 Wages</a></li><li><a href="#s7-4">7.4 Prices</a></li><li><a href="#s7-5">7.5 Natural rate</a></li><li><a href="#s7-6">7.6 Appendix</a></li>
     <li><a href="#s8-0">Cycle</a></li><li><a href="#s8-1">8.1 Expectations</a></li><li><a href="#s8-2">8.2 Mutations</a></li><li><a href="#s8-3">8.3 Natural rate</a></li><li><a href="#s8-4">8.4 Warnings</a></li><li><a href="#lab">Lab</a></li>
     <li><a href="#s9-1">9.1 IS-LM-PC</a></li><li><a href="#s9-2">9.2 Medium run</a></li><li><a href="#s9-3">9.3 Complications</a></li><li><a href="#s9-4">9.4 Consolidation</a></li><li><a href="#s9-5">9.5 Oil</a></li><li><a href="#s9-6">9.6 Conclusions</a></li><li><a href="#kit">Exam kit</a></li>
   </ol></details>
 </header>
+
+<!-- ===================================================== EXAM CRAM VIEW ===================================================== -->
+<div id="cram">
+<section class="sec" id="c-plan">
+  <h3><span class="sn">⏱</span>One-day plan</h3>
+  <div class="prose">
+  <p>The midterm problems follow one pattern: a short setup, then parts worth 1–4 points each. Typically: <strong>calculate</strong> (2–4 pts), <strong>show graphically</strong> (2–4 pts), <strong>explain</strong> (1–2 pts). This view keeps only what earns those points.</p>
+  </div>
+  <div class="tw" style="max-width:700px"><table>
+    <thead><tr><th>Block</th><th>What</th><th class="r">Time</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><a href="#c-must">Must-know sheet</a>: read it twice, copy the formulas by hand once</td><td class="r">45 min</td></tr>
+      <tr><td>2</td><td><a href="#c-p1">Problem 1</a> (labor market): cover the answers, solve, check</td><td class="r">45 min</td></tr>
+      <tr><td>3</td><td><a href="#c-p2">Problem 2</a> (Phillips curve): the numeric one, do it twice</td><td class="r">1 h</td></tr>
+      <tr><td>4</td><td><a href="#c-p3">Problem 3</a> (IS-LM-PC): draw every graph yourself</td><td class="r">1 h</td></tr>
+      <tr><td>5</td><td><a href="#c-cards">Flashcards</a> for the 1-point "explain" questions</td><td class="r">30 min</td></tr>
+    </tbody></table></div>
+  <div class="focus" style="margin-top:1.2em;max-width:70ch"><span class="bl">Graph checklist (every "show graphically" part)</span>Label both <strong>axes</strong> and every <strong>curve</strong>. Mark the old point <strong>A</strong> and the new one <strong>A′</strong>, with an <strong>arrow</strong> for the shift. Mark the values on the axes (u<sub>n</sub>, Y<sub>n</sub>, r<sub>n</sub>, 1/(1+m)). Then one sentence: <em>which curve moves, which way, and why</em>.</div>
+</section>
+
+<section class="sec" id="c-must">
+  <h3><span class="sn">1</span>Must-know sheet</h3>
+  <div class="fs">
+    <div class="card k7"><h5>Ch 7 · Labor market</h5>
+      <p>\(L = N + U\), \(u = U/L\), participation \(= L/\text{pop}\), employment rate \(= N/\text{pop}\)</p>
+      <p>WS: \(W = P^e F(u,z)\) → \(W/P = F(u,z)\), slopes <strong>down</strong></p>
+      <p>PS: \(P = (1+m)W\) → \(W/P = 1/(1+m)\), <strong>flat</strong></p>
+      <p>Equilibrium: \(F(u_n,z) = 1/(1+m)\)</p>
+      <p>z↑ (benefits, min. wage, protection): WS up → u<sub>n</sub>↑, W/P same</p>
+      <p>m↑ (less competition, oil): PS down → u<sub>n</sub>↑, W/P↓</p></div>
+    <div class="card k8"><h5>Ch 8 · Phillips curve</h5>
+      <p>\(\pi_t = \pi_t^e + (m+z) - \alpha u_t\)</p>
+      <p>\(u_n = (m+z)/\alpha\) ⇔ \(\pi - \pi^e = -\alpha(u - u_n)\)</p>
+      <p><strong>θ = 0</strong> (anchored): u below u<sub>n</sub> → π higher but <strong>constant</strong></p>
+      <p><strong>θ = 1</strong> (\(\pi^e = \pi_{t-1}\)): \(\pi_t = \pi_{t-1} + (m + z - \alpha u_t)\) → π rises <strong>every year</strong></p>
+      <p>Indexation λ: \(\Delta\pi = -\frac{\alpha}{1-\lambda}(u - u_n)\), so divide the push by (1 − λ)</p></div>
+    <div class="card k9"><h5>Ch 9 · IS-LM-PC</h5>
+      <p>IS: \(Y = C(Y-T) + I(Y, r+x) + G\)</p>
+      <p>LM: \(r = \bar r\) (the bank sets the <strong>real</strong> rate)</p>
+      <p>PC: \(\pi - \bar\pi = (\alpha/L)(Y - Y_n)\)</p>
+      <p>Y &gt; Y<sub>n</sub> → π above target; Y &lt; Y<sub>n</sub> → below</p>
+      <p>Medium run: Y = Y<sub>n</sub>, r = r<sub>n</sub>, π = π̄. Money is <strong>neutral</strong></p>
+      <p>Demand shock: bank moves r, Y back to Y<sub>n</sub>. Supply shock (oil): Y<sub>n</sub> itself falls</p></div>
+  </div>
+</section>
+
+<div class="ch7">
+<section class="sec" id="c-p1">
+  <h3><span class="sn">P1</span>Problem 1 · The labor market <span style="font-size:15px;color:var(--fg-2);font-weight:600">(11 points)</span></h3>
+  <article class="task">
+    <header class="task-h"><span class="tag">EXAM STYLE</span><h4>Croatia's labor market and the WS-PS model</h4></header>
+    <div class="q">Working-age population 2.8 million, employed 1.65 million, unemployed 140,000.
+      <ol>
+        <li>Calculate the labor force, the participation rate, the unemployment rate and the employment rate. <b>(2 points)</b></li>
+        <li>Write the wage-setting and price-setting relations. Assuming P = Pᵉ, draw the model. Which two variables does it determine? <b>(3 points)</b></li>
+        <li>The markup is 5% and wage setting is W = P(1 − u). Calculate the natural rate. What happens if the markup rises to 10%? <b>(3 points)</b></li>
+        <li>Show the effect of an increase in the minimum wage in the WS-PS model and give one economic argument. <b>(2 points)</b></li>
+        <li>Why does the WS curve slope down? <b>(1 point)</b></li>
+      </ol></div>
+    <button class="btn reveal" type="button">Show solution</button>
+    <div class="sol"><span class="bl">What to write</span>
+      <div class="part"><b>a</b><div><p>L = 1.65 + 0.14 = <span class="ans">1.79 m</span>; participation = 1.79/2.8 = <span class="ans">63.9%</span>; u = 0.14/1.79 = <span class="ans">7.8%</span>; employment rate = 1.65/2.8 = <span class="ans">58.9%</span>.</p></div></div>
+      <div class="part"><b>b</b><div><p>WS: \(W = P^e F(u,z)\); PS: \(P = (1+m)W\). With P = Pᵉ: WS \(W/P = F(u,z)\), PS \(W/P = 1/(1+m)\). Graph: u on the x-axis, W/P on the y-axis, WS sloping down, PS flat at 1/(1+m), crossing at A. The model determines the <span class="ans">real wage</span> and the <span class="ans">natural rate u<sub>n</sub></span>.</p></div></div>
+      <div class="part"><b>c</b><div><p>\(1 - u_n = 1/1.05 = 0.952\) → <span class="ans">u<sub>n</sub> = 4.76%</span>. With m = 10%: \(1 - u_n = 0.909\) → <span class="ans">u<sub>n</sub> = 9.09%</span>. A higher markup lowers the real wage (PS down). Workers accept the lower real wage only with more unemployment.</p></div></div>
+      <div class="part"><b>d</b><div><p>z↑ → <strong>WS shifts up</strong> → <span class="ans">u<sub>n</sub>↑</span>, W/P unchanged. Argument: wage demands rise at every u, but the markup caps the real wage, so unemployment must rise to bring wage demands back down (firms hire fewer low-productivity workers).</p>
+        <figure><div class="scroll" id="c-ws"></div><figcaption><b>Higher minimum wage.</b> Mirror image for lower benefits: WS down, u<sub>n</sub> falls.</figcaption></figure></div></div>
+      <div class="part"><b>e</b><div><p>Higher u weakens workers' bargaining power (it is harder to find another job) and lets firms pay a lower wage without losing workers, so the real wage falls.</p></div></div>
+    </div>
+  </article>
+  <div class="trap" style="margin-top:1.2em;max-width:760px"><span class="bl">Variants of part d to be ready for</span>Lower benefits: WS down, u<sub>n</sub>↓. More competition (antitrust): m↓, PS <strong>up</strong>, W/P↑, u<sub>n</sub>↓. Mergers or oil: m↑, PS <strong>down</strong>, W/P↓, u<sub>n</sub>↑. Real wage for m = 0.1/0.2/0.3/0.4: 0.909 / 0.833 / 0.769 / 0.714.</div>
+</section>
+</div>
+
+<div class="ch8">
+<section class="sec" id="c-p2">
+  <h3><span class="sn">P2</span>Problem 2 · The Phillips curve <span style="font-size:15px;color:var(--fg-2);font-weight:600">(12 points)</span></h3>
+  <article class="task">
+    <header class="task-h"><span class="tag">EXAM STYLE</span><h4>Expectations, the natural rate and indexation</h4></header>
+    <div class="q">The Phillips curve is \(\pi_t - \pi_t^e = 0.1 - 2u_t\), with \(\pi_t^e = \theta\pi_{t-1}\).
+      <ol>
+        <li>Calculate the natural rate of unemployment. <b>(1 point)</b></li>
+        <li>θ = 0. The government cuts u to 3% in year t and keeps it there. Calculate inflation in t, t+1 and t+5. <b>(2 points)</b></li>
+        <li>From year t+5, θ = 1. Calculate inflation in t+5, t+6, t+7. Why might θ rise? <b>(3 points)</b></li>
+        <li>Now θ = 1, π<sub>t−1</sub> = 0, u = 4% for good, and half of all labor contracts are indexed. Write the new Phillips curve and calculate inflation for t … t+3, with and without indexation. <b>(3 points)</b></li>
+        <li>Draw the curves from part d and mark the natural rate. <b>(2 points)</b></li>
+        <li>What happens to inflation when u &lt; u<sub>n</sub>? <b>(1 point)</b></li>
+      </ol></div>
+    <button class="btn reveal" type="button">Show solution</button>
+    <div class="sol"><span class="bl">What to write</span>
+      <div class="part"><b>a</b><div><p>π = πᵉ: \(0 = 0.1 - 2u_n\) → <span class="ans">u<sub>n</sub> = 5%</span></p></div></div>
+      <div class="part"><b>b</b><div><p>πᵉ = 0, so \(\pi = 0.1 - 0.06\) → <span class="ans">4% in t, t+1 and t+5</span>. Anchored expectations: lower u buys a higher but constant inflation rate.</p></div></div>
+      <div class="part"><b>c</b><div><p>\(\pi_t = \pi_{t-1} + 0.04\), starting from 4%: <span class="ans">8%, 12%, 16%</span>. Why: inflation was 4% for years while people expected 0, so they learn and start using last year's inflation. Expectations de-anchor (the US in the 1970s).</p></div></div>
+      <div class="part"><b>d</b><div><p>Without indexation: \(\Delta\pi = 0.1 - 0.08 = 0.02\) → <span class="ans">2, 4, 6, 8%</span>.</p>
+        <p>λ = 0.5: \(\pi_t - [0.5\pi_t + 0.5\pi_{t-1}] = 0.1 - 2u\) → <span class="ans">π<sub>t</sub> − π<sub>t−1</sub> = 0.2 − 4u<sub>t</sub></span> → \(\Delta\pi = 0.04\) → <span class="ans">4, 8, 12, 16%</span>.</p></div></div>
+      <div class="part"><b>e</b><div>
+        <figure><div class="scroll" id="c-pc"></div><figcaption><b>Δπ against u.</b> Both lines cross zero at u<sub>n</sub> = 5%. Indexation doubles the slope (−2 → −4).</figcaption></figure></div></div>
+      <div class="part"><b>f</b><div><p>\(\pi - \pi^e = -\alpha(u - u_n) &gt; 0\): inflation is <strong>above expected</strong>. With θ = 1 it <strong>rises every year</strong>. u<sub>n</sub> is the NAIRU.</p></div></div>
+    </div>
+  </article>
+  <div class="trap" style="margin-top:1.2em;max-width:760px"><span class="bl">The other numeric setup they use</span>\(\pi_t = 3.6\% - 0.2u_t\) (π̄ = 2%, m + z = 1.6%). u = 12/10/8/6/3% → π = 1.2/1.6/2.0/2.4/3.0%, so u<sub>n</sub> = 8%. Holding u = 3% gives 3% every year. If πᵉ = π<sub>t−1</sub>: \(\Delta\pi = 1.6 - 0.2 \times 3 = +1\) point a year (3 → 4 → 5 → 6 → 7 → 8%). With \(\pi_t - \pi_{t-1} = -1.5(u_t - u_n)\), u<sub>n</sub> = 8% and π<sub>t−1</sub> = 4%, each point of u below 8% adds 1.5 points: u = 7/6/5/4% → 5.5/7/8.5/10%.</div>
+</section>
+</div>
+
+<div class="ch9">
+<section class="sec" id="c-p3">
+  <h3><span class="sn">P3</span>Problem 3 · IS-LM-PC <span style="font-size:15px;color:var(--fg-2);font-weight:600">(12 points)</span></h3>
+  <article class="task">
+    <header class="task-h"><span class="tag">EXAM STYLE</span><h4>Shocks in the short and the medium run</h4></header>
+    <div class="q">The economy starts in medium-run equilibrium; πᵉ is anchored at the central bank's target π̄.
+      <ol>
+        <li>Write the IS, LM and PC relations and describe the medium-run equilibrium. What is r<sub>n</sub>? <b>(2 points)</b></li>
+        <li>The government cuts its budget deficit. Show the short-run and medium-run effects. What happens to C and I? <b>(4 points)</b></li>
+        <li>The price of oil rises permanently. Show and explain the short and medium run. <b>(3 points)</b></li>
+        <li>A deep recession: i = 0 and π = −1%. What happens, and what policy helps? <b>(2 points)</b></li>
+        <li>r<sub>n</sub> = 2% and the risk premium x rises from 3% to 5%. What must the central bank do? <b>(1 point)</b></li>
+      </ol></div>
+    <button class="btn reveal" type="button">Show solution</button>
+    <div class="sol"><span class="bl">What to write</span>
+      <div class="part"><b>a</b><div><p>IS: \(Y = C(Y-T) + I(Y, r+x) + G\); LM: \(r = \bar r\); PC: \(\pi - \bar\pi = (\alpha/L)(Y - Y_n)\). Medium run: Y = Y<sub>n</sub>, u = u<sub>n</sub>, π = π̄, r = <span class="ans">r<sub>n</sub>, the natural (neutral, Wicksellian) rate</span> at which IS gives Y<sub>n</sub>; \(i = r_n + \bar\pi\).</p></div></div>
+      <div class="part"><b>b</b><div><p><strong>Short run:</strong> G↓ or T↑ → <strong>IS left</strong>. At unchanged r, Y falls below Y<sub>n</sub> (A′) and π falls below target. C↓ (lower income), I↓ (lower sales).</p>
+        <p><strong>Medium run:</strong> the bank cuts r to r′<sub>n</sub> (<strong>LM down</strong>), Y returns to Y<sub>n</sub> along IS′ (A″), π back to π̄. Result: <span class="ans">same Y, lower r, higher I</span>.</p>
+        <figure><div class="stack"><div class="pn">IS-LM</div><div class="scroll" id="c93-t"></div><div class="pn">Phillips curve</div><div class="scroll" id="c93-b"></div></div><figcaption><b>Fiscal consolidation.</b> A → A′ (short run) → A″ (medium run).</figcaption></figure></div></div>
+      <div class="part"><b>c</b><div><p>Oil works like a higher markup: m↑ → u<sub>n</sub>↑ → <strong>Y<sub>n</sub>↓</strong>, so the <strong>PC shifts left</strong>. Short run: output is now above the new Y′<sub>n</sub>, so <span class="ans">π rises</span>. Medium run: the bank raises r (LM up), Y falls to Y′<sub>n</sub>, and π returns to target. On the way: <span class="ans">stagflation</span>. In the end: lower Y, higher u<sub>n</sub> and r, lower real wage.</p>
+        <figure><div class="stack"><div class="pn">IS-LM</div><div class="scroll" id="c95-t"></div><div class="pn">Phillips curve</div><div class="scroll" id="c95-b"></div></div><figcaption><b>Oil shock.</b> PC → PC′; A′ (inflation jumps) → A″ at the lower Y′<sub>n</sub>.</figcaption></figure></div></div>
+      <div class="part"><b>d</b><div><p>\(r = i - \pi^e = 0 - (-1\%) = 1\%\): the bank cannot lower r to r<sub>n</sub>. Output stays below Y<sub>n</sub>, deflation deepens, r rises, and output falls further: a <span class="ans">deflation spiral</span>. Fix: <span class="ans">fiscal expansion</span> (G↑, T↓) shifts IS right to Y<sub>n</sub>.</p></div></div>
+      <div class="part"><b>e</b><div><p>Keep r + x at 5%: <span class="ans">cut r from 2% to 0%</span> (LM down by 2 points; i falls by 2 points). The natural rate itself has fallen.</p></div></div>
+    </div>
+  </article>
+  <div class="trap" style="margin-top:1.2em;max-width:760px"><span class="bl">Other shocks, same recipe</span>Overheating (r too low): raise r to r<sub>n</sub>, move along IS and the PC back to Y<sub>n</sub>. If ignored, expectations de-anchor and inflation accelerates. G↑: IS right, so raise r, and I falls by ΔG (crowding out). Recession: cut r (LM down) <em>or</em> G↑/T↓ (IS right). Policy smooths cycles, but Y<sub>n</sub> is uncertain, there are lags, and the ZLB binds.</div>
+</section>
+</div>
+
+<section class="sec" id="c-cards">
+  <h3><span class="sn">★</span>Flashcards · 1-point "explain" questions</h3>
+  <div class="prose"><p style="color:var(--fg-2);font-size:15.5px">Tap a question to reveal the answer. Say the answer out loud before you open it.</p></div>
+  <div class="cards-q">
+    <details><summary>Why is the unemployment rate a poor measure of joblessness?</summary><p>Discouraged workers stop searching, count as out of the labor force, and so lower u.</p></details>
+    <details><summary>Unemployment rate vs participation rate?</summary><p>u = U / labor force. Participation = labor force / working-age population.</p></details>
+    <details><summary>Why does the nominal wage depend on Pᵉ, not P?</summary><p>Wages are set before prices are known, and workers care about the real wage.</p></details>
+    <details><summary>What is in z?</summary><p>Everything that raises wages at given u and Pᵉ: unemployment benefits, employment protection, minimum wage, union power.</p></details>
+    <details><summary>Why is PS horizontal?</summary><p>With Y = N, firms set P = (1 + m)W whatever u is, so the real wage they imply, 1/(1+m), does not depend on u.</p></details>
+    <details><summary>Efficiency wages?</summary><p>Firms pay above the reservation wage to cut quits and raise productivity and morale (Henry Ford's $5 a day).</p></details>
+    <details><summary>Natural rate of unemployment?</summary><p>The u where the WS real wage equals the PS real wage (P = Pᵉ). It depends only on m and z: \(u_n = (m+z)/\alpha\).</p></details>
+    <details><summary>Why did the Phillips curve "disappear" in the 1970s?</summary><p>Inflation became persistent, so people started expecting last year's inflation (θ → 1). Low u then raised the <em>change</em> in inflation, not its level.</p></details>
+    <details><summary>Friedman–Phelps?</summary><p>The trade-off is only temporary: u stays below u<sub>n</sub> only with ever-rising, unexpected inflation.</p></details>
+    <details><summary>Why does indexation steepen the curve?</summary><p>Indexed wages react to current inflation, so the wage-price spiral runs within the same year: slope α/(1 − λ).</p></details>
+    <details><summary>Why does the curve break down at low inflation?</summary><p>Workers resist nominal wage cuts (Portugal 2012), so high u stops pushing inflation down once wage growth reaches zero.</p></details>
+    <details><summary>Why does u<sub>n</sub> differ across countries and over time?</summary><p>Labor-market institutions (benefits, protection, minimum wages, bargaining) and competition (the markup). Also demographics, temp agencies, disability.</p></details>
+    <details><summary>Okun's law?</summary><p>\(u - u_{-1} = -0.4(g_Y - 3\%)\): growth above about 3% lowers u by only 0.4 per point (labor hoarding, discouraged workers return).</p></details>
+    <details><summary>Neutrality of money?</summary><p>In the medium run monetary policy cannot change Y, u or r. It only sets inflation and the nominal rate.</p></details>
+    <details><summary>What is the deflation spiral?</summary><p>At i = 0, deflation raises r = −π. Higher r lowers output, which deepens deflation, and so on (Great Depression).</p></details>
+    <details><summary>Why is an oil shock like a higher markup, and why were the 2000s milder?</summary><p>Oil is a non-labor cost, so prices rise relative to wages. The 2000s were milder because of weaker bargaining power and better-anchored expectations.</p></details>
+  </div>
+</section>
+<footer>Exam cram: built from the full Chapter 7–9 script and modeled on the format of the department's midterm (problems with 1–4 point parts: calculate, show graphically, explain). The numbers come from the tutorial sheets, so every answer here also appears, worked out in more detail, in the full script.</footer>
+</div>
 
 <!-- ===================================================== CHAPTER 7 ===================================================== -->
 <div class="ch7">
@@ -1080,6 +1273,7 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-fa
 <footer>Study script built from the Blanchard <em>Macroeconomics</em> (8th ed.) slides for Chapters 7–9 and the department's sheets “Tutorials – Chapters 7 &amp; 8” and “Tutorials – Chapter 9”. The sheets have no answer key, so answers were worked out here; numeric ones were checked by substitution. Diagrams are schematic unless they carry numbers. In IS-LM-PC figures the bottom axis is π − π̄ (anchored expectations, as the tutorial asks); the slides label it π − π(−1), which gives the same picture.</footer>
 </main>
 </div>
+<div class="seg viewseg fab" role="group" aria-label="View"><button type="button" data-view="full" aria-pressed="true">Full script</button><button type="button" data-view="cram" aria-pressed="false">Exam cram</button></div>
 
 <script>
 window.MathJax = {
@@ -1419,6 +1613,30 @@ $('p-presets').addEventListener('click', e => {
 });
 labPC();
 
+/* ---------- exam-cram figures: copies of the full-script ones (clip ids renamed) ---------- */
+function cloneFig(src, dst){ const a = $(src), b = $(dst); if (a && b) b.innerHTML = a.innerHTML.replace(/(["#])cp(\d+)/g, '$1ccp$2'); }
+[['fig-t75','c-ws'],['fig-t89','c-pc'],['f93-t','c93-t'],['f93-b','c93-b'],['f95-t','c95-t'],['f95-b','c95-b']].forEach(p => cloneFig(p[0], p[1]));
+
+/* ---------- view switcher ---------- */
+function setView(v, jump){
+  document.body.classList.toggle('cram', v === 'cram');
+  document.querySelectorAll('.viewseg button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === v)));
+  try { localStorage.setItem('bl79-view', v); } catch (e) {}
+  history.replaceState(null, '', v === 'cram' ? '#cram' : location.pathname + location.search);
+  if (jump) window.scrollTo({top:0});
+}
+document.querySelectorAll('.viewseg button').forEach(b => b.addEventListener('click', () => setView(b.dataset.view, b.closest('.fab') || b.closest('.rail'))));
+(function(){
+  const h = location.hash;
+  let v = 'full';
+  try { v = localStorage.getItem('bl79-view') || 'full'; } catch (e) {}
+  if (h === '#cram' || h.startsWith('#c-')) v = 'cram';
+  else if (h && h !== '#top' && document.querySelector(h) && !document.querySelector(h).closest('#cram')) v = 'full';
+  document.body.classList.toggle('cram', v === 'cram');
+  document.querySelectorAll('.viewseg button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === v)));
+  if (h.startsWith('#c-')) { const t = document.querySelector(h); if (t) t.scrollIntoView(); }
+})();
+
 /* ---------- practice mode ---------- */
 const pbtn = $('practice');
 function setPractice(on){
@@ -1435,8 +1653,8 @@ document.querySelectorAll('.task').forEach(t => {
 });
 
 /* ---------- contents highlight ---------- */
-const links = [...document.querySelectorAll('#toc a')];
-const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+const links = [...document.querySelectorAll('#toc a, #toc-cram a')];
+const map = new Map(); links.forEach(a => { const k = a.getAttribute('href').slice(1); if (k !== 'top' || !map.has(k)) map.set(k, a); });
 if ('IntersectionObserver' in window){
   const io = new IntersectionObserver(es => {
     es.forEach(en => { if (en.isIntersecting){ links.forEach(l => l.classList.remove('on')); const a = map.get(en.target.id); if (a) a.classList.add('on'); } });
