@@ -12,6 +12,7 @@ assets/site.css             Shared colours, fonts, menu and card styles
 macroeconomics/index.html   Subject page (lists its scripts)
 macroeconomics/ch03-04.html Blanchard Ch. 3 & 4: The Goods Market, Financial Markets I
 macroeconomics/ch05-06.html Blanchard Ch. 5 & 6: The IS-LM Model, Financial Markets II
+macroeconomics/ch07-09.html Blanchard Ch. 7, 8 & 9: The Labor Market, the Phillips Curve, IS-LM-PC
 corporate-finance/index.html    Subject page
 corporate-finance/l01-04.html   Lectures 1–4 + Tutorials 1–2: financial management,
                                 financial environment, statements, ratio analysis
